@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>Course Detail | Orbit Training & Development</title>
+  <meta name="description"
+    content="Course details, curriculum, pricing, and enrollment for Orbit Training & Development." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#080511" />
+  <link rel="icon" type="image/png" href="Orbit_Logo.png" />
+  <link rel="stylesheet" href="css/style.css?v=1.1" />
+  <style>
+    .cd-related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    @media(max-width:700px) {
+      .cd-related-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:420px) {
+      .cd-related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cd-related-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      transition: border-color .2s, transform .2s;
+      text-decoration: none !important;
+    }
+
+    .cd-related-card:hover {
+      border-color: rgba(245, 197, 24, .25);
+      transform: translateY(-2px);
+    }
+
+    .cd-related-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .cd-related-name {
+      font-size: .84rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .cd-related-dur {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    .cd-stats-bar {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.3rem;
+    }
+
+    .cd-stat {
+      display: flex;
+      flex-direction: column;
+      gap: .1rem;
+    }
+
+    .cd-stat .n {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: .04em;
+    }
+
+    .cd-stat .l {
+      font-size: .68rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+     NAVIGATION (same as index)
+     ============================================================ -->
+  <nav class="orbit-nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="Orbit_Logo.png" alt="Orbit IT Solutions" class="nav-logo-img" />
+        <span class="nav-logo-estd">Since 1997</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="nav-courses-wrap">
+          <span class="nav-link">Courses</span>
+          <div class="courses-dropdown">
+            <div class="cd-inner">
+              <div class="cd-section-label">🖥️ Tech &amp; Programming</div>
+              <div class="cd-grid" style="margin-bottom:1rem">
+                <a href="course.html?id=data-science" class="cd-item"><span class="cd-icon">📊</span><span
+                    class="cd-name">Data Science</span></a>
+                <a href="course.html?id=full-stack-python" class="cd-item"><span class="cd-icon">🐍</span><span
+                    class="cd-name">Full Stack Python</span></a>
+                <a href="course.html?id=ai-ml" class="cd-item"><span class="cd-icon">🤖</span><span class="cd-name">AI
+                    &amp; ML</span></a>
+                <a href="course.html?id=full-stack-java" class="cd-item"><span class="cd-icon">☕</span><span
+                    class="cd-name">Full Stack Java</span></a>
+                <a href="course.html?id=full-stack-web" class="cd-item"><span class="cd-icon">🌐</span><span
+                    class="cd-name">Full Stack Web Dev</span></a>
+                <a href="course.html?id=data-analysis" class="cd-item"><span class="cd-icon">📈</span><span
+                    class="cd-name">Data Analysis</span></a>
+                <a href="course.html?id=oracle-dba" class="cd-item"><span class="cd-icon">🗄️</span><span
+                    class="cd-name">Oracle DBA</span></a>
+                <a href="course.html?id=digital-marketing" class="cd-item"><span class="cd-icon">📱</span><span
+                    class="cd-name">Digital Marketing</span></a>
+                <a href="course.html?id=cybersecurity" class="cd-item"><span class="cd-icon">🛡️</span><span
+                    class="cd-name">Cybersecurity</span></a>
+                <a href="course.html?id=aws" class="cd-item"><span class="cd-icon">☁️</span><span
+                    class="cd-name">AWS</span></a>
+                <a href="course.html?id=azure" class="cd-item"><span class="cd-icon">🔷</span><span
+                    class="cd-name">Azure</span></a>
+                <a href="course.html?id=software-testing" class="cd-item"><span class="cd-icon">🧪</span><span
+                    class="cd-name">Software Testing</span></a>
+              </div>
+              <div class="cd-section-label">📊 Business &amp; Office</div>
+              <div class="cd-grid" style="margin-bottom:1rem">
+                <a href="course.html?id=spoken-english" class="cd-item"><span class="cd-icon">🗣️</span><span
+                    class="cd-name">Spoken English</span></a>
+                <a href="course.html?id=ms-office" class="cd-item"><span class="cd-icon">💼</span><span
+                    class="cd-name">MS Office</span></a>
+                <a href="course.html?id=advance-excel" class="cd-item"><span class="cd-icon">📊</span><span
+                    class="cd-name">Advance Excel</span></a>
+                <a href="course.html?id=tally-prime-gst" class="cd-item"><span class="cd-icon">🧾</span><span
+                    class="cd-name">Tally Prime GST</span></a>
+                <a href="course.html?id=sap-fico" class="cd-item"><span class="cd-icon">💹</span><span
+                    class="cd-name">SAP FICO</span></a>
+                <a href="course.html?id=power-bi" class="cd-item"><span class="cd-icon">📉</span><span
+                    class="cd-name">Power BI</span></a>
+                <a href="course.html?id=hardware-networking" class="cd-item"><span class="cd-icon">🔧</span><span
+                    class="cd-name">Hardware &amp; Networking</span></a>
+                <a href="course.html?id=mcse" class="cd-item"><span class="cd-icon">🖥️</span><span
+                    class="cd-name">MCSE</span></a>
+                <a href="course.html?id=ccna" class="cd-item"><span class="cd-icon">📡</span><span
+                    class="cd-name">CCNA</span></a>
+                <a href="course.html?id=linux-admin" class="cd-item"><span class="cd-icon">🐧</span><span
+                    class="cd-name">Linux Admin</span></a>
+              </div>
+              <div class="cd-section-label">🎨 Creative &amp; Design</div>
+              <div class="cd-grid-2">
+                <a href="course.html?id=web-designing" class="cd-item"><span class="cd-icon">🎨</span><span
+                    class="cd-name">Web Designing</span></a>
+                <a href="course.html?id=graphic-designing" class="cd-item"><span class="cd-icon">✏️</span><span
+                    class="cd-name">Graphic Designing</span></a>
+                <a href="course.html?id=video-audio-editing" class="cd-item"><span class="cd-icon">🎬</span><span
+                    class="cd-name">Video &amp; Audio Editing</span></a>
+              </div>
+              <div class="cd-footer"><a href="index.html#courses" class="cd-view-all">View All 24 Courses →</a></div>
+            </div>
+          </div>
+        </div>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="index.html#corporate" class="nav-link">Corporate</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://wa.me/919985153068" target="_blank" class="nav-wa-btn" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+        <button onclick="window.openEnrollModal(document.getElementById('cdTitle')?.textContent)"
+          class="btn btn-gold btn-sm">🎓 Enroll Now</button>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mn-section">Navigation</div>
+    <a href="index.html">🏠 Home</a>
+    <a href="index.html#courses">📚 All Courses</a>
+    <a href="index.html#contact">📞 Contact</a>
+    <a href="index.html#verify">🏆 Verify Certificate</a>
+    <div class="mn-section">Quick Courses</div>
+    <a href="course.html?id=data-science">📊 Data Science</a>
+    <a href="course.html?id=ai-ml">🤖 AI &amp; ML</a>
+    <a href="course.html?id=full-stack-python">🐍 Full Stack Python</a>
+    <a href="course.html?id=aws">☁️ AWS</a>
+    <a href="course.html?id=spoken-english">🗣️ Spoken English</a>
+  </div>
+
+
+  <!-- ============================================================
+     COURSE DETAIL PAGE
+     ============================================================ -->
+  <div class="course-detail">
+    <div class="cd-page-inner">
+
+      <!-- Breadcrumb -->
+      <nav class="cd-breadcrumb fade-up" id="cdBreadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="index.html#courses">Courses</a>
+        <span>›</span>
+        <span>Loading...</span>
+      </nav>
+
+      <div class="cd-page-grid">
+        <!-- Left: Main Content -->
+        <div class="cd-left">
+
+          <!-- Hero Banner -->
+          <div
+            style="background:linear-gradient(135deg,rgba(155,89,255,.12),rgba(245,197,24,.06));border:1px solid rgba(245,197,24,.15);border-radius:var(--radius-lg);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden;"
+            class="fade-up">
+            <div
+              style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(245,197,24,.06),transparent 70%);pointer-events:none;">
+            </div>
+            <div style="font-size:3rem;margin-bottom:.8rem" id="cdIcon">⏳</div>
+            <h1 class="cd-page-title" id="cdTitle">Loading Course...</h1>
+            <div class="cd-page-meta" id="cdMetaRow">
+              <span class="cd-meta-pill gold" id="cdDuration">⏱ Duration</span>
+              <span class="cd-meta-pill" id="cdLevel">📶 Level</span>
+              <span class="cd-meta-pill" id="cdStudents">👥 Students</span>
+              <span class="cd-meta-pill" id="cdRating">⭐ Rating</span>
+            </div>
+            <!-- Quick stats bar -->
+            <div class="cd-stats-bar" id="cdStatsBar" style="margin-top:1rem">
+              <div class="cd-stat">
+                <div class="n" id="cdDuration2">—</div>
+                <div class="l">Duration</div>
+              </div>
+              <div class="cd-stat">
+                <div class="n" id="cdLevel2">—</div>
+                <div class="l">Level</div>
+              </div>
+              <div class="cd-stat">
+                <div class="n" id="cdStudents2">—</div>
+                <div class="l">Students</div>
+              </div>
+              <div class="cd-stat">
+                <div class="n" id="cdRating2">4.8★</div>
+                <div class="l">Rating</div>
+              </div>
+            </div>
+            <!-- Download brochure button in banner -->
+            <button class="btn btn-ghost btn-sm" id="cdPagePdfBtn" style="margin-top:.5rem">
+              📥 Download Course Brochure (PDF)
+            </button>
+          </div>
+
+          <!-- Description -->
+          <div class="fade-up d1">
+            <div class="section-label" style="margin-bottom:.5rem">Course Overview</div>
+            <p class="cd-desc" id="cdDesc">Loading course description...</p>
+          </div>
+
+          <!-- Highlights -->
+          <div class="fade-up d2" style="margin-bottom:2rem">
+            <div class="cd-highlights-title">🎯 What You'll Learn</div>
+            <div class="cd-highlights" id="cdHighlights">
+              <div class="cd-highlight-item">Loading...</div>
+            </div>
+          </div>
+
+          <!-- Curriculum -->
+          <div class="cd-curriculum fade-up d3">
+            <div class="cd-curriculum-title">📚 Course Curriculum</div>
+            <div id="cdCurriculum">
+              <div style="padding:1rem;color:var(--muted);font-family:var(--jakarta);font-size:.88rem;">Loading
+                curriculum...</div>
+            </div>
+          </div>
+
+          <!-- Trainer -->
+          <div class="cd-trainer-card fade-up d4">
+            <h4>Your Instructor</h4>
+            <div class="cd-trainer-info">
+              <div class="cd-trainer-avatar" id="cdTrainerInitials">?</div>
+              <div>
+                <div class="cd-trainer-name" id="cdTrainerName">Loading...</div>
+                <div class="cd-trainer-role" id="cdTrainerRole">—</div>
+                <div class="cd-trainer-exp" id="cdTrainerExp">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- What You'll Get -->
+          <div
+            style="background:linear-gradient(135deg,rgba(245,197,24,.06),rgba(155,89,255,.06));border:1px solid rgba(245,197,24,.12);border-radius:var(--radius);padding:1.8rem;margin-bottom:2rem;"
+            class="fade-up d5">
+            <div class="cd-highlights-title" style="margin-bottom:1rem">🎁 What's Included</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+              <div class="app-feat">Live interactive classes</div>
+              <div class="app-feat">Lifetime LMS access</div>
+              <div class="app-feat">Real-world project work</div>
+              <div class="app-feat">Downloadable resources</div>
+              <div class="app-feat">Industry certification prep</div>
+              <div class="app-feat">100% placement assistance</div>
+              <div class="app-feat">WhatsApp doubt support</div>
+              <div class="app-feat">Orbit Training certificate</div>
+            </div>
+          </div>
+
+          <!-- Related Courses -->
+          <div class="fade-up d6" id="relatedSection">
+            <div class="cd-curriculum-title">🔗 Related Courses</div>
+            <div class="cd-related-grid" id="relatedGrid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Pricing Card (Sticky) -->
+        <div class="cd-right">
+          <div class="cd-price-card fade-up d2">
+            <div class="cdp-tag">✦ Enroll Today</div>
+            <div class="cdp-features">
+              <div class="cdp-feat" id="cdpDuration">Duration: —</div>
+              <div class="cdp-feat" id="cdpLevel">Level: —</div>
+              <div class="cdp-feat">Live + Recorded Classes</div>
+              <div class="cdp-feat">Lifetime LMS Access</div>
+              <div class="cdp-feat">Industry Certificate</div>
+              <div class="cdp-feat">100% Placement Support</div>
+              <div class="cdp-feat">0% EMI Available</div>
+            </div>
+            <button class="cdp-btn-enroll" id="cdpEnrollBtn">🚀 Enroll Now</button>
+            <button class="cdp-btn-pdf" id="cdpPdfBtn">📥 Download Brochure PDF</button>
+            <div class="cdp-note">🔒 Secure enrollment · Free counselling available</div>
+            <!-- Quick Contact -->
+            <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border)">
+              <div style="font-size:.75rem;color:var(--muted);margin-bottom:.7rem;font-family:var(--jakarta)">Have
+                questions? Talk to us:</div>
+              <a href="https://wa.me/919985153068" target="_blank" class="btn btn-wa"
+                style="width:100%;justify-content:center;margin-bottom:.5rem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" style="flex-shrink:0">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Chat on WhatsApp
+              </a>
+              <a href="tel:+919985153068" class="btn btn-ghost"
+                style="width:100%;justify-content:center;font-size:.82rem">📞 Call: +91 99851 53068</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+     FOOTER
+     ============================================================ -->
+  <footer class="footer" style="margin-top:0">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex; flex-direction:column; align-items:flex-start;">
+            <img src="Orbit_Logo.png" alt="Orbit IT Solutions" class="footer-logo-img" style="height:40px;width:auto;object-fit:contain;margin-bottom:0.3rem;" />
+            <span class="nav-logo-estd">Since 1997</span>
+          </a>
+          <p>India's premier training institute delivering future-ready skills in technology, business, and creative
+            domains.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Tech Courses</h4>
+          <ul>
+            <li><a href="course.html?id=data-science">Data Science</a></li>
+            <li><a href="course.html?id=full-stack-python">Full Stack Python</a></li>
+            <li><a href="course.html?id=ai-ml">AI &amp; ML</a></li>
+            <li><a href="course.html?id=full-stack-java">Full Stack Java</a></li>
+            <li><a href="course.html?id=aws">AWS</a></li>
+            <li><a href="course.html?id=cybersecurity">Cybersecurity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Business Courses</h4>
+          <ul>
+            <li><a href="course.html?id=spoken-english">Spoken English</a></li>
+            <li><a href="course.html?id=advance-excel">Advance Excel</a></li>
+            <li><a href="course.html?id=power-bi">Power BI</a></li>
+            <li><a href="course.html?id=sap-fico">SAP FICO</a></li>
+            <li><a href="course.html?id=tally-prime-gst">Tally Prime GST</a></li>
+            <li><a href="course.html?id=ccna">CCNA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#trainers">Our Trainers</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#verify">Verify Certificate</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 Orbit Training &amp; Development. Since 1997. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919985153068" class="wa-float" target="_blank" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <!-- Enrollment Modal -->
+  <div class="modal-overlay" id="enrollModal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-title">Enroll Now 🚀</div>
+      <div class="modal-subtitle">You're enrolling in: <strong id="modalCourseName" style="color:var(--gold)"></strong>
+      </div>
+      <form id="modalForm" novalidate>
+        <div class="cf-field">
+          <label class="cf-label">Full Name *</label>
+          <input class="cf-input" type="text" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="cf-field">
+          <label class="cf-label">Phone Number *</label>
+          <input class="cf-input" type="tel" name="phone" placeholder="+91 9XXXXXXXXX" required />
+        </div>
+        <div class="cf-field">
+          <label class="cf-label">Email Address</label>
+          <input class="cf-input" type="email" name="email" placeholder="you@email.com" />
+        </div>
+        <div class="cf-field">
+          <label class="cf-label">Preferred Batch</label>
+          <select class="cf-select" name="batch">
+            <option>Weekday Morning (9AM–12PM)</option>
+            <option>Weekday Evening (6PM–9PM)</option>
+            <option>Weekend (Sat–Sun)</option>
+            <option>Flexible / Online</option>
+          </select>
+        </div>
+        <button type="submit" class="cf-submit" style="margin-top:.8rem">Submit Enrollment Request 🚀</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Brochure Modal -->
+  <div class="modal-overlay" id="brochureModal">
+    <div class="modal-box">
+      <button class="modal-close" id="brochureModalClose">✕</button>
+      <div class="modal-title">Download Brochure 📥</div>
+      <div class="modal-subtitle">You're downloading brochure for: <strong id="brochureCourseName" style="color:var(--cyan)"></strong>
+      </div>
+      <form id="brochureForm" novalidate>
+        <input type="hidden" name="course" id="brochureCourseInput" value="" />
+        <div class="cf-field"><label class="cf-label">Full Name *</label><input class="cf-input" name="name" type="text"
+            placeholder="Your full name" required /></div>
+        <div class="cf-field"><label class="cf-label">Phone Number *</label><input class="cf-input" name="phone" type="tel"
+            placeholder="+91 9XXXXXXXXX" required /></div>
+        <div class="cf-field"><label class="cf-label">Email Address *</label><input class="cf-input" name="email" type="email"
+            placeholder="you@email.com" required /></div>
+        <button type="submit" class="cf-submit" style="margin-top:.8rem">Download PDF</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data/courses.js?v=1.1"></script>
+  <script src="js/main.js?v=1.1"></script>
+  <script>
+    // Load course details and populate related courses
+    loadCourseDetail();
+
+    // Populate related courses (random 3 from all)
+    window.addEventListener('load', () => {
+      const params = new URLSearchParams(window.location.search);
+      const currentId = params.get('id');
+      const relatedGrid = document.getElementById('relatedGrid');
+      if (relatedGrid && typeof ALL_COURSES !== 'undefined') {
+        const others = ALL_COURSES.filter(c => c.id !== currentId).slice(0, 6);
+        // Pick 3 random
+        const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
+        relatedGrid.innerHTML = shuffled.map(c => `
+        <a href="course.html?id=${c.id}" class="cd-related-card">
+          <span class="cd-related-icon">${c.icon}</span>
+          <div>
+            <div class="cd-related-name">${c.name}</div>
+            <div class="cd-related-dur">${c.duration} · ${c.price}</div>
+          </div>
+        </a>
+      `).join('');
+      }
+      // Also populate the stat bar duplicate fields
+      const title = document.getElementById('cdTitle')?.textContent;
+      const dur = document.getElementById('cdDuration')?.textContent?.replace('⏱ ', '');
+      const lvl = document.getElementById('cdLevel')?.textContent?.replace('📶 ', '');
+      const stu = document.getElementById('cdStudents')?.textContent?.replace('👥 ', '');
+      if (document.getElementById('cdDuration2')) document.getElementById('cdDuration2').textContent = dur || '—';
+      if (document.getElementById('cdLevel2')) document.getElementById('cdLevel2').textContent = lvl || '—';
+      if (document.getElementById('cdStudents2')) document.getElementById('cdStudents2').textContent = stu || '—';
+      // Update pricing card feature list
+      if (document.getElementById('cdpDuration')) document.getElementById('cdpDuration').textContent = 'Duration: ' + (dur || '—');
+      if (document.getElementById('cdpLevel')) document.getElementById('cdpLevel').textContent = 'Level: ' + (lvl || '—');
+    });
+  </script>
+</body>
+
+</html>
