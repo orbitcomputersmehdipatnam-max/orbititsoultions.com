@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit IT Solutions | Premier IT & Corporate Training Institute Mehdipatnam</title>
+  <meta name="description" content="Orbit IT Solutions Mehdipatnam, Hyderabad - 95% Placement Record. Industry-leading IT training with IIT faculty, hands-on projects, and direct MNC hiring tie-ups. New batches every Monday & Thursday.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+    /* Top Announcement Bar */
+    .top-announcement { background: #dc2626; color: #ffffff; text-align: center; padding: 8px 15px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+    .top-announcement span { background: #ffffff; color: #dc2626; padding: 2px 8px; border-radius: 4px; font-weight: 700; margin-right: 6px; }
+
+    /* Main Navigation Header */
+    header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+    .logo-container { display: flex; align-items: center; gap: 10px; }
+    .logo { font-size: 24px; font-weight: 800; color: #38bdf8; text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: #f97316; }
+    .since { font-size: 11px; background: #2563eb; color: #fff; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+    nav a { color: #e2e8f0; text-decoration: none; margin-left: 18px; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: #38bdf8; }
+
+    /* Hero Banner Section */
+    .hero { background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(30,58,138,0.92) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; color: #fff; padding: 65px 20px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #38bdf8; padding: 5px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 15px; }
+    .hero h1 { font-size: 36px; margin-bottom: 12px; font-weight: 800; line-height: 1.2; }
+    .hero p { font-size: 16px; max-width: 780px; margin: 0 auto 25px auto; color: #cbd5e1; }
+    .hero-stats { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; max-width: 900px; margin: 25px auto 30px auto; }
+    .stat-box { background: rgba(255,255,255,0.08); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); padding: 15px 22px; border-radius: 10px; min-width: 160px; }
+    .stat-number { font-size: 26px; font-weight: 800; color: #38bdf8; }
+    .stat-label { font-size: 12px; color: #e2e8f0; font-weight: 500; }
+    .cta-btn { display: inline-block; background-color: #22c55e; color: #fff; padding: 14px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 16px; box-shadow: 0 4px 18px rgba(34,197,94,0.4); transition: transform 0.2s; }
+    .cta-btn:hover { transform: translateY(-2px); }
+
+    /* Layout Container */
+    .container { max-width: 1200px; margin: 35px auto; padding: 0 18px; }
+    .section-title { font-size: 26px; color: #0f172a; margin-bottom: 8px; font-weight: 800; text-align: center; }
+    .section-subtitle { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 28px; }
+    .title-underline { width: 70px; height: 4px; background: #2563eb; margin: 8px auto 20px auto; border-radius: 2px; }
+
+    /* About Institute Highlight */
+    .about-card { background: #ffffff; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 40px; border: 1px solid #e2e8f0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+    @media (max-width: 850px) { .about-card { grid-template-columns: 1fr; } }
+    .about-text h2 { font-size: 24px; color: #1e3a8a; font-weight: 700; margin-bottom: 12px; }
+    .about-text p { font-size: 14px; color: #475569; margin-bottom: 12px; line-height: 1.7; }
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .feature-item { font-size: 13px; font-weight: 600; color: #0f172a; display: flex; align-items: center; gap: 8px; background: #f1f5f9; padding: 10px 12px; border-radius: 8px; }
+
+    /* Visitor Lead Capture Box */
+    .welcome-popup { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #fff; text-align: center; padding: 25px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 6px 20px rgba(37,99,235,0.25); }
+    .welcome-popup h3 { font-size: 22px; margin-bottom: 6px; font-weight: 700; }
+    .welcome-popup p { font-size: 14px; opacity: 0.95; margin-bottom: 18px; }
+    .form-inline { display: flex; gap: 10px; max-width: 650px; margin: 0 auto; flex-wrap: wrap; }
+    .form-input { flex: 1; min-width: 200px; padding: 12px 15px; border: none; border-radius: 8px; font-size: 14px; }
+    .form-btn { background: #22c55e; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 15px; transition: background 0.2s; }
+    .form-btn:hover { background: #16a34a; }
+
+    /* MNC Tie-Up Logos Section */
+    .placement-section { background: #ffffff; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 40px; text-align: center; }
+    .mnc-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px; margin-top: 20px; }
+    .mnc-badge { background: #f8fafc; border: 1px solid #cbd5e1; color: #1e293b; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+
+    /* Course Cards Grid */
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 45px; }
+    .course-card { background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s, box-shadow 0.25s; }
+    .course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .card-img { height: 160px; width: 100%; object-fit: cover; }
+    .card-header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 16px; }
+    .card-header h3 { font-size: 18px; font-weight: 700; color: #38bdf8; }
+    .card-body { padding: 18px; flex-grow: 1; }
+    .info-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; margin-right: 6px; margin-bottom: 8px; }
+    .price-tag { color: #16a34a; font-weight: 700; font-size: 15px; margin-top: 8px; }
+    .card-footer { padding: 14px 18px; background: #f8fafc; border-top: 1px solid #f1f5f9; display: flex; gap: 10px; }
+    .btn-details { flex: 1; background: #2563eb; color: #fff; border: none; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; }
+    .btn-wa-sm { background: #25d366; color: #fff; border: none; padding: 10px 14px; border-radius: 8px; font-size: 13px; text-decoration: none; font-weight: 600; }
+
+    /* Other Programs Grid */
+    .badges-container { background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 18px rgba(0,0,0,0.05); margin-bottom: 40px; border: 1px solid #e2e8f0; }
+    .badge-group-title { font-size: 17px; font-weight: 700; color: #1e3a8a; margin-bottom: 14px; border-left: 4px solid #2563eb; padding-left: 10px; }
+    .badge-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+    .badge-item { background: #f1f5f9; color: #1e293b; padding: 8px 16px; border-radius: 20px; font-size: 13px; border: 1px solid #cbd5e1; font-weight: 600; }
+
+    /* Contact Section */
+    .contact-card { background: #ffffff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 18px rgba(0,0,0,0.05); margin-bottom: 40px; text-align: center; border: 1px solid #e2e8f0; }
+    .contact-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+    .btn-whatsapp { background: #25d366; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; }
+    .btn-call { background: #2563eb; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; }
+
+    /* Floating WhatsApp Button */
+    .float-wa { position: fixed; bottom: 22px; right: 22px; background-color: #25d366; color: #fff; border-radius: 50px; padding: 12px 22px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45); z-index: 1500; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 14px; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-6px);} 60% {transform: translateY(-3px);} }
+
+    /* Modal Styling */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15,23,42,0.7); overflow-y: auto; padding: 20px 12px; }
+    .modal-content { background-color: #fff; margin: 25px auto; max-width: 680px; border-radius: 16px; padding: 30px; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.3); animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    .close-modal { position: absolute; right: 20px; top: 18px; font-size: 26px; font-weight: bold; color: #64748b; cursor: pointer; }
+    .modal-header { font-size: 22px; font-weight: 800; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 18px; }
+    .modal-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0; }
+    .modal-section-title { font-size: 16px; font-weight: 700; color: #0f172a; margin: 18px 0 10px 0; border-left: 3px solid #2563eb; padding-left: 8px; }
+    .modal-list { list-style-type: none; padding-left: 0; font-size: 13.5px; color: #334155; }
+    .modal-list li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+    .modal-list li::before { content: "✔"; position: absolute; left: 0; color: #16a34a; font-weight: bold; }
+
+    footer { text-align: center; padding: 25px; color: #64748b; font-size: 13px; margin-top: 40px; border-top: 1px solid #e2e8f0; background: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement">
+    <span>NEW BATCHES</span> Starting Every <strong>Monday</strong> & <strong>Thursday</strong> | 100% Practical Training & Live Project Work
+  </div>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/919985153068?text=Hi,%20I%20am%20visiting%20orbititsoultions.com%20and%20would%20like%20to%20know%20more%20about%20your%20courses." class="float-wa" target="_blank">
+    💬 Chat on WhatsApp
+  </a>
+
+  <!-- Main Header -->
+  <header>
+    <div class="top-bar">
+      <div class="logo-container">
+        <a href="#" class="logo">ORBIT <span>IT SOLUTIONS</span></a>
+        <span class="since">Est. 1997</span>
+      </div>
+      <nav>
+        <a href="#about">About Us</a>
+        <a href="#placements">Placements</a>
+        <a href="#featured-courses">Courses</a>
+        <a href="#all-courses">All Programs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <span class="hero-badge">🎓 India's Premier IT & Corporate Training Institute</span>
+    <h1>Master In-Demand Tech Skills.<br>Get Placed in Top MNCs.</h1>
+    <p>Empowering 1,00,000+ students since 1997. Experience industry-focused learning with IIT faculty, hands-on practical labs, guest lectures, and guaranteed placement support.</p>
+    
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-number">25+ Yrs</div>
+        <div class="stat-label">Excellence in Training</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">Placement Record</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">1 Lakh+</div>
+        <div class="stat-label">Students Trained</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">250+</div>
+        <div class="stat-label">Hiring MNC Partners</div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/919985153068?text=Hi,%20I%20want%20to%20book%20a%20free%20counseling%20session." class="cta-btn">Book Free Counseling Session</a>
+  </section>
+
+  <div class="container">
+
+    <!-- About Orbit IT Solutions Section -->
+    <div class="about-card" id="about">
+      <div class="about-text">
+        <h2>About Orbit IT Solutions</h2>
+        <p>Located in the heart of Mehdipatnam, Hyderabad, <strong>Orbit IT Solutions</strong> has been a trusted benchmark in technology and professional education for over two decades. We bridge the gap between academic education and real-world software industry demands.</p>
+        <p>Our practical curriculum is designed and updated regularly in collaboration with IT executives, cloud architects, and data scientists to ensure every student masters the exact tools hiring managers look for.</p>
+        <div class="about-features">
+          <div class="feature-item">🎓 Faculties from IITs & Top Universities</div>
+          <div class="feature-item">💼 95% Proven Placement Track Record</div>
+          <div class="feature-item">💻 100% Practical & Real-time Projects</div>
+          <div class="feature-item">🎤 Guest Lectures & Industry Workshops</div>
+          <div class="feature-item">🚀 New Batches Every Mon & Thu</div>
+          <div class="feature-item">📜 Globally Recognized Certification</div>
+        </div>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Students in Classroom" style="width:100%; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+
+    <!-- Quick Visitor Lead Capture Form -->
+    <div class="welcome-popup">
+      <h3>⚡ Get Instant Course Fee & Syllabus on WhatsApp</h3>
+      <p>Fill out your details below for personalized course guidance, batch timings, and fee discount details.</p>
+      <div class="form-inline">
+        <input type="text" id="visitorName" class="form-input" placeholder="Enter Your Name">
+        <input type="tel" id="visitorPhone" class="form-input" placeholder="Enter Mobile Number">
+        <select id="visitorCourse" class="form-input" style="color:#334155;">
+          <option value="General Inquiry">Select Interested Course</option>
+          <option value="Data Science">Data Science</option>
+          <option value="Full Stack Python">Full Stack Python with AI</option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="BIM & Revit">BIM & Revit Architecture</option>
+          <option value="SAP FICO">SAP FICO / S4HANA</option>
+          <option value="Data Analysis">Data Analysis</option>
+          <option value="Cybersecurity">Cybersecurity & VAPT</option>
+          <option value="AWS Cloud">AWS Cloud Computing</option>
+          <option value="Gen AI">Generative AI Mastery</option>
+        </select>
+        <button type="button" class="form-btn" onclick="sendVisitorToWhatsApp()">Submit Request</button>
+      </div>
+    </div>
+
+    <!-- Placements & MNC Tie-Ups Section -->
+    <div class="placement-section" id="placements">
+      <h2 class="section-title">95% Placement Record & MNC Tie-Ups</h2>
+      <p class="section-subtitle">Our dedicated placement cell works directly with over 250+ multinational companies to place our students.</p>
+      <div class="mnc-grid">
+        <div class="mnc-badge">TCS</div>
+        <div class="mnc-badge">Infosys</div>
+        <div class="mnc-badge">Wipro</div>
+        <div class="mnc-badge">Accenture</div>
+        <div class="mnc-badge">Cognizant</div>
+        <div class="mnc-badge">Capgemini</div>
+        <div class="mnc-badge">Deloitte</div>
+        <div class="mnc-badge">AWS Partner Network</div>
+        <div class="mnc-badge">Microsoft</div>
+        <div class="mnc-badge">Tech Mahindra</div>
+        <div class="mnc-badge">HCL Technologies</div>
+      </div>
+    </div>
+
+    <!-- Featured Flagship Programs Section -->
+    <h2 class="section-title" id="featured-courses">Featured Flagship Programs</h2>
+    <p class="section-subtitle">Practical, project-based training with guaranteed placement support & industry mentoring.</p>
+    
+    <div class="courses-grid">
+
+      <!-- 1. Data Science -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Science" class="card-img">
+        <div class="card-header">
+          <h3>Data Science Program</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 4 Months</span>
+          <span class="info-badge">📊 12 Modules</span>
+          <span class="info-badge">💻 Real-time Projects</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">Master Python, Statistics, Machine Learning, Deep Learning, Scikit-learn, TensorFlow & Data Visualization.</p>
+          <div class="price-tag">Turn Data into Predictive Insights</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-ds')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20Data%20Science" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 2. Full Stack Python with AI -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Python Full Stack" class="card-img">
+        <div class="card-header">
+          <h3>Full Stack Python using AI Tools</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 6 Months</span>
+          <span class="info-badge">🤖 AI Integration</span>
+          <span class="info-badge">🚀 Portfolio Ready</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">Python, Django, React, MySQL, ChatGPT APIs, Prompt Engineering & deployment on Cloud.</p>
+          <div class="price-tag">Complete Web & AI Engineer Track</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-python')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20Full%20Stack%20Python" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 3. Digital Marketing -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Digital Marketing" class="card-img">
+        <div class="card-header">
+          <h3>Digital Marketing Specialist</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 45 Days</span>
+          <span class="info-badge">⏰ 2 Hrs / Day</span>
+          <span class="info-badge">📈 Live Campaigns</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">SEO (On/Off-page), Google Ads, Social Media Marketing, Meta Ads, Funnels & Google Analytics.</p>
+          <div class="price-tag">Fee: ₹15,000/-</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-dm')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20Digital%20Marketing" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 4. BIM & Revit -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80" alt="BIM Revit" class="card-img">
+        <div class="card-header">
+          <h3>BIM & Revit Architecture</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 20-30 Days</span>
+          <span class="info-badge">🏗️ Civil / Mech / ITI</span>
+          <span class="info-badge">📐 3D Modeling</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">AutoCAD 2D/3D Advance, Revit Arch, Revit Structure, Revit MEP & Navisworks.</p>
+          <div class="price-tag">Single Payment: ₹35,000/- (Full Suite)</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-bim')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20BIM%20Revit" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 5. SAP FICO / S4HANA -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="SAP FICO" class="card-img">
+        <div class="card-header">
+          <h3>SAP FICO / S4HANA</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 2 Months</span>
+          <span class="info-badge">💼 Finance & Accounts</span>
+          <span class="info-badge">📜 Internship Cert</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">General Ledger, Accounts Payable/Receivable, Asset Accounting, Configuration & Fiori Reports.</p>
+          <div class="price-tag">Includes Trainee Internship Certificate</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-sap')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20SAP%20FICO" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 6. Data Analysis -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Data Analysis" class="card-img">
+        <div class="card-header">
+          <h3>Data Analysis Program</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 4 Months</span>
+          <span class="info-badge">📊 10 Modules</span>
+          <span class="info-badge">⚡ Power BI & SQL</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">Advanced Excel, SQL, Python for Analysis, Pandas, Matplotlib, Power BI & Capstone Projects.</p>
+          <div class="price-tag">100% Practical Hands-on Training</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-da')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20Data%20Analysis" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 7. Cybersecurity -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Cybersecurity" class="card-img">
+        <div class="card-header">
+          <h3>Cybersecurity & VAPT</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 2 Months</span>
+          <span class="info-badge">🔒 10 Modules</span>
+          <span class="info-badge">🛡️ Ethical Hacking</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">Ethical Hacking, Network Security, OWASP Top 10, Kali Linux, Wireshark, BurpSuite & SOC Basics.</p>
+          <div class="price-tag">Hands-on Security Lab Environment</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-cyber')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20Cybersecurity" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 8. AWS Cloud Computing -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="AWS Cloud" class="card-img">
+        <div class="card-header">
+          <h3>AWS Cloud Computing</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 6 Weeks</span>
+          <span class="info-badge">☁️ AWS Solutions</span>
+          <span class="info-badge">📜 Certification Prep</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">EC2, S3, VPC, IAM, CloudWatch, Lambda, Route 53, Load Balancing & DevOps fundamentals.</p>
+          <div class="price-tag">Includes Global Certification Support</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-aws')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20AWS%20Cloud" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 9. Generative AI Mastery -->
+      <div class="course-card">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80" alt="Generative AI" class="card-img">
+        <div class="card-header">
+          <h3>Generative AI Mastery Program</h3>
+        </div>
+        <div class="card-body">
+          <span class="info-badge">⏱️ 4 Months</span>
+          <span class="info-badge">🤖 16 Modules</span>
+          <span class="info-badge">⚡ RAG & Agents</span>
+          <p style="font-size:13px; color:#475569; margin: 10px 0;">Prompt Engineering, LLMs, RAG, Fine-Tuning, LangChain, Vector Databases & AI Agents.</p>
+          <div class="price-tag">No-Coding & Coding Developer Tracks</div>
+        </div>
+        <div class="card-footer">
+          <button class="btn-details" onclick="openModal('modal-genai')">View Full Curriculum</button>
+          <a href="https://wa.me/919985153068?text=Interested%20in%20Gen%20AI" class="btn-wa-sm">WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- All Other Courses Section -->
+    <div class="badges-container" id="all-courses">
+      <h2 class="section-title">All Training Programs</h2>
+      <p class="section-subtitle">Flexible morning, evening & weekend batches available for all programs.</p>
+
+      <div class="badge-group-title">💻 Programming & Cloud Infrastructure</div>
+      <div class="badge-grid">
+        <span class="badge-item">Full Stack Java</span>
+        <span class="badge-item">Microsoft Azure Cloud</span>
+        <span class="badge-item">Software Testing (Manual & Automation)</span>
+        <span class="badge-item">Oracle DBA</span>
+        <span class="badge-item">C / C++ Programming</span>
+        <span class="badge-item">Hardware & Networking</span>
+        <span class="badge-item">MCSE / CCNA</span>
+        <span class="badge-item">Linux System Administration</span>
+      </div>
+
+      <div class="badge-group-title">📊 Business, Finance & Office Skills</div>
+      <div class="badge-grid">
+        <span class="badge-item">Spoken English & Personality Development</span>
+        <span class="badge-item">MS Office Automation</span>
+        <span class="badge-item">Advanced Excel & Macros</span>
+        <span class="badge-item">Tally Prime with GST</span>
+        <span class="badge-item">Diploma in Finance & Accounts</span>
+      </div>
+    </div>
+
+    <!-- Contact Box -->
+    <div class="contact-card" id="contact">
+      <h2 class="section-title">Visit Our Institute or Get in Touch</h2>
+      <p style="margin-top:10px; font-size:15px;"><strong>📍 Address:</strong> Orbit IT Solutions, Safa Arcade, 2nd Floor, Mehdipatnam, Hyderabad - 500028</p>
+      <p style="margin-top:5px; font-size:15px;"><strong>📞 Direct Contact Numbers:</strong> +91 9985153068 / +91 8142320923</p>
+      <p style="margin-top:5px; font-size:15px;"><strong>🌐 Official Website:</strong> www.orbititsoultions.com</p>
+      <div class="contact-btns">
+        <a href="https://wa.me/919985153068" class="btn-whatsapp">💬 Chat on WhatsApp</a>
+        <a href="tel:9985153068" class="btn-call">📞 Call 9985153068</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CURRICULUM POPUP MODALS -->
+
+  <!-- 1. DATA SCIENCE MODAL -->
+  <div id="modal-ds" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-ds')">&times;</span>
+      <div class="modal-header">Data Science Program Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 4 Months</div>
+        <div><strong>Schedule:</strong> 2 Hrs/Day (Mon-Fri)</div>
+        <div><strong>Eligibility:</strong> Any Graduate / Tech Background</div>
+      </div>
+      <div class="modal-section-title">12 Comprehensive Modules:</div>
+      <ul class="modal-list">
+        <li><strong>Module 1: Intro to Data Science</strong> – Data Science Lifecycle, Applications & Tools Overview.</li>
+        <li><strong>Module 2: Python Programming</strong> – Data Types, Control Structures, Functions, OOPs & Libraries.</li>
+        <li><strong>Module 3: Statistics & Mathematics</strong> – Descriptive Stats, Probability, Hypothesis Testing & Regression.</li>
+        <li><strong>Module 4: Data Wrangling with Python</strong> – NumPy Essentials, Pandas DataFrames & Data Cleaning.</li>
+        <li><strong>Module 5: Data Visualization</strong> – Matplotlib, Seaborn, Plotly & Interactive Dashboards.</li>
+        <li><strong>Module 6: Exploratory Data Analysis (EDA)</strong> – Univariate, Bivariate, Multivariate Analysis & Insights.</li>
+        <li><strong>Module 7: Machine Learning Fundamentals</strong> – Supervised vs Unsupervised, Train/Test Split & Metrics.</li>
+        <li><strong>Module 8: Supervised Learning</strong> – Linear/Logistic Regression, Decision Trees, Random Forest, KNN.</li>
+        <li><strong>Module 9: Unsupervised Learning</strong> – K-Means, Hierarchical Clustering, DBSCAN & PCA.</li>
+        <li><strong>Module 10: Model Tuning & Evaluation</strong> – Cross-Validation, Confusion Matrix, Hyperparameter Tuning.</li>
+        <li><strong>Module 11: Deep Learning Basics</strong> – Neural Networks, Activation Functions, TensorFlow/Keras.</li>
+        <li><strong>Module 12: Capstone Projects</strong> – End-to-end Data Science Project Deployment & Portfolio.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. FULL STACK PYTHON MODAL -->
+  <div id="modal-python" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-python')">&times;</span>
+      <div class="modal-header">Full Stack Python with AI Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 6 Months</div>
+        <div><strong>Key Focus:</strong> Web Stack + Generative AI Tools</div>
+      </div>
+      <div class="modal-section-title">Detailed Program Modules:</div>
+      <ul class="modal-list">
+        <li><strong>Python Core & Advanced:</strong> Data Types, OOPs, File Handling, Exception Handling, Modules.</li>
+        <li><strong>Frontend Stack:</strong> HTML5, CSS3, JavaScript (ES6+), Bootstrap, React Framework.</li>
+        <li><strong>Backend Framework:</strong> Django Framework, REST APIs, Authentication, Middleware.</li>
+        <li><strong>Database Management:</strong> MySQL / PostgreSQL, ORM Queries, Database Optimization.</li>
+        <li><strong>AI Tools Integration:</strong> Integrating ChatGPT APIs, LangChain, Code Generation & Automation.</li>
+        <li><strong>Deployment & Version Control:</strong> Git, GitHub, Vercel / Render Deployment, Portfolio Building.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. DIGITAL MARKETING MODAL -->
+  <div id="modal-dm" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-dm')">&times;</span>
+      <div class="modal-header">Digital Marketing Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 45 Days</div>
+        <div><strong>Fee:</strong> ₹15,000/-</div>
+      </div>
+      <div class="modal-section-title">Course Highlights:</div>
+      <ul class="modal-list">
+        <li>Digital Marketing Fundamentals & Buyer Personas</li>
+        <li>Search Engine Optimization (SEO - On-Page, Off-Page, Technical & Local SEO)</li>
+        <li>Google Search Console & SEO Audit Tools</li>
+        <li>Social Media Marketing (Facebook, Instagram, LinkedIn Strategy)</li>
+        <li>Paid Advertising (Google Search & Display Ads, Meta Ads Setup)</li>
+        <li>Content Marketing, Copywriting & Canva Creatives</li>
+        <li>Email Marketing, WhatsApp Automation & Analytics</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. BIM MODAL -->
+  <div id="modal-bim" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-bim')">&times;</span>
+      <div class="modal-header">BIM & Revit Architecture Suite</div>
+      <div class="modal-meta">
+        <div><strong>Package Fee:</strong> ₹35,000/- (Single Payment)</div>
+        <div><strong>Target Audience:</strong> Civil / Mechanical / Architectural Engineers</div>
+      </div>
+      <div class="modal-section-title">Sub-Courses Included:</div>
+      <ul class="modal-list">
+        <li><strong>AutoCAD 2D/3D Advance:</strong> 20 Days Duration</li>
+        <li><strong>Revit Architecture:</strong> 25 Days Duration</li>
+        <li><strong>Revit Structure:</strong> 20 Days Duration</li>
+        <li><strong>Revit MEP (Mechanical, Electrical, Plumbing):</strong> 30 Days Duration</li>
+        <li><strong>Navisworks:</strong> 1 Week Duration (Clash Detection & Coordination)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. SAP MODAL -->
+  <div id="modal-sap" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-sap')">&times;</span>
+      <div class="modal-header">SAP FICO / S4HANA Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 2 Months</div>
+        <div><strong>Certification:</strong> Internship Certification Included</div>
+      </div>
+      <div class="modal-section-title">Core Modules Covered:</div>
+      <ul class="modal-list">
+        <li>Introduction to SAP S4HANA Architecture & Navigation</li>
+        <li>General Ledger (GL) Accounting & Enterprise Structure</li>
+        <li>Accounts Payable (AP) & Accounts Receivable (AR)</li>
+        <li>Asset Accounting (AA) & Bank Accounting (BK)</li>
+        <li>Transaction Codes, Configuration & End-to-End Closing</li>
+        <li>SAP Fiori Reports, Financial Analytics & Integration</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 6. DATA ANALYSIS MODAL -->
+  <div id="modal-da" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-da')">&times;</span>
+      <div class="modal-header">Data Analysis Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 4 Months (16 Weeks)</div>
+      </div>
+      <div class="modal-section-title">Program Structure:</div>
+      <ul class="modal-list">
+        <li>Advanced Excel (VLOOKUP, INDEX/MATCH, Pivot Tables, Dashboards)</li>
+        <li>SQL for Data Analysis (Queries, Joins, Aggregations, Subqueries)</li>
+        <li>Python for Data Analysis (NumPy, Pandas Data Frames, Data Cleaning)</li>
+        <li>Data Visualization with Matplotlib & Seaborn</li>
+        <li>Power BI Mastery (Data Modeling, DAX Queries, Interactive Reports)</li>
+        <li>Real-Time Business Capstone Projects & Reporting</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. CYBERSECURITY MODAL -->
+  <div id="modal-cyber" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-cyber')">&times;</span>
+      <div class="modal-header">Cybersecurity & VAPT Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 2 Months</div>
+      </div>
+      <div class="modal-section-title">Modules:</div>
+      <ul class="modal-list">
+        <li>Networking Fundamentals & TCP/IP Security</li>
+        <li>Linux System Security & Command Line Mastery</li>
+        <li>Ethical Hacking Phases, Reconnaissance & Scanning</li>
+        <li>Web Application Security & OWASP Top 10 Vulnerabilities</li>
+        <li>Vulnerability Assessment & Penetration Testing (VAPT)</li>
+        <li>SOC Basics, Threat Detection & Security Tools (Wireshark, BurpSuite, Nessus, Nmap)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. AWS MODAL -->
+  <div id="modal-aws" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-aws')">&times;</span>
+      <div class="modal-header">AWS Cloud Computing Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 6 Weeks (45 Days)</div>
+      </div>
+      <div class="modal-section-title">Core AWS Services Covered:</div>
+      <ul class="modal-list">
+        <li>Compute: EC2, AMI, Auto Scaling, Elastic Load Balancer (ELB)</li>
+        <li>Storage: S3 Buckets, EBS, EFS, Lifecycle Policies</li>
+        <li>Networking: VPC, Subnets, Route Tables, Internet Gateways, Security Groups</li>
+        <li>Database: RDS, DynamoDB</li>
+        <li>Identity & Management: IAM Roles, Policies, CloudWatch, AWS Lambda</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 9. GEN AI MODAL -->
+  <div id="modal-genai" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-genai')">&times;</span>
+      <div class="modal-header">Generative AI Mastery Curriculum</div>
+      <div class="modal-meta">
+        <div><strong>Duration:</strong> 4 Months</div>
+      </div>
+      <div class="modal-section-title">16 Modules Overview:</div>
+      <ul class="modal-list">
+        <li>Prompt Engineering Techniques & LLM Architecture</li>
+        <li>ChatGPT, GPT-4 API Integration & Custom Instructions</li>
+        <li>Content, Image (DALL-E/Midjourney) & Audio/Video Generation Tools</li>
+        <li>RAG (Retrieval-Augmented Generation) & Vector Databases (Pinecone)</li>
+        <li>LangChain, AI Agents & Automation Workflows</li>
+        <li>Building & Deploying Custom AI Applications</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Orbit IT Solutions, Safa Arcade, 2nd Floor, Mehdipatnam, Hyderabad. All Rights Reserved.
+  </footer>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    window.onclick = function(event) {
+      if (event.target.className === 'modal') {
+        event.target.style.display = 'none';
+      }
+    }
+    function sendVisitorToWhatsApp() {
+      var name = document.getElementById('visitorName').value.trim();
+      var phone = document.getElementById('visitorPhone').value.trim();
+      var course = document.getElementById('visitorCourse').value;
+      if(!name || !phone) {
+        alert('Please enter both your name and mobile number.');
+        return;
+      }
+      var msg = "Hi, my name is " + name + " (Phone: " + phone + "). I am visiting orbititsoultions.com and interested in the " + course + " course. Please send me details on new batches, timings, and fees.";
+      var url = "https://wa.me/919985153068?text=" + encodeURIComponent(msg);
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
