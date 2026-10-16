@@ -8,7 +8,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
     body { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #1e293b; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-    .login-card { background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+    .login-card { background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); position: relative; }
     .logo-title { font-size: 22px; font-weight: 800; color: #1e3a8a; text-align: center; margin-bottom: 4px; }
     .logo-subtitle { font-size: 11px; font-weight: 600; color: #64748b; text-align: center; text-transform: uppercase; margin-bottom: 20px; }
     .form-group { margin-bottom: 15px; }
@@ -17,6 +17,8 @@
     .form-btn { background: #2563eb; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; margin-top: 10px; }
     .form-btn:hover { background: #1d4ed8; }
     .error-msg { color: #dc2626; font-size: 12px; font-weight: 600; text-align: center; margin-top: 10px; display: none; }
+    
+    .admin-access-btn { display: block; width: 100%; text-align: center; background: #f59e0b; color: #0f172a; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13px; text-decoration: none; margin-top: 15px; cursor: pointer; border: none; }
     .back-home { display: block; text-align: center; margin-top: 15px; font-size: 12px; color: #64748b; text-decoration: none; }
   </style>
 </head>
@@ -28,18 +30,20 @@
 
     <form id="loginForm" onsubmit="handleLogin(event)">
       <div class="form-group">
-        <label class="form-label">Registered Phone Number</label>
+        <label class="form-label">Registered Student Phone Number</label>
         <input type="tel" id="loginPhone" class="form-input" placeholder="Enter 10-digit mobile number" required>
       </div>
-      <button type="submit" class="form-btn">Login to Dashboard</button>
+      <button type="submit" class="form-btn">Login to Student Dashboard</button>
       <div id="errorMsg" class="error-msg">❌ Access Denied: Phone number not registered. Please contact administration.</div>
     </form>
+
+    <button type="button" class="admin-access-btn" onclick="openAdminDirect()">⚙️ Admin Portal (Institute Access)</button>
 
     <a href="index.html" class="back-home">← Back to Main Website</a>
   </div>
 
   <script>
-    // Pre-seeded authorized database (you can also add students via Admin Panel)
+    // Pre-seeded authorized database
     var defaultStudents = [
       {
         phone: "9985153068",
@@ -67,6 +71,24 @@
         window.location.href = 'student-dashboard.html';
       } else {
         errorMsg.style.display = 'block';
+      }
+    }
+
+    function openAdminDirect() {
+      var pin = prompt("Enter Admin Secret PIN:");
+      if(pin === "1997") {
+        // Auto-login as Admin
+        var adminStudent = {
+          name: "Administrator",
+          phone: "9985153068",
+          course: "SAP FICO / Full Stack Programs",
+          certId: "ORBIT-ADMIN-MASTER",
+          photo: ""
+        };
+        localStorage.setItem('orbitCurrentStudent', JSON.stringify(adminStudent));
+        window.location.href = 'student-dashboard.html?admin=true';
+      } else if(pin !== null) {
+        alert("❌ Incorrect Admin PIN.");
       }
     }
   </script>
