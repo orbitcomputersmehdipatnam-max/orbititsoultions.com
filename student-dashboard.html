@@ -3,214 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Dashboard | Orbit IT Solutions Mehdipatnam</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Student Portal & Certificate Verification | Orbit IT Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
     body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
 
     header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
     .logo { font-size: 18px; font-weight: 700; color: #38bdf8; }
-    .logout-btn { background: #dc2626; color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .header-btns { display: flex; gap: 10px; }
+    .admin-btn { background: #f59e0b; color: #0f172a; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .logout-btn { background: #dc2626; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; }
 
     .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
-    .welcome-banner { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #fff; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(37,99,235,0.2); }
-    .welcome-banner h1 { font-size: 22px; margin-bottom: 5px; }
-    .welcome-banner p { font-size: 13px; opacity: 0.9; }
 
-    .section-title { font-size: 18px; color: #1e3a8a; margin-bottom: 15px; font-weight: 700; }
+    .welcome-banner { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #fff; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(37,99,235,0.2); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+    .welcome-banner h1 { font-size: 22px; margin-bottom: 4px; }
+    .welcome-banner p { font-size: 13px; opacity: 0.9; }
+    .student-passport-thumb { width: 85px; height: 100px; border-radius: 6px; border: 3px solid #ffffff; object-fit: cover; background: #e2e8f0; }
+
+    .section-title { font-size: 18px; color: #1e3a8a; margin-bottom: 15px; font-weight: 700; border-left: 4px solid #2563eb; padding-left: 10px; }
+
+    /* Admin Panel Styling */
+    .admin-card { background: #fff; border: 2px solid #f59e0b; border-radius: 12px; padding: 20px; margin-bottom: 25px; display: none; }
+    .admin-card h3 { color: #b45309; font-size: 16px; margin-bottom: 12px; }
+    .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .admin-input { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; width: 100%; }
+    .admin-save-btn { background: #16a34a; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; }
 
     /* Notes Grid */
     .notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 30px; }
     .note-card { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
     .note-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
     .note-desc { font-size: 12.5px; color: #475569; margin-bottom: 12px; }
-    .download-btn { background: #16a34a; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; }
-    .download-btn:hover { background: #15803d; }
+    .download-btn { background: #16a34a; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; display: inline-block; }
 
-    /* Certificate Section */
-    .cert-container { background: #fff; border-radius: 12px; padding: 25px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
-    .cert-form { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
-    .cert-input { flex: 1; min-width: 200px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; }
-    .cert-select { padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; background: #fff; }
-
-    /* ISO Standard Certificate Preview Box */
-    .certificate-preview { width: 100%; max-width: 800px; margin: 20px auto; background: #fff; border: 10px solid #1e3a8a; padding: 40px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; }
-    .cert-inner { border: 2px solid #cbd5e1; padding: 30px; position: relative; }
-    .cert-badge { position: absolute; top: 15px; right: 15px; background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
-    .cert-org { font-size: 14px; font-weight: 700; color: #64748b; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-    .cert-title-main { font-size: 26px; font-weight: 800; color: #1e3a8a; margin-bottom: 15px; font-family: serif; }
-    .cert-to { font-size: 13px; color: #475569; margin-bottom: 5px; }
-    .cert-name { font-size: 24px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #cbd5e1; display: inline-block; padding: 0 20px 5px 20px; margin-bottom: 15px; font-family: serif; }
-    .cert-text { font-size: 13px; color: #334155; max-width: 600px; margin: 0 auto 25px auto; }
-    .cert-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding: 0 20px; }
-    .signature-box { text-align: center; font-size: 12px; color: #475569; border-top: 1px solid #94a3b8; width: 180px; padding-top: 5px; }
+    /* ISO 9001 Professional Legit Certificate */
+    .cert-section { background: #fff; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 30px; text-align: center; }
     
-    .print-btn { background: #2563eb; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 15px; }
+    .certificate-frame {
+      width: 100%;
+      max-width: 850px;
+      margin: 20px auto;
+      background: #ffffff;
+      border: 12px solid #1e3a8a;
+      outline: 3px solid #d97706;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      background-image: radial-gradient(#f1f5f9 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    .cert-inner-border {
+      border: 2px solid #1e3a8a;
+      padding: 25px;
+      position: relative;
+    }
+
+    .cert-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .iso-badge { background: #1e3a8a; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-align: left; }
+    .iso-badge span { color: #f59e0b; display: block; font-size: 9px; }
+
+    .cert-passport-photo { width: 90px; height: 110px; border: 2px solid #1e3a8a; object-fit: cover; background: #cbd5e1; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+
+    .cert-title-org { font-size: 26px; font-weight: 800; color: #1e3a8a; font-family: 'Cinzel', serif; letter-spacing: 1px; }
+    .cert-sub-org { font-size: 11px; font-weight: 600; color: #64748b; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+
+    .cert-main-heading { font-size: 32px; font-weight: 700; color: #d97706; font-family: 'Cinzel', serif; margin: 15px 0 10px 0; text-transform: uppercase; }
+
+    .cert-body-text { font-size: 13.5px; color: #334155; margin-bottom: 8px; }
+    .cert-student-name { font-size: 26px; font-weight: 700; color: #0f172a; font-family: serif; border-bottom: 2px dashed #1e3a8a; display: inline-block; padding: 0 25px 4px 25px; margin: 8px 0 15px 0; }
+
+    .cert-course-title { font-size: 20px; font-weight: 700; color: #1e3a8a; margin: 6px 0; }
+
+    .cert-footer-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 35px; padding: 0 10px; }
+    .signature-container { text-align: center; }
+    .digital-sign { font-family: 'Brush Script MT', cursive, sans-serif; font-size: 22px; color: #1e3a8a; font-weight: bold; border-bottom: 1px solid #64748b; padding-bottom: 2px; }
+    .signature-title { font-size: 11px; font-weight: 600; color: #475569; margin-top: 4px; }
+
+    .digital-verify-stamp { width: 75px; height: 75px; border-radius: 50%; border: 2px dashed #16a34a; color: #16a34a; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 9px; font-weight: 800; transform: rotate(-10deg); margin: 0 auto; }
+
+    .print-cert-btn { background: #2563eb; color: #fff; border: none; padding: 12px 25px; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+
+    @media print {
+      body * { visibility: hidden; }
+      #certificateFrame, #certificateFrame * { visibility: visible; }
+      #certificateFrame { position: absolute; left: 0; top: 0; width: 100%; border-width: 8px; }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo">Orbit IT Solutions - Student Portal</div>
-    <a href="student-login.html" class="logout-btn" onclick="localStorage.clear()">Logout</a>
+    <div class="header-btns">
+      <button class="admin-btn" onclick="toggleAdminPanel()">⚙️ Admin Panel</button>
+      <a href="student-login.html" class="logout-btn" onclick="localStorage.removeItem('orbitCurrentStudent')">Logout</a>
+    </div>
   </header>
 
   <div class="container">
+
+    <!-- Admin Registration Panel -->
+    <div class="admin-card" id="adminPanel">
+      <h3>🔐 Admin Control: Add / Authorize Student Access</h3>
+      <div class="admin-grid">
+        <input type="text" id="admName" class="admin-input" placeholder="Full Student Name">
+        <input type="tel" id="admPhone" class="admin-input" placeholder="Phone Number (Login Password)">
+        <input type="text" id="admCourse" class="admin-input" placeholder="Course Enrolled">
+        <input type="text" id="admCertId" class="admin-input" placeholder="Cert ID (e.g. ORBIT-2026-101)">
+        <input type="file" id="admPhoto" class="admin-input" accept="image/*">
+      </div>
+      <button type="button" class="admin-save-btn" onclick="saveStudentToDB()">+ Add Authorized Student</button>
+    </div>
+
+    <!-- Student Welcome Banner -->
     <div class="welcome-banner">
-      <h1 id="welcomeHeading">Welcome, Student!</h1>
-      <p>Access your training notes, practical manuals, and download your ISO-Standard completion certificate.</p>
+      <div>
+        <h1 id="dispName">Welcome, Student!</h1>
+        <p>Verified Student Phone: <strong id="dispPhone">---</strong> | Cert ID: <strong id="dispCertId">---</strong></p>
+        <p style="font-size: 12px; margin-top: 6px;">ISO 9001:2015 Certified Training Institute | Mehdipatnam, Hyderabad</p>
+      </div>
+      <img id="dispPhoto" src="" class="student-passport-thumb" alt="Passport Photo">
     </div>
 
-    <!-- Notes Library -->
-    <h2 class="section-title">📚 Download Course Notes & Study Materials</h2>
+    <!-- ISO 9001 Certificate Section -->
+    <div class="cert-section">
+      <h2 class="section-title">🎓 Official ISO 9001:2015 Verified Certificate</h2>
+
+      <div class="certificate-frame" id="certificateFrame">
+        <div class="cert-inner-border">
+          
+          <div class="cert-header-row">
+            <div class="iso-badge">
+              ISO 9001:2015 CERTIFIED
+              <span>QUALITY MANAGEMENT SYSTEM</span>
+            </div>
+            <div>
+              <div class="cert-title-org">ORBIT IT SOLUTIONS</div>
+              <div class="cert-sub-org">Mehdipatnam, Hyderabad | Estd. 1997</div>
+            </div>
+            <img id="certPhoto" src="" class="cert-passport-photo" alt="Student Photo">
+          </div>
+
+          <div class="cert-main-heading">Certificate of Completion</div>
+
+          <div class="cert-body-text">This is to certify that</div>
+          <div class="cert-student-name" id="certStudentName">Student Name</div>
+          
+          <div class="cert-body-text">has successfully completed the practical training program in</div>
+          <div class="cert-course-title" id="certCourseTitle">Course Name</div>
+          
+          <div class="cert-body-text" style="max-width: 650px; margin: 10px auto;">
+            with hands-on project work, lab practicals, and internship criteria fulfilled under expert MNC faculty supervision.
+          </div>
+
+          <div class="cert-footer-row">
+            <div class="signature-container">
+              <div class="digital-sign">S. A. Rahman</div>
+              <div class="signature-title">Course Director</div>
+            </div>
+
+            <div class="digital-verify-stamp">
+              ✓ VERIFIED<br>OFFICIAL<br>ISO 9001
+            </div>
+
+            <div class="signature-container">
+              <div class="digital-sign">Orbit Admin</div>
+              <div class="signature-title">Authorized Signatory</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px; font-size: 10px; color: #64748b; display: flex; justify-content: space-between;">
+            <span>Registration No: <strong id="certIdFooter">ORBIT-2026</strong></span>
+            <span>Verify Online: www.orbititsoultions.com</span>
+          </div>
+
+        </div>
+      </div>
+
+      <button type="button" class="print-cert-btn" onclick="window.print()">🖨️ Download / Print ISO Certificate PDF</button>
+    </div>
+
+    <!-- Course Notes Downloads -->
+    <h2 class="section-title">📚 Enrolled Course Notes & Study Materials</h2>
     <div class="notes-grid">
-
-      <!-- Python -->
       <div class="note-card">
         <div>
-          <div class="note-title">Full Stack Python with AI Notes</div>
-          <div class="note-desc">Comprehensive Python, Django, MySQL, and ChatGPT API integration study guide.</div>
+          <div class="note-title">Full Stack Python & AI Notes</div>
+          <div class="note-desc">Python, Django, React, MySQL, and ChatGPT API integration notes.</div>
         </div>
-        <a href="#" onclick="alert('Downloading Full Stack Python Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+        <a href="#" onclick="alert('Downloading Notes PDF...')" class="download-btn">📥 Download Notes</a>
       </div>
-
-      <!-- Data Science -->
       <div class="note-card">
         <div>
-          <div class="note-title">Data Science & Machine Learning</div>
-          <div class="note-desc">Pandas, NumPy, Scikit-Learn algorithms, and statistics workbook.</div>
+          <div class="note-title">SAP FICO / S4HANA Manual</div>
+          <div class="note-desc">General Ledger, AP/AR, Asset Accounting & Fiori configuration guide.</div>
         </div>
-        <a href="#" onclick="alert('Downloading Data Science Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+        <a href="#" onclick="alert('Downloading Notes PDF...')" class="download-btn">📥 Download Notes</a>
       </div>
-
-      <!-- Data Analysis -->
       <div class="note-card">
         <div>
-          <div class="note-title">Data Analysis & Power BI</div>
-          <div class="note-desc">Advanced Excel formulas, SQL queries, DAX functions, and Power BI dashboards.</div>
+          <div class="note-title">Software Testing Guide</div>
+          <div class="note-desc">Manual Testing test cases and Playwright Automation scripts.</div>
         </div>
-        <a href="#" onclick="alert('Downloading Data Analysis Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+        <a href="#" onclick="alert('Downloading Notes PDF...')" class="download-btn">📥 Download Notes</a>
       </div>
-
-      <!-- Tally Prime & GST -->
       <div class="note-card">
         <div>
-          <div class="note-title">Tally Prime with GST Notes</div>
-          <div class="note-desc">Corporate accounting, GST filing, inventory management, and payroll manual.</div>
+          <div class="note-title">Tally Prime & GST Workbook</div>
+          <div class="note-desc">Corporate accounting, GST returns filing & Advanced Excel formulas.</div>
         </div>
-        <a href="#" onclick="alert('Downloading Tally Prime Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
-      </div>
-
-      <!-- Manual Accounts -->
-      <div class="note-card">
-        <div>
-          <div class="note-title">Manual Accounts Training Notes</div>
-          <div class="note-desc">Ledgers, Trial Balance, Trading & P&L accounts, and Balance Sheet preparation.</div>
-        </div>
-        <a href="#" onclick="alert('Downloading Manual Accounts Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
-      </div>
-
-      <!-- Advanced Excel -->
-      <div class="note-card">
-        <div>
-          <div class="note-title">Advanced Excel & MIS Reports</div>
-          <div class="note-desc">VLOOKUP, XLOOKUP, Pivot Tables, Macros, and professional MIS reporting.</div>
-        </div>
-        <a href="#" onclick="alert('Downloading Advanced Excel Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
-      </div>
-
-      <!-- MS Office -->
-      <div class="note-card">
-        <div>
-          <div class="note-title">MS Office Automation Notes</div>
-          <div class="note-desc">Microsoft Word, Excel, PowerPoint essentials for office administration.</div>
-        </div>
-        <a href="#" onclick="alert('Downloading MS Office Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
-      </div>
-
-      <!-- Graphic Designing -->
-      <div class="note-card">
-        <div>
-          <div class="note-title">Graphic & Web Designing Manual</div>
-          <div class="note-desc">Adobe Photoshop, Illustrator design concepts and HTML5/CSS3 web templates.</div>
-        </div>
-        <a href="#" onclick="alert('Downloading Graphic Design Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
-      </div>
-
-      <!-- English & Personality -->
-      <div class="note-card">
-        <div>
-          <div class="note-title">Spoken English & Interview Skills</div>
-          <div class="note-desc">Grammar fundamentals, vocabulary, business communication, and HR mock interview Q&A.</div>
-        </div>
-        <a href="#" onclick="alert('Downloading Spoken English Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
-      </div>
-
-    </div>
-
-    <!-- ISO Certificate Generator Section -->
-    <div class="cert-container">
-      <h2 class="section-title">🎓 ISO-Standard Certificate Generator</h2>
-      <p style="font-size: 13px; color: #475569; margin-bottom: 15px;">Enter your certificate details below to instantly generate and print your official course completion certificate.</p>
-      
-      <div class="cert-form">
-        <input type="text" id="studentFullName" class="cert-input" placeholder="Full Student Name">
-        <select id="certCourseName" class="cert-select">
-          <option value="SAP FICO / S4HANA">SAP FICO / S4HANA</option>
-          <option value="Full Stack Python with AI">Full Stack Python with AI</option>
-          <option value="Data Science Program">Data Science Program</option>
-          <option value="Software Testing (Manual & Automation)">Software Testing (Manual & Automation)</option>
-          <option value="Tally Prime with GST & Accounts">Tally Prime with GST & Accounts</option>
-          <option value="Data Analysis & Power BI">Data Analysis & Power BI</option>
-          <option value="Digital Marketing Masterclass">Digital Marketing Masterclass</option>
-        </select>
-        <button type="button" class="download-btn" onclick="generateCertificate()">Generate Certificate</button>
-      </div>
-
-      <!-- Certificate Display Box -->
-      <div id="certificateBox" class="certificate-preview">
-        <div class="cert-inner">
-          <div class="cert-badge">ISO 9001:2015 Certified Institute</div>
-          <div class="cert-org">Orbit IT Solutions - Mehdipatnam, Hyderabad</div>
-          <div class="cert-title-main">Certificate of Completion</div>
-          <div class="cert-to">This is proudly presented to</div>
-          <div class="cert-name" id="previewName">Student Name</div>
-          <div class="cert-text">
-            For successfully completing the professional training program in <strong id="previewCourse">Course Name</strong> with hands-on practical project work and internship requirements at our Mehdipatnam center.
-          </div>
-          <div class="cert-footer">
-            <div class="signature-box">Director / Trainer</div>
-            <div style="font-size: 11px; color: #64748b;">Certificate ID: ORBIT-2026-REG</div>
-            <div class="signature-box">Authorized Signatory</div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align: center;">
-        <button type="button" id="printBtn" class="print-btn" style="display:none;" onclick="window.print()">🖨️ Print / Download Certificate PDF</button>
+        <a href="#" onclick="alert('Downloading Notes PDF...')" class="download-btn">📥 Download Notes</a>
       </div>
     </div>
 
   </div>
 
   <script>
-    // Load student name if logged in
-    var phone = localStorage.getItem('orbitStudentPhone');
-    if(!phone) {
+    // Verify login
+    var currentStudent = JSON.parse(localStorage.getItem('orbitCurrentStudent'));
+    if(!currentStudent) {
       window.location.href = 'student-login.html';
+    } else {
+      populateStudentData(currentStudent);
     }
 
-    function generateCertificate() {
-      var name = document.getElementById('studentFullName').value.trim();
-      var course = document.getElementById('certCourseName').value;
-      if(!name) {
-        alert('Please enter the full student name.');
+    function populateStudentData(student) {
+      document.getElementById('dispName').innerText = "Welcome, " + student.name;
+      document.getElementById('dispPhone').innerText = student.phone;
+      document.getElementById('dispCertId').innerText = student.certId || "ORBIT-2026-101";
+      
+      document.getElementById('certStudentName').innerText = student.name;
+      document.getElementById('certCourseTitle').innerText = student.course;
+      document.getElementById('certIdFooter').innerText = student.certId || "ORBIT-2026-101";
+
+      if(student.photo) {
+        document.getElementById('dispPhoto').src = student.photo;
+        document.getElementById('certPhoto').src = student.photo;
+      } else {
+        document.getElementById('dispPhoto').src = "https://via.placeholder.com/90x110?text=Photo";
+        document.getElementById('certPhoto').src = "https://via.placeholder.com/90x110?text=Passport+Photo";
+      }
+    }
+
+    function toggleAdminPanel() {
+      var pin = prompt("Enter Admin PIN:");
+      if(pin === "1997") {
+        var panel = document.getElementById('adminPanel');
+        panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+      } else if(pin !== null) {
+        alert("Incorrect Admin PIN.");
+      }
+    }
+
+    function saveStudentToDB() {
+      var name = document.getElementById('admName').value.trim();
+      var phone = document.getElementById('admPhone').value.trim();
+      var course = document.getElementById('admCourse').value.trim();
+      var certId = document.getElementById('admCertId').value.trim();
+      var photoInput = document.getElementById('admPhoto');
+
+      if(!name || !phone || !course) {
+        alert("Please fill in Name, Phone Number, and Course.");
         return;
       }
-      document.getElementById('previewName').innerText = name;
-      document.getElementById('previewCourse').innerText = course;
-      document.getElementById('certificateBox').style.display = 'block';
-      document.getElementById('printBtn').style.display = 'inline-block';
+
+      var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
+
+      function commitSave(photoData) {
+        var newStudent = {
+          name: name,
+          phone: phone,
+          course: course,
+          certId: certId || ("ORBIT-2026-" + Math.floor(100 + Math.random() * 900)),
+          photo: photoData || ""
+        };
+
+        db.push(newStudent);
+        localStorage.setItem('orbitStudentDB', JSON.stringify(db));
+        alert("✅ Student '" + name + "' added successfully! Phone: " + phone + " can now log in.");
+        document.getElementById('adminPanel').style.display = 'none';
+      }
+
+      if(photoInput.files && photoInput.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          commitSave(e.target.result);
+        };
+        reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        commitSave("");
+      }
     }
   </script>
 </body>
