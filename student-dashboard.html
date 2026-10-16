@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Orbit IT Solutions Mehdipatnam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+    header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .logo { font-size: 18px; font-weight: 700; color: #38bdf8; }
+    .logout-btn { background: #dc2626; color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; }
+
+    .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+    .welcome-banner { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #fff; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(37,99,235,0.2); }
+    .welcome-banner h1 { font-size: 22px; margin-bottom: 5px; }
+    .welcome-banner p { font-size: 13px; opacity: 0.9; }
+
+    .section-title { font-size: 18px; color: #1e3a8a; margin-bottom: 15px; font-weight: 700; }
+
+    /* Notes Grid */
+    .notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 30px; }
+    .note-card { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
+    .note-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .note-desc { font-size: 12.5px; color: #475569; margin-bottom: 12px; }
+    .download-btn { background: #16a34a; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; }
+    .download-btn:hover { background: #15803d; }
+
+    /* Certificate Section */
+    .cert-container { background: #fff; border-radius: 12px; padding: 25px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
+    .cert-form { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+    .cert-input { flex: 1; min-width: 200px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; }
+    .cert-select { padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; background: #fff; }
+
+    /* ISO Standard Certificate Preview Box */
+    .certificate-preview { width: 100%; max-width: 800px; margin: 20px auto; background: #fff; border: 10px solid #1e3a8a; padding: 40px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; }
+    .cert-inner { border: 2px solid #cbd5e1; padding: 30px; position: relative; }
+    .cert-badge { position: absolute; top: 15px; right: 15px; background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .cert-org { font-size: 14px; font-weight: 700; color: #64748b; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+    .cert-title-main { font-size: 26px; font-weight: 800; color: #1e3a8a; margin-bottom: 15px; font-family: serif; }
+    .cert-to { font-size: 13px; color: #475569; margin-bottom: 5px; }
+    .cert-name { font-size: 24px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #cbd5e1; display: inline-block; padding: 0 20px 5px 20px; margin-bottom: 15px; font-family: serif; }
+    .cert-text { font-size: 13px; color: #334155; max-width: 600px; margin: 0 auto 25px auto; }
+    .cert-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding: 0 20px; }
+    .signature-box { text-align: center; font-size: 12px; color: #475569; border-top: 1px solid #94a3b8; width: 180px; padding-top: 5px; }
+    
+    .print-btn { background: #2563eb; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Orbit IT Solutions - Student Portal</div>
+    <a href="student-login.html" class="logout-btn" onclick="localStorage.clear()">Logout</a>
+  </header>
+
+  <div class="container">
+    <div class="welcome-banner">
+      <h1 id="welcomeHeading">Welcome, Student!</h1>
+      <p>Access your training notes, practical manuals, and download your ISO-Standard completion certificate.</p>
+    </div>
+
+    <!-- Notes Library -->
+    <h2 class="section-title">📚 Download Course Notes & Study Materials</h2>
+    <div class="notes-grid">
+
+      <!-- Python -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Full Stack Python with AI Notes</div>
+          <div class="note-desc">Comprehensive Python, Django, MySQL, and ChatGPT API integration study guide.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Full Stack Python Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- Data Science -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Data Science & Machine Learning</div>
+          <div class="note-desc">Pandas, NumPy, Scikit-Learn algorithms, and statistics workbook.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Data Science Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- Data Analysis -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Data Analysis & Power BI</div>
+          <div class="note-desc">Advanced Excel formulas, SQL queries, DAX functions, and Power BI dashboards.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Data Analysis Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- Tally Prime & GST -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Tally Prime with GST Notes</div>
+          <div class="note-desc">Corporate accounting, GST filing, inventory management, and payroll manual.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Tally Prime Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- Manual Accounts -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Manual Accounts Training Notes</div>
+          <div class="note-desc">Ledgers, Trial Balance, Trading & P&L accounts, and Balance Sheet preparation.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Manual Accounts Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- Advanced Excel -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Advanced Excel & MIS Reports</div>
+          <div class="note-desc">VLOOKUP, XLOOKUP, Pivot Tables, Macros, and professional MIS reporting.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Advanced Excel Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- MS Office -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">MS Office Automation Notes</div>
+          <div class="note-desc">Microsoft Word, Excel, PowerPoint essentials for office administration.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading MS Office Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- Graphic Designing -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Graphic & Web Designing Manual</div>
+          <div class="note-desc">Adobe Photoshop, Illustrator design concepts and HTML5/CSS3 web templates.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Graphic Design Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+      <!-- English & Personality -->
+      <div class="note-card">
+        <div>
+          <div class="note-title">Spoken English & Interview Skills</div>
+          <div class="note-desc">Grammar fundamentals, vocabulary, business communication, and HR mock interview Q&A.</div>
+        </div>
+        <a href="#" onclick="alert('Downloading Spoken English Notes PDF...')" class="download-btn">📥 Download PDF Notes</a>
+      </div>
+
+    </div>
+
+    <!-- ISO Certificate Generator Section -->
+    <div class="cert-container">
+      <h2 class="section-title">🎓 ISO-Standard Certificate Generator</h2>
+      <p style="font-size: 13px; color: #475569; margin-bottom: 15px;">Enter your certificate details below to instantly generate and print your official course completion certificate.</p>
+      
+      <div class="cert-form">
+        <input type="text" id="studentFullName" class="cert-input" placeholder="Full Student Name">
+        <select id="certCourseName" class="cert-select">
+          <option value="SAP FICO / S4HANA">SAP FICO / S4HANA</option>
+          <option value="Full Stack Python with AI">Full Stack Python with AI</option>
+          <option value="Data Science Program">Data Science Program</option>
+          <option value="Software Testing (Manual & Automation)">Software Testing (Manual & Automation)</option>
+          <option value="Tally Prime with GST & Accounts">Tally Prime with GST & Accounts</option>
+          <option value="Data Analysis & Power BI">Data Analysis & Power BI</option>
+          <option value="Digital Marketing Masterclass">Digital Marketing Masterclass</option>
+        </select>
+        <button type="button" class="download-btn" onclick="generateCertificate()">Generate Certificate</button>
+      </div>
+
+      <!-- Certificate Display Box -->
+      <div id="certificateBox" class="certificate-preview">
+        <div class="cert-inner">
+          <div class="cert-badge">ISO 9001:2015 Certified Institute</div>
+          <div class="cert-org">Orbit IT Solutions - Mehdipatnam, Hyderabad</div>
+          <div class="cert-title-main">Certificate of Completion</div>
+          <div class="cert-to">This is proudly presented to</div>
+          <div class="cert-name" id="previewName">Student Name</div>
+          <div class="cert-text">
+            For successfully completing the professional training program in <strong id="previewCourse">Course Name</strong> with hands-on practical project work and internship requirements at our Mehdipatnam center.
+          </div>
+          <div class="cert-footer">
+            <div class="signature-box">Director / Trainer</div>
+            <div style="font-size: 11px; color: #64748b;">Certificate ID: ORBIT-2026-REG</div>
+            <div class="signature-box">Authorized Signatory</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <button type="button" id="printBtn" class="print-btn" style="display:none;" onclick="window.print()">🖨️ Print / Download Certificate PDF</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Load student name if logged in
+    var phone = localStorage.getItem('orbitStudentPhone');
+    if(!phone) {
+      window.location.href = 'student-login.html';
+    }
+
+    function generateCertificate() {
+      var name = document.getElementById('studentFullName').value.trim();
+      var course = document.getElementById('certCourseName').value;
+      if(!name) {
+        alert('Please enter the full student name.');
+        return;
+      }
+      document.getElementById('previewName').innerText = name;
+      document.getElementById('previewCourse').innerText = course;
+      document.getElementById('certificateBox').style.display = 'block';
+      document.getElementById('printBtn').style.display = 'inline-block';
+    }
+  </script>
+</body>
+</html>
