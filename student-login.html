@@ -3,52 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Login | Orbit IT Solutions Mehdipatnam</title>
+  <title>Student Portal Login | Orbit IT Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #1e293b; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
-    .login-card { background: #ffffff; width: 100%; max-width: 400px; border-radius: 12px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
-    .logo-title { font-size: 22px; font-weight: 800; color: #1e3a8a; text-align: center; margin-bottom: 5px; }
+    body { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #1e293b; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .login-card { background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+    .logo-title { font-size: 22px; font-weight: 800; color: #1e3a8a; text-align: center; margin-bottom: 4px; }
     .logo-subtitle { font-size: 11px; font-weight: 600; color: #64748b; text-align: center; text-transform: uppercase; margin-bottom: 20px; }
     .form-group { margin-bottom: 15px; }
     .form-label { display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 5px; }
     .form-input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; }
     .form-btn { background: #2563eb; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; margin-top: 10px; }
     .form-btn:hover { background: #1d4ed8; }
+    .error-msg { color: #dc2626; font-size: 12px; font-weight: 600; text-align: center; margin-top: 10px; display: none; }
     .back-home { display: block; text-align: center; margin-top: 15px; font-size: 12px; color: #64748b; text-decoration: none; }
-    .back-home:hover { color: #1e3a8a; }
   </style>
 </head>
 <body>
 
   <div class="login-card">
-    <div class="logo-title">Orbit IT Solutions</div>
-    <div class="logo-subtitle">Student Portal Login</div>
+    <div class="logo-title">ORBIT IT SOLUTIONS</div>
+    <div class="logo-subtitle">Authorized Student Portal</div>
 
     <form id="loginForm" onsubmit="handleLogin(event)">
       <div class="form-group">
-        <label class="form-label">Student Registered Phone Number</label>
-        <input type="tel" id="loginPhone" class="form-input" placeholder="e.g. 9848012345" required>
+        <label class="form-label">Registered Phone Number</label>
+        <input type="tel" id="loginPhone" class="form-input" placeholder="Enter 10-digit mobile number" required>
       </div>
       <button type="submit" class="form-btn">Login to Dashboard</button>
+      <div id="errorMsg" class="error-msg">❌ Access Denied: Phone number not registered. Please contact administration.</div>
     </form>
 
     <a href="index.html" class="back-home">← Back to Main Website</a>
   </div>
 
   <script>
+    // Pre-seeded authorized database (you can also add students via Admin Panel)
+    var defaultStudents = [
+      {
+        phone: "9985153068",
+        name: "Orbit Student",
+        course: "SAP FICO / S4HANA",
+        certId: "ORBIT-2026-001",
+        photo: ""
+      }
+    ];
+
+    if(!localStorage.getItem('orbitStudentDB')) {
+      localStorage.setItem('orbitStudentDB', JSON.stringify(defaultStudents));
+    }
+
     function handleLogin(event) {
       event.preventDefault();
-      var phone = document.getElementById('loginPhone').value.trim();
-      
-      // Default demo registration for testing if phone is entered
-      if(phone.length >= 10) {
-        localStorage.setItem('orbitStudentPhone', phone);
-        localStorage.setItem('orbitStudentName', 'Enrolled Student');
+      var inputPhone = document.getElementById('loginPhone').value.trim();
+      var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
+      var errorMsg = document.getElementById('errorMsg');
+
+      var foundStudent = db.find(s => s.phone === inputPhone);
+
+      if(foundStudent) {
+        localStorage.setItem('orbitCurrentStudent', JSON.stringify(foundStudent));
         window.location.href = 'student-dashboard.html';
       } else {
-        alert('Please enter a valid 10-digit mobile number.');
+        errorMsg.style.display = 'block';
       }
     }
   </script>
