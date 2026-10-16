@@ -31,6 +31,11 @@
     .admin-input { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; width: 100%; }
     .admin-save-btn { background: #16a34a; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; }
 
+    /* Registered Student Database Table View */
+    .db-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12px; }
+    .db-table th, .db-table td { border: 1px solid #cbd5e1; padding: 8px; text-align: left; }
+    .db-table th { background: #f1f5f9; color: #1e3a8a; }
+
     /* Notes Grid */
     .notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 30px; }
     .note-card { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
@@ -55,12 +60,7 @@
       background-size: 24px 24px;
     }
 
-    .cert-inner-border {
-      border: 2px solid #1e3a8a;
-      padding: 25px;
-      position: relative;
-    }
-
+    .cert-inner-border { border: 2px solid #1e3a8a; padding: 25px; position: relative; }
     .cert-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
     .iso-badge { background: #1e3a8a; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-align: left; }
     .iso-badge span { color: #f59e0b; display: block; font-size: 9px; }
@@ -98,7 +98,7 @@
   <header>
     <div class="logo">Orbit IT Solutions - Student Portal</div>
     <div class="header-btns">
-      <button class="admin-btn" onclick="toggleAdminPanel()">⚙️ Admin Panel</button>
+      <button class="admin-btn" onclick="toggleAdminPanel()">⚙️ Admin Portal</button>
       <a href="student-login.html" class="logout-btn" onclick="localStorage.removeItem('orbitCurrentStudent')">Logout</a>
     </div>
   </header>
@@ -107,7 +107,7 @@
 
     <!-- Admin Registration Panel -->
     <div class="admin-card" id="adminPanel">
-      <h3>🔐 Admin Control: Add / Authorize Student Access</h3>
+      <h3>🔐 Admin Control: Add & Authorize Student Access</h3>
       <div class="admin-grid">
         <input type="text" id="admName" class="admin-input" placeholder="Full Student Name">
         <input type="tel" id="admPhone" class="admin-input" placeholder="Phone Number (Login Password)">
@@ -116,6 +116,20 @@
         <input type="file" id="admPhoto" class="admin-input" accept="image/*">
       </div>
       <button type="button" class="admin-save-btn" onclick="saveStudentToDB()">+ Add Authorized Student</button>
+
+      <h4 style="margin-top: 15px; font-size: 13px; color: #1e3a8a;">Authorized Student Database List:</h4>
+      <table class="db-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone (Password)</th>
+            <th>Course</th>
+            <th>Cert ID</th>
+          </tr>
+        </thead>
+        <tbody id="dbTableBody">
+        </tbody>
+      </table>
     </div>
 
     <!-- Student Welcome Banner -->
@@ -230,6 +244,13 @@
       populateStudentData(currentStudent);
     }
 
+    // Auto open Admin Panel if redirected with ?admin=true
+    var urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('admin') === 'true') {
+      document.getElementById('adminPanel').style.display = 'block';
+      renderDBList();
+    }
+
     function populateStudentData(student) {
       document.getElementById('dispName').innerText = "Welcome, " + student.name;
       document.getElementById('dispPhone').innerText = student.phone;
@@ -243,19 +264,29 @@
         document.getElementById('dispPhoto').src = student.photo;
         document.getElementById('certPhoto').src = student.photo;
       } else {
-        document.getElementById('dispPhoto').src = "https://via.placeholder.com/90x110?text=Photo";
+        document.getElementById('dispPhoto').src = "https://via.placeholder.com/90x110?text=Passport+Photo";
         document.getElementById('certPhoto').src = "https://via.placeholder.com/90x110?text=Passport+Photo";
       }
     }
 
     function toggleAdminPanel() {
-      var pin = prompt("Enter Admin PIN:");
+      var pin = prompt("Enter Admin Secret PIN:");
       if(pin === "1997") {
         var panel = document.getElementById('adminPanel');
         panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        renderDBList();
       } else if(pin !== null) {
-        alert("Incorrect Admin PIN.");
+        alert("❌ Incorrect Admin PIN.");
       }
+    }
+
+    function renderDBList() {
+      var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
+      var tbody = document.getElementById('dbTableBody');
+      tbody.innerHTML = "";
+      db.forEach(function(s) {
+        tbody.innerHTML += "<tr><td>" + s.name + "</td><td>" + s.phone + "</td><td>" + s.course + "</td><td>" + s.certId + "</td></tr>";
+      });
     }
 
     function saveStudentToDB() {
@@ -283,8 +314,8 @@
 
         db.push(newStudent);
         localStorage.setItem('orbitStudentDB', JSON.stringify(db));
-        alert("✅ Student '" + name + "' added successfully! Phone: " + phone + " can now log in.");
-        document.getElementById('adminPanel').style.display = 'none';
+        alert("✅ Student '" + name + "' registered successfully! Phone " + phone + " can now log in.");
+        renderDBList();
       }
 
       if(photoInput.files && photoInput.files[0]) {
