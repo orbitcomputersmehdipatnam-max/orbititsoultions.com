@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institute Admin Portal | Orbit IT Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f8fafc; color: #1e293b; padding: 20px; }
+    .container { max-width: 800px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #f59e0b; }
+    h2 { color: #1e3a8a; margin-bottom: 5px; font-size: 22px; }
+    p { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px; }
+    .input-box { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; }
+    .btn { background: #16a34a; color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%; font-size: 14px; }
+    .btn:hover { background: #15803d; }
+    .db-table { width: 100%; border-collapse: collapse; margin-top: 25px; font-size: 12.5px; }
+    .db-table th, .db-table td { border: 1px solid #cbd5e1; padding: 10px; text-align: left; }
+    .db-table th { background: #f1f5f9; color: #1e3a8a; }
+    .back-link { display: inline-block; margin-top: 20px; font-size: 13px; color: #2563eb; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🔐 Orbit IT Solutions - Admin Control Panel</h2>
+    <p>Add authorized students who are allowed to log into the student portal and download their ISO 9001 certificates.</p>
+
+    <div class="form-grid">
+      <input type="text" id="admName" class="input-box" placeholder="Student Full Name">
+      <input type="tel" id="admPhone" class="input-box" placeholder="Phone Number (Student Login Password)">
+      <input type="text" id="admCourse" class="input-box" placeholder="Course Name (e.g. SAP FICO / Python)">
+      <input type="text" id="admCertId" class="input-box" placeholder="Certificate ID (e.g. ORBIT-2026-101)">
+      <div style="grid-column: span 2;">
+        <label style="font-size: 12px; font-weight: 600; color: #334155; display: block; margin-bottom: 4px;">Upload Student Passport Size Photo:</label>
+        <input type="file" id="admPhoto" class="input-box" accept="image/*">
+      </div>
+    </div>
+
+    <button type="button" class="btn" onclick="saveStudentToDB()">+ Authorize & Save Student</button>
+
+    <h3 style="margin-top: 30px; font-size: 16px; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;">Currently Authorized Students Database:</h3>
+    <table class="db-table">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Phone Number (Password)</th>
+          <th>Course</th>
+          <th>Cert ID</th>
+        </tr>
+      </thead>
+      <tbody id="dbTableBody">
+      </tbody>
+    </table>
+
+    <a href="student-login.html" class="back-link">← Go to Student Login Page</a>
+  </div>
+
+  <script>
+    // Initialize default database if empty
+    if(!localStorage.getItem('orbitStudentDB')) {
+      var defaultStudents = [
+        { phone: "9985153068", name: "Orbit Student", course: "SAP FICO / S4HANA", certId: "ORBIT-2026-001", photo: "" }
+      ];
+      localStorage.setItem('orbitStudentDB', JSON.stringify(defaultStudents));
+    }
+
+    renderDBList();
+
+    function renderDBList() {
+      var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
+      var tbody = document.getElementById('dbTableBody');
+      tbody.innerHTML = "";
+      if(db.length === 0) {
+        tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#64748b;'>No students authorized yet.</td></tr>";
+        return;
+      }
+      db.forEach(function(s) {
+        tbody.innerHTML += "<tr><td>" + s.name + "</td><td>" + s.phone + "</td><td>" + s.course + "</td><td>" + s.certId + "</td></tr>";
+      });
+    }
+
+    function saveStudentToDB() {
+      var name = document.getElementById('admName').value.trim();
+      var phone = document.getElementById('admPhone').value.trim();
+      var course = document.getElementById('admCourse').value.trim();
+      var certId = document.getElementById('admCertId').value.trim();
+      var photoInput = document.getElementById('admPhoto');
+
+      if(!name || !phone || !course) {
+        alert("Please fill in Student Name, Phone Number, and Course.");
+        return;
+      }
+
+      var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
+
+      function commitSave(photoData) {
+        var newStudent = {
+          name: name,
+          phone: phone,
+          course: course,
+          certId: certId || ("ORBIT-2026-" + Math.floor(100 + Math.random() * 900)),
+          photo: photoData || ""
+        };
+
+        db.push(newStudent);
+        localStorage.setItem('orbitStudentDB', JSON.stringify(db));
+        alert("✅ Success! Student '" + name + "' is now authorized. They can log in using phone number: " + phone);
+        
+        // Clear inputs
+        document.getElementById('admName').value = "";
+        document.getElementById('admPhone').value = "";
+        document.getElementById('admCourse').value = "";
+        document.getElementById('admCertId').value = "";
+        document.getElementById('admPhoto').value = "";
+        
+        renderDBList();
+      }
+
+      if(photoInput.files && photoInput.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          commitSave(e.target.result);
+        };
+        reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        commitSave("");
+      }
+    }
+  </script>
+</body>
+</html>
