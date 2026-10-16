@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login | Orbit IT Solutions Mehdipatnam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #1e293b; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+    .login-card { background: #ffffff; width: 100%; max-width: 400px; border-radius: 12px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+    .logo-title { font-size: 22px; font-weight: 800; color: #1e3a8a; text-align: center; margin-bottom: 5px; }
+    .logo-subtitle { font-size: 11px; font-weight: 600; color: #64748b; text-align: center; text-transform: uppercase; margin-bottom: 20px; }
+    .form-group { margin-bottom: 15px; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 5px; }
+    .form-input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; }
+    .form-btn { background: #2563eb; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; margin-top: 10px; }
+    .form-btn:hover { background: #1d4ed8; }
+    .back-home { display: block; text-align: center; margin-top: 15px; font-size: 12px; color: #64748b; text-decoration: none; }
+    .back-home:hover { color: #1e3a8a; }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="logo-title">Orbit IT Solutions</div>
+    <div class="logo-subtitle">Student Portal Login</div>
+
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label class="form-label">Student Registered Phone Number</label>
+        <input type="tel" id="loginPhone" class="form-input" placeholder="e.g. 9848012345" required>
+      </div>
+      <button type="submit" class="form-btn">Login to Dashboard</button>
+    </form>
+
+    <a href="index.html" class="back-home">← Back to Main Website</a>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      var phone = document.getElementById('loginPhone').value.trim();
+      
+      // Default demo registration for testing if phone is entered
+      if(phone.length >= 10) {
+        localStorage.setItem('orbitStudentPhone', phone);
+        localStorage.setItem('orbitStudentName', 'Enrolled Student');
+        window.location.href = 'student-dashboard.html';
+      } else {
+        alert('Please enter a valid 10-digit mobile number.');
+      }
+    }
+  </script>
+</body>
+</html>
