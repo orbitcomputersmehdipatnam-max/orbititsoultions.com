@@ -3,51 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Institute Admin Portal | Orbit IT Solutions</title>
+  <title>Secure Admin Portal | Orbit IT Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-    body { background-color: #f8fafc; color: #1e293b; padding: 20px; }
-    .container { max-width: 800px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #f59e0b; }
-    h2 { color: #1e3a8a; margin-bottom: 5px; font-size: 22px; }
+    /* Completely hide the page until PIN is verified */
+    body { background-color: #f8fafc; color: #1e293b; padding: 20px; display: none; }
+    .container { max-width: 850px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-top: 6px solid #1e3a8a; }
+    h2 { color: #1e3a8a; margin-bottom: 5px; font-size: 22px; display: flex; justify-content: space-between; align-items: center; }
     p { font-size: 13px; color: #64748b; margin-bottom: 20px; }
     .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px; }
     .input-box { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; }
     .btn { background: #16a34a; color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%; font-size: 14px; }
     .btn:hover { background: #15803d; }
+    .logout-admin { background: #dc2626; color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; }
     .db-table { width: 100%; border-collapse: collapse; margin-top: 25px; font-size: 12.5px; }
     .db-table th, .db-table td { border: 1px solid #cbd5e1; padding: 10px; text-align: left; }
     .db-table th { background: #f1f5f9; color: #1e3a8a; }
-    .back-link { display: inline-block; margin-top: 20px; font-size: 13px; color: #2563eb; text-decoration: none; }
+    .delete-btn { background: #dc2626; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; }
+    .back-link { display: inline-block; margin-top: 25px; font-size: 13px; color: #2563eb; text-decoration: none; font-weight: 500; }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h2>🔐 Orbit IT Solutions - Admin Control Panel</h2>
-    <p>Add authorized students who are allowed to log into the student portal and download their ISO 9001 certificates.</p>
+    <h2>
+      🔐 Private Institute Admin Panel
+      <button type="button" class="logout-admin" onclick="lockAdminSession()">🔒 Lock & Exit</button>
+    </h2>
+    <p>Confidential Student Database & Course Access Management. Secured behind PIN 0702.</p>
 
     <div class="form-grid">
       <input type="text" id="admName" class="input-box" placeholder="Student Full Name">
       <input type="tel" id="admPhone" class="input-box" placeholder="Phone Number (Student Login Password)">
-      <input type="text" id="admCourse" class="input-box" placeholder="Course Name (e.g. SAP FICO / Python)">
-      <input type="text" id="admCertId" class="input-box" placeholder="Certificate ID (e.g. ORBIT-2026-101)">
+      <select id="admCourse" class="input-box">
+        <option value="">-- Select Assigned Course --</option>
+        <option value="Full Stack Python with AI">Full Stack Python with AI</option>
+        <option value="SAP FICO / S4HANA">SAP FICO / S4HANA</option>
+        <option value="Data Science Program">Data Science Program</option>
+        <option value="Data Analysis & Power BI">Data Analysis & Power BI</option>
+        <option value="Software Testing (Manual & Automation)">Software Testing (Manual & Automation)</option>
+        <option value="Tally Prime with GST & Accounts">Tally Prime with GST & Accounts</option>
+        <option value="Manual Accounts Training">Manual Accounts Training</option>
+        <option value="Advanced Excel & MIS">Advanced Excel & MIS</option>
+        <option value="MS Office Automation">MS Office Automation</option>
+        <option value="Graphic & Web Designing">Graphic & Web Designing</option>
+        <option value="Spoken English & Personality">Spoken English & Personality</option>
+      </select>
       <div style="grid-column: span 2;">
         <label style="font-size: 12px; font-weight: 600; color: #334155; display: block; margin-bottom: 4px;">Upload Student Passport Size Photo:</label>
         <input type="file" id="admPhoto" class="input-box" accept="image/*">
       </div>
     </div>
 
-    <button type="button" class="btn" onclick="saveStudentToDB()">+ Authorize & Save Student</button>
+    <button type="button" class="btn" onclick="saveStudentToDB()">+ Authorize & Save Student Record</button>
 
-    <h3 style="margin-top: 30px; font-size: 16px; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;">Currently Authorized Students Database:</h3>
+    <h3 style="margin-top: 35px; font-size: 16px; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;">Authorized Student Database (Private Records):</h3>
     <table class="db-table">
       <thead>
         <tr>
           <th>Student Name</th>
           <th>Phone Number (Password)</th>
-          <th>Course</th>
-          <th>Cert ID</th>
+          <th>Assigned Course</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody id="dbTableBody">
@@ -58,10 +76,24 @@
   </div>
 
   <script>
-    // Initialize default database if empty
+    // Strict Security Check: Prompt for PIN 0702 on load if session is not unlocked
+    if(sessionStorage.getItem('orbitAdminUnlocked') !== 'true') {
+      var enteredPin = prompt("Enter Secure Admin PIN:");
+      if(enteredPin === "0702") {
+        sessionStorage.setItem('orbitAdminUnlocked', 'true');
+        document.body.style.display = "block";
+      } else {
+        alert("❌ Incorrect PIN! Access Denied.");
+        window.location.href = "student-login.html";
+      }
+    } else {
+      document.body.style.display = "block";
+    }
+
+    // Initialize database
     if(!localStorage.getItem('orbitStudentDB')) {
       var defaultStudents = [
-        { phone: "9985153068", name: "Orbit Student", course: "SAP FICO / S4HANA", certId: "ORBIT-2026-001", photo: "" }
+        { phone: "9985153068", name: "Orbit Student", course: "SAP FICO / S4HANA", photo: "" }
       ];
       localStorage.setItem('orbitStudentDB', JSON.stringify(defaultStudents));
     }
@@ -73,23 +105,41 @@
       var tbody = document.getElementById('dbTableBody');
       tbody.innerHTML = "";
       if(db.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#64748b;'>No students authorized yet.</td></tr>";
+        tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#64748b;'>No student records found.</td></tr>";
         return;
       }
-      db.forEach(function(s) {
-        tbody.innerHTML += "<tr><td>" + s.name + "</td><td>" + s.phone + "</td><td>" + s.course + "</td><td>" + s.certId + "</td></tr>";
+      db.forEach(function(s, index) {
+        tbody.innerHTML += "<tr>" +
+          "<td>" + s.name + "</td>" +
+          "<td>" + s.phone + "</td>" +
+          "<td>" + s.course + "</td>" +
+          "<td><button class='delete-btn' onclick='deleteStudent(" + index + ")'>Delete Record</button></td>" +
+          "</tr>";
       });
+    }
+
+    function deleteStudent(index) {
+      if(confirm("Are you sure you want to permanently delete this student record? Their portal access will be revoked.")) {
+        var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
+        db.splice(index, 1);
+        localStorage.setItem('orbitStudentDB', JSON.stringify(db));
+        renderDBList();
+      }
+    }
+
+    function lockAdminSession() {
+      sessionStorage.removeItem('orbitAdminUnlocked');
+      window.location.href = "student-login.html";
     }
 
     function saveStudentToDB() {
       var name = document.getElementById('admName').value.trim();
       var phone = document.getElementById('admPhone').value.trim();
-      var course = document.getElementById('admCourse').value.trim();
-      var certId = document.getElementById('admCertId').value.trim();
+      var course = document.getElementById('admCourse').value;
       var photoInput = document.getElementById('admPhoto');
 
       if(!name || !phone || !course) {
-        alert("Please fill in Student Name, Phone Number, and Course.");
+        alert("Please fill in Student Name, Phone Number, and select a Course.");
         return;
       }
 
@@ -100,19 +150,16 @@
           name: name,
           phone: phone,
           course: course,
-          certId: certId || ("ORBIT-2026-" + Math.floor(100 + Math.random() * 900)),
           photo: photoData || ""
         };
 
         db.push(newStudent);
         localStorage.setItem('orbitStudentDB', JSON.stringify(db));
-        alert("✅ Success! Student '" + name + "' is now authorized. They can log in using phone number: " + phone);
+        alert("✅ Success! Student '" + name + "' has been authorized.");
         
-        // Clear inputs
         document.getElementById('admName').value = "";
         document.getElementById('admPhone').value = "";
         document.getElementById('admCourse').value = "";
-        document.getElementById('admCertId').value = "";
         document.getElementById('admPhoto').value = "";
         
         renderDBList();
