@@ -9,13 +9,11 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
     body { background-color: #f8fafc; color: #1e293b; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
     
-    /* PIN Login Screen */
     .pin-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); width: 100%; max-width: 380px; text-align: center; border-top: 6px solid #1e3a8a; }
     .pin-card h3 { color: #1e3a8a; margin-bottom: 10px; font-size: 20px; }
     .pin-input { width: 100%; padding: 12px; font-size: 16px; text-align: center; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 15px; letter-spacing: 3px; }
     .pin-btn { background: #2563eb; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; }
     
-    /* Admin Panel Main Container (Hidden until unlocked) */
     .container { max-width: 850px; width: 100%; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-top: 6px solid #1e3a8a; display: none; }
     h2 { color: #1e3a8a; margin-bottom: 5px; font-size: 22px; display: flex; justify-content: space-between; align-items: center; }
     p { font-size: 13px; color: #64748b; margin-bottom: 20px; }
@@ -36,13 +34,13 @@
   <!-- PIN Entry Screen -->
   <div class="pin-card" id="pinScreen">
     <h3>🔒 Admin Authentication</h3>
-    <p style="margin-bottom:15px;">Enter secure PIN to access student database.</p>
-    <input type="password" id="pinInput" class="pin-input" placeholder="Enter PIN (0702)" maxlength="4">
+    <p style="margin-bottom:15px;">Enter PIN (0702) to access private student database.</p>
+    <input type="password" id="pinInput" class="pin-input" placeholder="••••" maxlength="4">
     <button type="button" class="pin-btn" onclick="verifyPin()">Unlock Admin Panel</button>
     <a href="index.html" class="back-link" style="display:block; margin-top:15px;">← Back to Home Website</a>
   </div>
 
-  <!-- Main Secured Admin Panel -->
+  <!-- Secured Admin Panel -->
   <div class="container" id="adminContainer">
     <h2>
       🔐 Private Institute Admin Panel
@@ -93,7 +91,6 @@
   </div>
 
   <script>
-    // Check session on load
     if(sessionStorage.getItem('orbitAdminUnlocked') === 'true') {
       showAdminPanel();
     }
@@ -112,7 +109,7 @@
     function showAdminPanel() {
       document.getElementById('pinScreen').style.display = 'none';
       document.getElementById('adminContainer').style.display = 'block';
-      document.body.style.display = 'flex';
+      document.body.style.display = 'block';
       renderDBList();
     }
 
