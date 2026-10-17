@@ -9,29 +9,25 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
     body { background-color: #f1f5f9; color: #0f172a; line-height: 1.6; }
 
-    /* High-Visibility Top Announcement Bar */
+    /* Top Announcement Bar */
     .top-announcement { background: #dc2626; color: #ffffff; text-align: center; padding: 12px 15px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25); border-bottom: 2px solid #b91c1c; }
     .top-announcement span { background: #ffffff; color: #dc2626; padding: 3px 10px; border-radius: 6px; font-weight: 800; margin-right: 8px; text-transform: uppercase; font-size: 12px; }
 
     /* Header Navigation */
-    header { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 14px 24px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    header { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 12px 24px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
     .top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 1240px; margin: 0 auto; flex-wrap: wrap; gap: 14px; }
     
-    /* Clear Logo Container */
+    /* Exact Logo Reproduction Container */
     .brand-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-img-wrapper { display: flex; align-items: center; justify-content: center; background: #1e3a8a; padding: 6px; border-radius: 10px; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2); }
-    .logo-svg { width: 44px; height: 44px; }
-    .brand-text { display: flex; flex-direction: column; }
-    .logo-title { font-size: 20px; font-weight: 800; color: #1e3a8a; letter-spacing: 0.5px; line-height: 1.1; }
-    .logo-subtitle { font-size: 9px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; }
-    .since { font-size: 9px; background: #2563eb; color: #fff; padding: 2px 6px; border-radius: 6px; margin-left: 4px; }
+    .logo-img-wrapper { display: flex; align-items: center; justify-content: center; background: #000000; padding: 4px 8px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .logo-svg { width: 140px; height: 50px; }
 
-    /* Uniform Nav Links */
+    /* Nav Links */
     nav { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
     nav a { color: #334155; text-decoration: none; padding: 8px 14px; font-size: 13px; font-weight: 600; border-radius: 8px; transition: all 0.2s ease; }
     nav a:hover { background: #e0f2fe; color: #0284c7; }
 
-    /* Hero Section (Light Professional Theme) */
+    /* Hero Section */
     .hero { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #ffffff; padding: 60px 20px; text-align: center; border-bottom: 4px solid #1d4ed8; }
     .hero h1 { font-size: 34px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .hero p { font-size: 15px; max-width: 820px; margin: 0 auto 20px auto; color: #e0e7ff; }
@@ -71,23 +67,33 @@
     .form-group { margin-bottom: 16px; }
     .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #334155; }
     .form-input, .form-select, .form-textarea { width: 100%; padding: 12px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; color: #0f172a; font-size: 13.5px; }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
-    .submit-btn { width: 100%; padding: 13px; background: #2563eb; border: none; border-radius: 8px; color: #ffffff; font-weight: 700; cursor: pointer; font-size: 14px; transition: background 0.2s; }
-    .submit-btn:hover { background: #1d4ed8; }
+    .submit-btn { width: 100%; padding: 13px; background: #2563eb; border: none; border-radius: 8px; color: #ffffff; font-weight: 700; cursor: pointer; font-size: 14px; }
 
     /* Modal Overlay */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; backdrop-filter: blur(4px); }
     .modal-box { background: #ffffff; padding: 32px; border-radius: 16px; width: 100%; max-width: 420px; border: 1px solid #e2e8f0; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 
-    /* Floating WhatsApp */
-    .float-wa { position: fixed; bottom: 24px; right: 24px; background: #25d366; color: #ffffff; border-radius: 50px; padding: 12px 22px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 1500; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 13.5px; }
+    /* Floating WhatsApp Button */
+    .float-wa { position: fixed; bottom: 24px; right: 24px; background: #25d366; color: #ffffff; border-radius: 50px; padding: 12px 20px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 1500; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 13.5px; }
+
+    /* AI Chatbot Widget Floating */
+    .chatbot-toggle-btn { position: fixed; bottom: 80px; right: 24px; background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #ffffff; border: none; border-radius: 50px; padding: 12px 20px; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4); z-index: 1500; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; }
+    .chatbot-window { position: fixed; bottom: 140px; right: 24px; width: 340px; height: 420px; background: #ffffff; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1600; display: none; flex-direction: column; overflow: hidden; }
+    .chat-header { background: #1e3a8a; color: #ffffff; padding: 12px 16px; font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; align-align: center; }
+    .chat-body { flex: 1; padding: 14px; overflow-y: auto; font-size: 13px; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
+    .chat-msg { max-width: 80%; padding: 8px 12px; border-radius: 10px; line-height: 1.4; }
+    .chat-msg.bot { background: #e0f2fe; color: #0369a1; align-self: flex-start; }
+    .chat-msg.user { background: #2563eb; color: #ffffff; align-self: flex-end; }
+    .chat-footer { display: flex; border-top: 1px solid #e2e8f0; padding: 8px; background: #ffffff; }
+    .chat-input { flex: 1; border: 1px solid #cbd5e1; padding: 8px; border-radius: 6px; font-size: 12.5px; outline: none; }
+    .chat-send-btn { background: #2563eb; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; margin-left: 6px; cursor: pointer; font-weight: 600; font-size: 12px; }
 
     footer { text-align: center; padding: 25px; color: #64748b; font-size: 13px; border-top: 1px solid #e2e8f0; background: #ffffff; }
   </style>
 </head>
 <body>
 
-  <!-- Clear Top Announcement Bar -->
+  <!-- Top Announcement Bar -->
   <div class="top-announcement">
     <span>NEW BATCH ADMISSION</span> New Batches Starting From <strong>22nd Oct 2026</strong>! Call/WhatsApp: <strong>+91 9985153068</strong> / <strong>+91 8142320923</strong>
   </div>
@@ -97,22 +103,52 @@
     💬 Chat on WhatsApp
   </a>
 
+  <!-- Floating AI Chatbot Toggle Button -->
+  <button class="chatbot-toggle-btn" onclick="toggleChatbot()">
+    🤖 Orbit AI Assistant
+  </button>
+
+  <!-- AI Chatbot Window Widget -->
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chat-header">
+      <span>🤖 Orbit AI Counselor</span>
+      <span style="cursor:pointer;" onclick="toggleChatbot()">✕</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg bot">Hi! 👋 I am the Orbit IT AI Assistant. Ask me about our courses, fees, batch timings, placements, or location!</div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type message (e.g. Fees, Courses, SAP)..." onkeypress="handleChatKeyPress(event)">
+      <button class="chat-send-btn" onclick="sendChatMessage()">Send</button>
+    </div>
+  </div>
+
   <!-- Header Navigation -->
   <header>
     <div class="top-bar">
       <a href="#home" class="brand-container">
-        <!-- Crisp Vector Logo Box -->
+        <!-- Exact Vector Reproduction of Official Logo Image -->
         <div class="logo-img-wrapper">
-          <svg class="logo-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="230" cy="230" r="180" fill="#2563eb"/>
-            <path d="M70 230 C70 120, 390 120, 390 230 C390 340, 70 340, 70 230 Z" stroke="#ffffff" stroke-width="12" stroke-dasharray="12 12"/>
-            <circle cx="310" cy="280" r="90" stroke="#ffffff" stroke-width="20" fill="none"/>
-            <line x1="370" y1="340" x2="450" y2="420" stroke="#ffffff" stroke-width="28" stroke-linecap="round"/>
+          <svg class="logo-svg" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="blueGlobe" cx="40%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="60%" stop-color="#1d4ed8"/>
+                <stop offset="100%" stop-color="#0f172a"/>
+              </radialGradient>
+            </defs>
+            <!-- 3D Blue Binary Globe -->
+            <circle cx="90" cy="80" r="75" fill="url(#blueGlobe)"/>
+            <path d="M 25 80 C 25 40, 155 40, 155 80 C 155 120, 25 120, 25 80 Z" stroke="#ffffff" stroke-width="4" stroke-dasharray="8 6" fill="none" opacity="0.8"/>
+            <path d="M 45 80 C 45 25, 135 25, 135 80 C 135 135, 45 135, 45 80 Z" stroke="#ffffff" stroke-width="3" stroke-dasharray="6 4" fill="none" opacity="0.6"/>
+            <!-- Magnifying Glass Key Symbol -->
+            <circle cx="125" cy="85" r="42" stroke="#1e4ed8" stroke-width="18" fill="none"/>
+            <line x1="155" y1="115" x2="225" y2="150" stroke="#1e4ed8" stroke-width="24" stroke-linecap="round"/>
+            <!-- ORBIT Brand Text -->
+            <text x="210" y="115" font-family="'Poppins', sans-serif" font-weight="900" font-size="62" fill="#ffffff" letter-spacing="2">ORBIT</text>
+            <!-- SUB-CAPTION: TRAINING & DEVELOPMENT -->
+            <text x="215" y="145" font-family="'Poppins', sans-serif" font-weight="700" font-size="16" fill="#38bdf8" letter-spacing="3">TRAINING & DEVELOPMENT</text>
           </svg>
-        </div>
-        <div class="brand-text">
-          <div class="logo-title">ORBIT IT SOLUTIONS <span class="since">EST. 1997</span></div>
-          <div class="logo-subtitle">Software & Accounts Training Institute | Mehdipatnam</div>
         </div>
       </a>
       
@@ -444,6 +480,44 @@
 
   <script>
     var currentSelectedCourse = "";
+
+    function toggleChatbot() {
+      var win = document.getElementById('chatbotWindow');
+      win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function handleChatKeyPress(e) {
+      if(e.key === 'Enter') sendChatMessage();
+    }
+
+    function sendChatMessage() {
+      var input = document.getElementById('chatInput');
+      var txt = input.value.trim().toLowerCase();
+      if(!txt) return;
+
+      var body = document.getElementById('chatBody');
+      body.innerHTML += `<div class="chat-msg user">${input.value}</div>`;
+      input.value = "";
+
+      var reply = "Thank you for asking! For course details and admissions, please contact +91 9985153068 or visit Safa Arcade, Mehdipatnam.";
+      
+      if(txt.includes('fee') || txt.includes('cost') || txt.includes('price')) {
+        reply = "Our course fees are very affordable with flexible installments! Please call or WhatsApp +91 9985153068 for fee structures.";
+      } else if(txt.includes('sap') || txt.includes('tally') || txt.includes('account')) {
+        reply = "We offer SAP S4HANA / FICO, Tally Prime GST, and Manual Accounting with 100% practical lab practice!";
+      } else if(txt.includes('python') || txt.includes('ai') || txt.includes('java')) {
+        reply = "We offer Full Stack Python with AI, Full Stack Java, Data Science, and Machine Learning starting 22nd Oct 2026!";
+      } else if(txt.includes('location') || txt.includes('address') || txt.includes('where')) {
+        reply = "We are located at: Safa Arcade, 2nd Floor, Mehdipatnam, Hyderabad - 500028.";
+      } else if(txt.includes('placement') || txt.includes('job') || txt.includes('intern')) {
+        reply = "We maintain a 95% placement record with guaranteed internships for students pursuing education!";
+      }
+
+      setTimeout(function() {
+        body.innerHTML += `<div class="chat-msg bot">${reply}</div>`;
+        body.scrollTop = body.scrollHeight;
+      }, 500);
+    }
 
     function openLeadModal(courseName) {
       currentSelectedCourse = courseName;
