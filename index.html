@@ -4,105 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orbit IT Solutions | Software & Accounts Training Institute Mehdipatnam Hyderabad</title>
-  <meta name="description" content="Orbit IT Solutions (Est. 1997, Safa Arcade, Mehdipatnam) offers 100% practical training in SAP FICO, Full Stack Python, Software Testing, Data Science, Tally GST, with guaranteed internship support, monthly workshops, and in-house interview drives.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
     body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
 
-    /* Top Announcement Bar */
+    /* Announcement Bar */
     .top-announcement { background: #dc2626; color: #ffffff; text-align: center; padding: 8px 10px; font-size: 12px; font-weight: 600; }
     .top-announcement span { background: #ffffff; color: #dc2626; padding: 2px 6px; border-radius: 4px; font-weight: 700; margin-right: 4px; }
 
-    /* Header & Navigation Bar */
+    /* Header & Navigation */
     header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 12px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
     .top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 10px; }
-    .brand-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    
-    .brand-logo-svg { width: 40px; height: 40px; flex-shrink: 0; }
-    .brand-text-wrapper { display: flex; flex-direction: column; }
-    .logo-title { font-size: 18px; font-weight: 800; color: #38bdf8; line-height: 1.1; }
-    .logo-subtitle { font-size: 8.5px; font-weight: 600; color: #93c5fd; letter-spacing: 0.5px; text-transform: uppercase; }
-    .since { font-size: 9.5px; background: #2563eb; color: #fff; padding: 2px 5px; border-radius: 8px; margin-left: 4px; vertical-align: middle; }
+    .brand-container { text-decoration: none; }
+    .logo-title { font-size: 17px; font-weight: 800; color: #38bdf8; line-height: 1.1; }
+    .logo-subtitle { font-size: 8.5px; font-weight: 600; color: #93c5fd; text-transform: uppercase; }
+    .since { font-size: 9px; background: #2563eb; color: #fff; padding: 2px 5px; border-radius: 6px; margin-left: 4px; }
 
-    /* Navigation Links */
-    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-    nav a { color: #e2e8f0; text-decoration: none; padding: 5px 10px; font-size: 12.5px; font-weight: 500; border-radius: 4px; transition: background 0.2s; }
+    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+    nav a { color: #e2e8f0; text-decoration: none; padding: 6px 10px; font-size: 12px; font-weight: 500; border-radius: 4px; transition: background 0.2s; }
     nav a:hover { background: rgba(255,255,255,0.1); color: #38bdf8; }
     .nav-btn-highlight { background: #2563eb !important; color: #fff !important; font-weight: 600; }
     .nav-btn-admin { background: #f59e0b !important; color: #0f172a !important; font-weight: 700; }
 
     /* Hero */
-    .hero { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #fff; padding: 40px 15px; text-align: center; }
-    .hero h1 { font-size: 26px; margin-bottom: 10px; font-weight: 700; line-height: 1.3; }
+    .hero { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #fff; padding: 50px 15px; text-align: center; }
+    .hero h1 { font-size: 26px; margin-bottom: 10px; font-weight: 700; }
     .hero p { font-size: 14px; max-width: 600px; margin: 0 auto 20px auto; opacity: 0.95; }
     .cta-btn { display: inline-block; background-color: #22c55e; color: #fff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 14px rgba(34,197,94,0.4); }
 
-    /* Container */
-    .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+    .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
     .section-title { font-size: 20px; color: #1e3a8a; margin-bottom: 15px; font-weight: 700; text-align: center; position: relative; }
     .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: #2563eb; margin: 6px auto 0 auto; border-radius: 2px; }
 
+    /* Courses & Workshops Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 40px; }
+    .card { background: #ffffff; border-radius: 12px; border: 1px solid #cbd5e1; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .card h3 { color: #1e3a8a; font-size: 16px; margin-bottom: 8px; }
+    .card p { font-size: 13px; color: #475569; margin-bottom: 15px; }
+
     /* Feedback Form Box */
-    .feedback-box { background: #fff; border-radius: 12px; padding: 25px; border: 1px solid #e2e8f0; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); max-width: 700px; margin-left: auto; margin-right: auto; }
+    .feedback-box { background: #fff; border-radius: 12px; padding: 25px; border: 1px solid #cbd5e1; margin-bottom: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); max-width: 700px; margin-left: auto; margin-right: auto; }
     .feedback-form input, .feedback-form textarea, .feedback-form select { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; }
     .feedback-btn { background: #2563eb; color: #fff; border: none; width: 100%; padding: 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; }
 
-    /* Google Map & Contact Section */
-    .contact-card { background: #ffffff; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 25px; text-align: center; border: 1px solid #e2e8f0; }
+    /* Contact Card */
+    .contact-card { background: #ffffff; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; border: 1px solid #cbd5e1; }
     .contact-btns { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
-    .btn-whatsapp { background: #25d366; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
-    .btn-call { background: #2563eb; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
-    .btn-map { background: #ea4335; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-whatsapp { background: #25d366; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; }
+    .btn-call { background: #2563eb; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; }
+    .btn-map { background: #ea4335; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
 
-    /* Floating WhatsApp Button */
+    /* Floating WhatsApp */
     .float-wa { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #fff; border-radius: 50px; padding: 10px 18px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); z-index: 1500; display: flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 600; font-size: 13px; }
 
-    footer { text-align: center; padding: 15px; color: #64748b; font-size: 12px; margin-top: 20px; border-top: 1px solid #e2e8f0; }
+    footer { text-align: center; padding: 15px; color: #64748b; font-size: 12px; margin-top: 20px; border-top: 1px solid #cbd5e1; }
   </style>
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
   <div class="top-announcement">
     <span>NEW BATCHES</span> Starting Every <strong>Monday & Thursday</strong> | 95% Placement Record
   </div>
 
-  <!-- Floating WhatsApp Quick Button -->
   <a href="https://wa.me/919985153068?text=Hi,%20I%20want%20to%20know%20more%20about%20Orbit%20IT%20courses." class="float-wa" target="_blank">
     💬 Chat on WhatsApp
   </a>
 
-  <!-- Header with Complete Navigation -->
-  <header>
+  <!-- Header Navigation -->
+  <header id="home">
     <div class="top-bar">
       <a href="index.html" class="brand-container">
-        <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="45" cy="45" r="38" fill="url(#globeGrad)" />
-          <path d="M15 45 C15 25, 75 25, 75 45 C75 65, 15 65, 15 45 Z" stroke="#ffffff" stroke-width="2" stroke-dasharray="3 3" opacity="0.8"/>
-          <circle cx="62" cy="55" r="22" stroke="#2563eb" stroke-width="6" fill="none"/>
-          <line x1="78" y1="71" x2="95" y2="88" stroke="#2563eb" stroke-width="8" stroke-linecap="round"/>
-          <defs>
-            <radialGradient id="globeGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(30 30) scale(50)">
-              <stop stop-color="#60a5fa"/>
-              <stop offset="1" stop-color="#1d4ed8"/>
-            </radialGradient>
-          </defs>
-        </svg>
-        <div class="brand-text-wrapper">
-          <div class="logo-title">ORBIT <span class="since">1997</span></div>
-          <div class="logo-subtitle">Training & Development</div>
-        </div>
+        <div class="logo-title">ORBIT IT SOLUTIONS <span class="since">1997</span></div>
+        <div class="logo-subtitle">Mehdipatnam, Hyderabad</div>
       </a>
       
-      <!-- Full Navigation Bar Items -->
       <nav>
-        <a href="index.html">Home</a>
-        <a href="#featured-courses">Courses</a>
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
         <a href="#workshops">Workshops</a>
-        <a href="#feedback-section">Feedback</a>
-        <a href="#contact">Location & Contact</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#contact">Contact & Map</a>
         <a href="student-login.html" class="nav-btn-highlight">Student Portal</a>
         <a href="admin.html" class="nav-btn-admin">Admin Portal</a>
       </nav>
@@ -112,31 +94,58 @@
   <section class="hero">
     <h1>Premier Software & Accounts Training Institute</h1>
     <p>Safa Arcade, Mehdipatnam, Hyderabad | 100% Practical Training, Internships & Expert MNC Trainers</p>
-    <a href="https://wa.me/919985153068" class="cta-btn">Book Free Counseling</a>
+    <a href="https://wa.me/919985153068" class="cta-btn">Book Free Counseling on WhatsApp</a>
   </section>
 
   <div class="container">
 
-    <!-- Feedback Form Section -->
-    <div class="feedback-section" id="feedback-section">
-      <div class="feedback-box">
-        <h2 class="section-title" style="margin-bottom: 10px;">💬 Student Feedback & Review Form</h2>
-        <p style="text-align: center; font-size: 13px; color: #64748b; margin-bottom: 15px;">We value your feedback! Drop your review or inquiries below.</p>
-        <form class="feedback-form" onsubmit="submitFeedback(event)">
-          <input type="text" id="fbName" placeholder="Your Full Name" required>
-          <input type="tel" id="fbPhone" placeholder="Mobile Number" required>
-          <select id="fbRating">
-            <option value="5 Stars">⭐⭐⭐⭐⭐ Excellent Training</option>
-            <option value="4 Stars">⭐⭐⭐⭐ Very Good</option>
-            <option value="3 Stars">⭐⭐⭐ Good</option>
-          </select>
-          <textarea id="fbComments" rows="3" placeholder="Write your feedback, review or course query here..." required></textarea>
-          <button type="submit" class="feedback-btn">Submit Feedback</button>
-        </form>
+    <h2 class="section-title" id="courses">Featured Training Programs</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Full Stack Python with AI</h3>
+        <p>Python, Django, React, MySQL & ChatGPT AI integrations.</p>
+        <a href="https://wa.me/919985153068?text=Interested%20in%20Full%20Stack%20Python" class="btn-whatsapp" style="padding:6px 12px; font-size:12px;">Enquire Now</a>
+      </div>
+      <div class="card">
+        <h3>SAP FICO / S4HANA</h3>
+        <p>General Ledger, AP/AR, Asset Accounting & Fiori reports.</p>
+        <a href="https://wa.me/919985153068?text=Interested%20in%20SAP%20FICO" class="btn-whatsapp" style="padding:6px 12px; font-size:12px;">Enquire Now</a>
+      </div>
+      <div class="card">
+        <h3>Tally Prime with GST</h3>
+        <p>Corporate accounting, GST returns filing & Advanced Excel.</p>
+        <a href="https://wa.me/919985153068?text=Interested%20in%20Tally%20GST" class="btn-whatsapp" style="padding:6px 12px; font-size:12px;">Enquire Now</a>
       </div>
     </div>
 
-    <!-- Contact & Google Map Button Section -->
+    <h2 class="section-title" id="workshops">Monthly Workshops & Drives</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🛠️ Monthly Skill Workshops</h3>
+        <p>Free hands-on masterclasses on trending tools and software updates.</p>
+      </div>
+      <div class="card">
+        <h3>💼 In-House Interview Drives</h3>
+        <p>Regular campus recruitment and placement interviews at Mehdipatnam center.</p>
+      </div>
+    </div>
+
+    <div class="feedback-box" id="feedback">
+      <h2 class="section-title" style="margin-bottom: 10px;">💬 Student Feedback & Review Form</h2>
+      <p style="text-align: center; font-size: 13px; color: #64748b; margin-bottom: 15px;">We value your feedback! Drop your review or inquiries below.</p>
+      <form class="feedback-form" onsubmit="submitFeedback(event)">
+        <input type="text" id="fbName" placeholder="Your Full Name" required>
+        <input type="tel" id="fbPhone" placeholder="Mobile Number" required>
+        <select id="fbRating">
+          <option value="5 Stars">⭐⭐⭐⭐⭐ Excellent Training</option>
+          <option value="4 Stars">⭐⭐⭐⭐ Very Good</option>
+          <option value="3 Stars">⭐⭐⭐ Good</option>
+        </select>
+        <textarea id="fbComments" rows="3" placeholder="Write your feedback, review or course query here..." required></textarea>
+        <button type="submit" class="feedback-btn">Submit Feedback</button>
+      </form>
+    </div>
+
     <div class="contact-card" id="contact">
       <h2 class="section-title">📍 Contact & Institute Location</h2>
       <p style="margin-top:8px; font-size:13.5px;"><strong>Address:</strong> Orbit IT Solutions, Safa Arcade, 2nd Floor, Mehdipatnam, Hyderabad - 500028</p>
@@ -163,10 +172,8 @@
       var comments = document.getElementById('fbComments').value.trim();
       
       alert("Thank you " + name + "! Your feedback (" + rating + ") has been received successfully.");
-      
       var waMsg = "Feedback from " + name + " (" + rating + "): " + comments;
       window.open("https://wa.me/919985153068?text=" + encodeURIComponent(waMsg), '_blank');
-      
       event.target.reset();
     }
   </script>
