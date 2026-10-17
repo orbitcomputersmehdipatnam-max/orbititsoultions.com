@@ -7,9 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-    /* Completely hide the page until PIN is verified */
-    body { background-color: #f8fafc; color: #1e293b; padding: 20px; display: none; }
-    .container { max-width: 850px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-top: 6px solid #1e3a8a; }
+    body { background-color: #f8fafc; color: #1e293b; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    
+    /* PIN Login Screen */
+    .pin-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); width: 100%; max-width: 380px; text-align: center; border-top: 6px solid #1e3a8a; }
+    .pin-card h3 { color: #1e3a8a; margin-bottom: 10px; font-size: 20px; }
+    .pin-input { width: 100%; padding: 12px; font-size: 16px; text-align: center; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 15px; letter-spacing: 3px; }
+    .pin-btn { background: #2563eb; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; }
+    
+    /* Admin Panel Main Container (Hidden until unlocked) */
+    .container { max-width: 850px; width: 100%; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-top: 6px solid #1e3a8a; display: none; }
     h2 { color: #1e3a8a; margin-bottom: 5px; font-size: 22px; display: flex; justify-content: space-between; align-items: center; }
     p { font-size: 13px; color: #64748b; margin-bottom: 20px; }
     .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px; }
@@ -26,7 +33,17 @@
 </head>
 <body>
 
-  <div class="container">
+  <!-- PIN Entry Screen -->
+  <div class="pin-card" id="pinScreen">
+    <h3>🔒 Admin Authentication</h3>
+    <p style="margin-bottom:15px;">Enter secure PIN to access student database.</p>
+    <input type="password" id="pinInput" class="pin-input" placeholder="Enter PIN (0702)" maxlength="4">
+    <button type="button" class="pin-btn" onclick="verifyPin()">Unlock Admin Panel</button>
+    <a href="index.html" class="back-link" style="display:block; margin-top:15px;">← Back to Home Website</a>
+  </div>
+
+  <!-- Main Secured Admin Panel -->
+  <div class="container" id="adminContainer">
     <h2>
       🔐 Private Institute Admin Panel
       <button type="button" class="logout-admin" onclick="lockAdminSession()">🔒 Lock & Exit</button>
@@ -72,33 +89,44 @@
       </tbody>
     </table>
 
-    <a href="student-login.html" class="back-link">← Go to Student Login Page</a>
+    <a href="index.html" class="back-link">← Back to Main Website</a>
   </div>
 
   <script>
-    // Strict Security Check: Prompt for PIN 0702 on load if session is not unlocked
-    if(sessionStorage.getItem('orbitAdminUnlocked') !== 'true') {
-      var enteredPin = prompt("Enter Secure Admin PIN:");
-      if(enteredPin === "0702") {
-        sessionStorage.setItem('orbitAdminUnlocked', 'true');
-        document.body.style.display = "block";
-      } else {
-        alert("❌ Incorrect PIN! Access Denied.");
-        window.location.href = "student-login.html";
-      }
-    } else {
-      document.body.style.display = "block";
+    // Check session on load
+    if(sessionStorage.getItem('orbitAdminUnlocked') === 'true') {
+      showAdminPanel();
     }
 
-    // Initialize database
+    function verifyPin() {
+      var pin = document.getElementById('pinInput').value.trim();
+      if(pin === "0702") {
+        sessionStorage.setItem('orbitAdminUnlocked', 'true');
+        showAdminPanel();
+      } else {
+        alert("❌ Incorrect PIN! Access Denied.");
+        document.getElementById('pinInput').value = "";
+      }
+    }
+
+    function showAdminPanel() {
+      document.getElementById('pinScreen').style.display = 'none';
+      document.getElementById('adminContainer').style.display = 'block';
+      document.body.style.display = 'flex';
+      renderDBList();
+    }
+
+    function lockAdminSession() {
+      sessionStorage.removeItem('orbitAdminUnlocked');
+      window.location.href = "index.html";
+    }
+
     if(!localStorage.getItem('orbitStudentDB')) {
       var defaultStudents = [
         { phone: "9985153068", name: "Orbit Student", course: "SAP FICO / S4HANA", photo: "" }
       ];
       localStorage.setItem('orbitStudentDB', JSON.stringify(defaultStudents));
     }
-
-    renderDBList();
 
     function renderDBList() {
       var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
@@ -119,17 +147,12 @@
     }
 
     function deleteStudent(index) {
-      if(confirm("Are you sure you want to permanently delete this student record? Their portal access will be revoked.")) {
+      if(confirm("Are you sure you want to permanently delete this student record?")) {
         var db = JSON.parse(localStorage.getItem('orbitStudentDB')) || [];
         db.splice(index, 1);
         localStorage.setItem('orbitStudentDB', JSON.stringify(db));
         renderDBList();
       }
-    }
-
-    function lockAdminSession() {
-      sessionStorage.removeItem('orbitAdminUnlocked');
-      window.location.href = "student-login.html";
     }
 
     function saveStudentToDB() {
