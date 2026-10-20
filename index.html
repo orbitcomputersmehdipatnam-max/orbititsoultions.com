@@ -79,7 +79,7 @@
     /* AI Chatbot Widget Floating */
     .chatbot-toggle-btn { position: fixed; bottom: 80px; right: 24px; background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #ffffff; border: none; border-radius: 50px; padding: 12px 20px; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4); z-index: 1500; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; }
     .chatbot-window { position: fixed; bottom: 140px; right: 24px; width: 340px; height: 420px; background: #ffffff; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1600; display: none; flex-direction: column; overflow: hidden; }
-    .chat-header { background: #1e3a8a; color: #ffffff; padding: 12px 16px; font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; align-align: center; }
+    .chat-header { background: #1e3a8a; color: #ffffff; padding: 12px 16px; font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
     .chat-body { flex: 1; padding: 14px; overflow-y: auto; font-size: 13px; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
     .chat-msg { max-width: 80%; padding: 8px 12px; border-radius: 10px; line-height: 1.4; }
     .chat-msg.bot { background: #e0f2fe; color: #0369a1; align-self: flex-start; }
@@ -345,7 +345,7 @@
       <ul class="feature-list">
         <li>👨‍🏫 Well-Experienced Industry Expert Trainers</li>
         <li>💻 Hands-On Real-Time Practical Projects</li>
-        <li>🏢 Located at Safa Arcade, Mehdipatnam Center</li>
+        <li>🏢 Located at Safa Arcade, 2nd & 3rd Floor, Mehdipatnam Center</li>
         <li>⚡ Dedicated Lab Support & Resume Preparation</li>
       </ul>
     </section>
@@ -406,7 +406,7 @@
     <!-- Section 7 & 8: Contact Details & Google Map -->
     <section id="contact" class="glass-card" style="scroll-margin-top: 90px;">
       <h2 class="section-title">Contact & Institute Location</h2>
-      <p style="text-align: center; font-size: 14px; color: #334155; margin-bottom: 8px;"><strong>Address:</strong> Orbit IT Solutions, Safa Arcade, 2nd Floor, Mehdipatnam, Hyderabad, Telangana - 500028</p>
+      <p style="text-align: center; font-size: 14px; color: #334155; margin-bottom: 8px;"><strong>Address:</strong> Orbit IT Solutions, Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad, Telangana - 500028</p>
       <p style="text-align: center; font-size: 14px; color: #334155; margin-bottom: 22px;"><strong>Contact Numbers:</strong> +91 9985153068 / +91 8142320923</p>
 
       <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;">
@@ -475,7 +475,7 @@
   </div>
 
   <footer>
-    &copy; 2026 Orbit IT Solutions, Safa Arcade, Mehdipatnam, Hyderabad. All Rights Reserved.
+    &copy; 2026 Orbit IT Solutions, Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad. All Rights Reserved.
   </footer>
 
   <script>
@@ -499,7 +499,7 @@
       body.innerHTML += `<div class="chat-msg user">${input.value}</div>`;
       input.value = "";
 
-      var reply = "Thank you for asking! For course details and admissions, please contact +91 9985153068 or visit Safa Arcade, Mehdipatnam.";
+      var reply = "Thank you for asking! For course details and admissions, please contact +91 9985153068 or visit Safa Arcade, 2nd & 3rd Floor, Mehdipatnam.";
       
       if(txt.includes('fee') || txt.includes('cost') || txt.includes('price')) {
         reply = "Our course fees are very affordable with flexible installments! Please call or WhatsApp +91 9985153068 for fee structures.";
@@ -508,7 +508,7 @@
       } else if(txt.includes('python') || txt.includes('ai') || txt.includes('java')) {
         reply = "We offer Full Stack Python with AI, Full Stack Java, Data Science, and Machine Learning starting 22nd Oct 2026!";
       } else if(txt.includes('location') || txt.includes('address') || txt.includes('where')) {
-        reply = "We are located at: Safa Arcade, 2nd Floor, Mehdipatnam, Hyderabad - 500028.";
+        reply = "We are located at: Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad - 500028.";
       } else if(txt.includes('placement') || txt.includes('job') || txt.includes('intern')) {
         reply = "We maintain a 95% placement record with guaranteed internships for students pursuing education!";
       }
@@ -557,21 +557,5 @@
       event.target.reset();
     }
   </script>
-  <script>
-  window.addEventListener('load', function() {
-    // Prevents sending duplicate alerts every time the same visitor refreshes
-    if (!sessionStorage.getItem('visited')) {
-      sessionStorage.setItem('visited', 'true');
-      
-      var phone = "919985153068"; // Your phone number with country code
-      var apiKey = "YOUR_CALLMEBOT_API_KEY"; // Replace with your key
-      var message = encodeURIComponent("🔔 New Visitor landed on Orbit IT Solutions Website!");
-
-      fetch(`https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${message}&apikey=${apiKey}`, {
-        mode: 'no-cors'
-      });
-    }
-  });
-</script>
 </body>
 </html>
