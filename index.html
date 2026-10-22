@@ -45,13 +45,19 @@
     /* Cards & Grids */
     .glass-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 20px; }
-    .course-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+    .course-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
     .course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12); border-color: #93c5fd; }
     .course-img { width: 100%; height: 160px; object-fit: cover; }
-    .course-content { padding: 22px; }
+    .course-content { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .course-content h3 { font-size: 17px; color: #1e3a8a; margin-bottom: 8px; font-weight: 700; }
-    .course-content p { font-size: 13px; color: #475569; margin-bottom: 16px; }
-    .download-btn { display: inline-block; background: #2563eb; color: #ffffff; padding: 9px 18px; border-radius: 6px; text-decoration: none; font-size: 12.5px; font-weight: 600; border: none; cursor: pointer; transition: background 0.2s; }
+    .course-content p { font-size: 13px; color: #475569; margin-bottom: 12px; }
+    
+    /* Course Meta Badge Box */
+    .course-meta { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .meta-tag { background: #e0f2fe; color: #0369a1; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 6px; border: 1px solid #bae6fd; }
+    .meta-tag.fee { background: #dcfce7; color: #15803d; border-color: #86efac; }
+
+    .download-btn { display: inline-block; background: #2563eb; color: #ffffff; padding: 9px 18px; border-radius: 6px; text-decoration: none; font-size: 12.5px; font-weight: 600; border: none; cursor: pointer; transition: background 0.2s; width: 100%; text-align: center; }
     .download-btn:hover { background: #1d4ed8; }
 
     /* Accreditations Box */
@@ -95,7 +101,7 @@
 
   <!-- Top Announcement Bar -->
   <div class="top-announcement">
-    <span>NEW BATCH ADMISSION</span> New Batches Starting From <strong>26th Oct 2026</strong>! Call/WhatsApp: <strong>+91 9985153068</strong> / <strong>+91 8142320923</strong>
+    <span>NEW BATCH ADMISSION</span> New Batches Starting From <strong>22nd Oct 2026</strong>! Call/WhatsApp: <strong>+91 9985153068</strong> / <strong>+91 8142320923</strong>
   </div>
 
   <!-- Floating WhatsApp Button -->
@@ -174,7 +180,7 @@
     <p>Orbit IT Solutions (Established 1997, Safa Arcade, Mehdipatnam) provides 100% practical lab-oriented training backed by guaranteed internships and a 95% MNC placement track record.</p>
     
     <div style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255,255,255,0.4); display: inline-block; padding: 8px 20px; border-radius: 30px; margin-bottom: 20px;">
-      <p style="color: #ffffff; font-weight: 700; font-size: 14.5px; margin: 0;">🔥 New Batches Starting From 26th Oct 2026 — Reserve Your Seat Today!</p>
+      <p style="color: #ffffff; font-weight: 700; font-size: 14.5px; margin: 0;">🔥 New Batches Starting From 22nd Oct 2026 — Reserve Your Seat Today!</p>
     </div>
     <br>
     <a href="https://wa.me/919985153068" class="cta-btn">Book Free Counseling on WhatsApp</a>
@@ -186,102 +192,223 @@
     <section id="courses" style="scroll-margin-top: 90px;">
       <h2 class="section-title">Explore Our Professional Courses</h2>
       <div class="grid">
+        
+        <!-- Course 1 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Cybersecurity">
           <div class="course-content">
-            <h3>Cybersecurity & Ethical Hacking</h3>
-            <p>Network security, penetration testing, ethical hacking tools, and threat analysis.</p>
-            <button class="download-btn" onclick="openLeadModal('Cybersecurity')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Cybersecurity & Ethical Hacking</h3>
+              <p>Network security, penetration testing, ethical hacking tools, and threat analysis.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 2 Months</span>
+                <span class="meta-tag fee">💰 ₹18,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Cybersecurity')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 2 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" class="course-img" alt="AI ML DL">
           <div class="course-content">
-            <h3>AI, Machine Learning & Deep Learning</h3>
-            <p>Python AI libraries, neural networks, PyTorch, TensorFlow, and computer vision models.</p>
-            <button class="download-btn" onclick="openLeadModal('AI ML DL')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>AI, Machine Learning & Deep Learning</h3>
+              <p>Python AI libraries, neural networks, PyTorch, TensorFlow, and computer vision models.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 4 Months</span>
+                <span class="meta-tag fee">💰 ₹28,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('AI ML DL')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 3 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Full Stack Python">
           <div class="course-content">
-            <h3>Full Stack Python using AI</h3>
-            <p>Python, Django framework, REST APIs, React, MySQL, and OpenAI API integration.</p>
-            <button class="download-btn" onclick="openLeadModal('Full Stack Python using AI')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Full Stack Python using AI</h3>
+              <p>Python, Django framework, REST APIs, React, MySQL, and OpenAI API integration.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 6 Months</span>
+                <span class="meta-tag fee">💰 ₹35,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Full Stack Python using AI')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 4 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Full Stack Java AI">
           <div class="course-content">
-            <h3>Full Stack Java - AI Integrated</h3>
-            <p>Core Java, Spring Boot, Microservices, Angular/React, and AI code generation tools.</p>
-            <button class="download-btn" onclick="openLeadModal('Full Stack Java AI')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Full Stack Java - AI Integrated</h3>
+              <p>Core Java, Spring Boot, Microservices, Angular/React, and AI code generation tools.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 6 Months</span>
+                <span class="meta-tag fee">💰 ₹35,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Full Stack Java AI')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 5 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Data Science">
           <div class="course-content">
-            <h3>Data Science Program</h3>
-            <p>Pandas, NumPy, Predictive Analytics, Statistics, and AI-driven predictive modeling.</p>
-            <button class="download-btn" onclick="openLeadModal('Data Science')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Data Science Program</h3>
+              <p>Pandas, NumPy, Predictive Analytics, Statistics, and AI-driven predictive modeling.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 4 Months</span>
+                <span class="meta-tag fee">💰 ₹35,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Data Science')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 6 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Data Analysis">
           <div class="course-content">
-            <h3>Data Analysis & Power BI</h3>
-            <p>Advanced Excel, SQL Server, Power BI Dashboards, DAX queries, and business intelligence.</p>
-            <button class="download-btn" onclick="openLeadModal('Data Analysis')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Data Analysis & Power BI</h3>
+              <p>Advanced Excel, SQL Server, Power BI Dashboards, DAX queries, and business intelligence.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 6 Months</span>
+                <span class="meta-tag fee">💰 ₹35,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Data Analysis')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 7 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Cloud Azure & AWS">
           <div class="course-content">
-            <h3>Microsoft Azure & Amazon AWS Cloud</h3>
-            <p>Cloud infrastructure, EC2, Virtual Networks, DevOps pipelines, and cloud administration.</p>
-            <button class="download-btn" onclick="openLeadModal('Azure & AWS Cloud')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Microsoft Azure & Amazon AWS Cloud</h3>
+              <p>Cloud infrastructure, EC2, Virtual Networks, DevOps pipelines, and cloud administration.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 2 Months</span>
+                <span class="meta-tag fee">💰 ₹35,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Azure & AWS Cloud')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 8 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Graphic Designing">
           <div class="course-content">
-            <h3>Graphic Designing & UI/UX</h3>
-            <p>Adobe Photoshop, Illustrator, Canva Pro, Figma prototyping, and brand poster design.</p>
-            <button class="download-btn" onclick="openLeadModal('Graphic Designing')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Graphic Designing & UI/UX</h3>
+              <p>Adobe Photoshop, Illustrator, Canva Pro, Figma prototyping, and brand poster design.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 2 Months</span>
+                <span class="meta-tag fee">💰 ₹18,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Graphic Designing')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 9 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=600&auto=format&fit=crop" class="course-img" alt="App & Web Development">
           <div class="course-content">
-            <h3>App & Web Development</h3>
-            <p>Flutter Mobile Apps, HTML5, CSS3, JavaScript, React Native, and cross-platform apps.</p>
-            <button class="download-btn" onclick="openLeadModal('App & Web Development')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>App & Web Development</h3>
+              <p>Flutter Mobile Apps, HTML5, CSS3, JavaScript, React Native, and cross-platform apps.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 6 Months</span>
+                <span class="meta-tag fee">💰 ₹35,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('App & Web Development')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 10 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=600&auto=format&fit=crop" class="course-img" alt="MS Office & Advanced Excel">
           <div class="course-content">
-            <h3>MS Office & Advanced Excel MIS</h3>
-            <p>MS Word, PowerPoint, Advanced Excel VLOOKUP/XLOOKUP, Pivot Tables, Macros, and MIS reports.</p>
-            <button class="download-btn" onclick="openLeadModal('MS Office & Advanced Excel')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>MS Office & Advanced Excel MIS</h3>
+              <p>MS Word, PowerPoint, Advanced Excel VLOOKUP/XLOOKUP, Pivot Tables, Macros, and MIS reports.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 2 Months</span>
+                <span class="meta-tag fee">💰 ₹8,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('MS Office & Advanced Excel')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 11 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop" class="course-img" alt="SAP S4HANA & Tally GST">
           <div class="course-content">
-            <h3>SAP S4HANA & Tally Prime GST</h3>
-            <p>SAP FICO, Tally Prime with GST filing, e-Way billing, Manual Accounts, and corporate balance sheets.</p>
-            <button class="download-btn" onclick="openLeadModal('SAP S4HANA & Tally GST')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>SAP S4HANA & Tally Prime GST</h3>
+              <p>SAP FICO, Tally Prime with GST filing, e-Way billing, Manual Accounts, and corporate balance sheets.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 5 Months</span>
+                <span class="meta-tag fee">💰 ₹35,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('SAP S4HANA & Tally GST')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
+        <!-- Course 12 -->
         <div class="course-card">
           <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Spoken English & Communication Skills">
           <div class="course-content">
-            <h3>Spoken English & Communication Skills</h3>
-            <p>Grammar fundamentals, vocabulary, professional business etiquette, public speaking, and HR mock interviews.</p>
-            <button class="download-btn" onclick="openLeadModal('Spoken English & Communication Skills')">Download Syllabus (PDF)</button>
+            <div>
+              <h3>Spoken English & Communication Skills</h3>
+              <p>Grammar fundamentals, vocabulary, professional business etiquette, public speaking, and HR mock interviews.</p>
+            </div>
+            <div>
+              <div class="course-meta">
+                <span class="meta-tag">⏱️ 3 Months</span>
+                <span class="meta-tag fee">💰 ₹12,000/-</span>
+              </div>
+              <button class="download-btn" onclick="openLeadModal('Spoken English & Communication Skills')">Download Syllabus (PDF)</button>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -323,7 +450,7 @@
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="coridor1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Corridor 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Corridor 1</div></div>
       </div>
 
-      <!-- Category 4: Outside Area (3 Photos) -->
+      <!-- Category 4: Outside Area -->
       <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🌿 Outside View & Building</h3>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;">
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 1</div></div>
