@@ -331,12 +331,12 @@
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea3.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 3"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 3</div></div>
       </div>
 
-      <!-- Category 5: Stress Free Environment (With Automatic Multi-Filename Fallback) -->
+      <!-- Category 5: Stress Free Environment -->
       <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🌱 Stress Free Environment</h3>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;">
           <img src="stressfreeenvironment.jpeg" 
-               onerror="if (this.src.endsWith('stressfreeenvironment.jpeg')) { this.src='stressfree.jpeg'; } else if (this.src.endsWith('stressfree.jpeg')) { this.src='stressfreeenvironment.jpg'; } else if (this.src.endsWith('stressfreeenvironment.jpg')) { this.src='stressfree.jpg'; }" 
+               onerror="if(!this.dataset.step){this.dataset.step=1;this.src='stressfree.jpeg';}else if(this.dataset.step=='1'){this.dataset.step=2;this.src='stress-free-environment.jpeg';}else if(this.dataset.step=='2'){this.dataset.step=3;this.src='stressfreeenvironment.jpg';}else if(this.dataset.step=='3'){this.dataset.step=4;this.src='stressfree.jpg';}" 
                style="width: 100%; height: 180px; object-fit: cover;" 
                alt="Stress Free Environment">
           <div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Stress Free Environment</div>
