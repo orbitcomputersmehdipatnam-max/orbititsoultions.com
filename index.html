@@ -323,17 +323,24 @@
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="coridor1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Corridor 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Corridor 1</div></div>
       </div>
 
-      <!-- Category 4: Outside Area -->
+      <!-- Category 4: Outside Area (3 Photos) -->
       <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🌿 Outside View & Building</h3>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;">
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 1</div></div>
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea2.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 2"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 2</div></div>
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea3.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 3"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 3</div></div>
       </div>
 
-      <!-- Category 5: Stress Free Environment -->
+      <!-- Category 5: Stress Free Environment (With Automatic Multi-Filename Fallback) -->
       <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🌱 Stress Free Environment</h3>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="stressfreeenvironment.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Stress Free Environment"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Stress Free Environment</div></div>
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;">
+          <img src="stressfreeenvironment.jpeg" 
+               onerror="if (this.src.endsWith('stressfreeenvironment.jpeg')) { this.src='stressfree.jpeg'; } else if (this.src.endsWith('stressfree.jpeg')) { this.src='stressfreeenvironment.jpg'; } else if (this.src.endsWith('stressfreeenvironment.jpg')) { this.src='stressfree.jpg'; }" 
+               style="width: 100%; height: 180px; object-fit: cover;" 
+               alt="Stress Free Environment">
+          <div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Stress Free Environment</div>
+        </div>
       </div>
     </section>
 
