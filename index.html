@@ -419,13 +419,14 @@
         Explore our state-of-the-art facilities at Safa Arcade (2nd & 3rd Floor, Mehdipatnam), designed to provide an optimal learning and professional growth environment.
       </p>
 
-      <!-- Category: Institute Videos (Video 1 updated to video1.mov) -->
+      <!-- Category: Institute Videos (Exact uppercase match video1.MOV) -->
       <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🎥 Institute Videos</h3>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 30px;">
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;">
-          <video controls style="width: 100%; height: 180px; object-fit: cover; background: #000;">
+          <video controls playsinline style="width: 100%; height: 220px; object-fit: cover; background: #000;">
+            <source src="video1.MOV" type="video/mp4">
+            <source src="video1.MOV" type="video/quicktime">
             <source src="video1.mov" type="video/quicktime">
-            <source src="video1.mov" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Video 1</div>
@@ -475,10 +476,7 @@
       <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🌱 Stress Free Environment</h3>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;">
-          <img src="stressfreeenvironment.jpeg" 
-               onerror="if(!this.dataset.step){this.dataset.step=1;this.src='stressfree.jpeg';}else if(this.dataset.step=='1'){this.dataset.step=2;this.src='stress-free-environment.jpeg';}else if(this.dataset.step=='2'){this.dataset.step=3;this.src='stressfreeenvironment.jpg';}else if(this.dataset.step=='3'){this.dataset.step=4;this.src='stressfree.jpg';}" 
-               style="width: 100%; height: 180px; object-fit: cover;" 
-               alt="Stress Free Environment">
+          <img src="stressfreeenvironment.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Stress Free Environment">
           <div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Stress Free Environment</div>
         </div>
       </div>
