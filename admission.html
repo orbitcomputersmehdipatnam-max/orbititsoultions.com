@@ -93,26 +93,13 @@
           <input type="email" name="Email_Address" class="form-input" placeholder="student@example.com" required>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Course Enrolled In *</label>
-          <select name="Enrolled_Course" class="form-select" required>
-            <option value="">-- Select Course --</option>
-            <option value="Cybersecurity & Ethical Hacking">Cybersecurity & Ethical Hacking (2 Months - ₹18,000/-)</option>
-            <option value="AI, Machine Learning & Deep Learning">AI, Machine Learning & Deep Learning (4 Months - ₹28,000/-)</option>
-            <option value="Full Stack Python using AI">Full Stack Python using AI (6 Months - ₹35,000/-)</option>
-            <option value="Full Stack Java - AI Integrated">Full Stack Java - AI Integrated (6 Months - ₹35,000/-)</option>
-            <option value="Data Science Program">Data Science Program (4 Months - ₹35,000/-)</option>
-            <option value="Data Analysis & Power BI">Data Analysis & Power BI (6 Months - ₹35,000/-)</option>
-            <option value="Microsoft Azure & Amazon AWS Cloud">Microsoft Azure & Amazon AWS Cloud (2 Months - ₹35,000/-)</option>
-            <option value="Graphic Designing & UI/UX">Graphic Designing & UI/UX (2 Months - ₹18,000/-)</option>
-            <option value="App & Web Development">App & Web Development (6 Months - ₹35,000/-)</option>
-            <option value="MS Office & Advanced Excel MIS">MS Office & Advanced Excel MIS (2 Months - ₹8,000/-)</option>
-            <option value="SAP S4HANA & Tally Prime GST">SAP S4HANA & Tally Prime GST (5 Months - ₹35,000/-)</option>
-            <option value="Spoken English & Communication Skills">Spoken English & Communication Skills (3 Months - ₹12,000/-)</option>
-          </select>
+        <!-- Course Input Field (Blank Text Input) -->
+        <div class="form-group full-width">
+          <label class="form-label">Course *</label>
+          <input type="text" name="Course_Name" class="form-input" placeholder="Enter course name" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group full-width">
           <label class="form-label">Batch Timing Preference *</label>
           <select name="Batch_Timing" class="form-select" required>
             <option value="">-- Select Batch Timing --</option>
@@ -123,14 +110,15 @@
           </select>
         </div>
 
+        <!-- Updated Fee Labels -->
         <div class="form-group">
-          <label class="form-label">Total Course Fee Agreed (₹) *</label>
-          <input type="text" name="Total_Fee_Agreed" class="form-input" placeholder="e.g. 18000" required>
+          <label class="form-label">Total Fee (₹) *</label>
+          <input type="text" name="Total_Fee" class="form-input" placeholder="e.g. 18000" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Initial Fee Paid / Advance (₹) *</label>
-          <input type="text" name="Fee_Paid_Advance" class="form-input" placeholder="e.g. 5000" required>
+          <label class="form-label">Fees Paid (₹) *</label>
+          <input type="text" name="Fees_Paid" class="form-input" placeholder="e.g. 5000" required>
         </div>
       </div>
 
@@ -160,30 +148,4 @@
         <!-- Generated QR Code Container -->
         <div id="qrcode"></div>
         
-        <p style="font-size: 11px; color: #2563eb; font-weight: 600;">www.orbititsoultions.com/admission.html</p>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    // Automatically generate QR code for this page URL
-    window.onload = function() {
-      new QRCode(document.getElementById("qrcode"), {
-        text: window.location.href,
-        width: 150,
-        height: 150,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-      });
-
-      // Show alert if returned after submitting form
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('status') === 'success') {
-        alert("✅ Admission form submitted successfully! Details sent to director email.");
-      }
-    };
-  </script>
-</body>
-</html>
+        <p style="font-size: 1
