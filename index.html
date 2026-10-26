@@ -548,9 +548,10 @@
     </section>
 
     <!-- Section: Student Portal -->
+    <!-- Section: Student Portal -->
     <section id="portal" class="glass-card" style="scroll-margin-top: 90px;">
       <h2 class="section-title">Student Portal Login</h2>
-      <p style="color: #64748b; font-size: 13.5px; text-align: center; margin-bottom: 22px;">Enter your details below to access your enrolled course notes and study materials.</p>
+      <p style="color: #64748b; font-size: 13.5px; text-align: center; margin-bottom: 22px;">Enter your details and unique course access code below to unlock your curriculum notes.</p>
       
       <form style="max-width: 440px; margin: 0 auto;" onsubmit="handleStudentLogin(event)">
         <div class="form-group">
@@ -558,16 +559,20 @@
           <input type="text" id="studentName" class="form-input" placeholder="Enter your full name" required>
         </div>
         <div class="form-group">
-          <label class="form-label">Contact Number (Password)</label>
-          <input type="tel" id="studentPass" class="form-input" placeholder="Enter mobile number" required>
+          <label class="form-label">Contact Number</label>
+          <input type="tel" id="studentPhone" class="form-input" placeholder="Enter mobile number" required>
         </div>
-        <button type="submit" class="submit-btn">Login to Download Notes</button>
+        <div class="form-group">
+          <label class="form-label">Unique Course Access Code</label>
+          <input type="password" id="courseAccessCode" class="form-input" placeholder="Enter unique 5-digit course code" maxlength="5" required>
+        </div>
+        <button type="submit" class="submit-btn">Login & Unlock Notes</button>
       </form>
 
-      <div id="studentDashboardOutput" style="display: none; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 22px;">
-        <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 10px; font-weight: 700;" id="welcomeStudentHeading">Welcome, Student!</h3>
-        <p style="font-size: 13.5px; color: #475569; margin-bottom: 16px;">Your course notes access is verified. Click below to download your full curriculum PDF notes.</p>
-        <button class="cta-btn" style="padding: 11px 24px; font-size: 13.5px;" onclick="alert('Downloading your complete course notes & lab manuals...')">📥 Download Complete Notes PDF</button>
+      <div id="studentDashboardOutput" style="display: none; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 22px; text-align: center;">
+        <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 6px; font-weight: 700;" id="welcomeStudentHeading">Welcome, Student!</h3>
+        <p style="font-size: 14px; color: #16a34a; font-weight: 600; margin-bottom: 16px;" id="unlockedCourseName">Course Unlocked Successfully!</p>
+        <button class="cta-btn" style="padding: 11px 24px; font-size: 13.5px;" onclick="alert('Downloading your course PDF notes...')">📥 Download Course Notes PDF</button>
       </div>
     </section>
 
