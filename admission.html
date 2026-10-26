@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Admission Form | Orbit IT Solutions Mehdipatnam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- QRCode.js Library to generate QR Code dynamically -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f1f5f9; color: #0f172a; line-height: 1.6; padding: 20px 10px; }
+    
+    .container { max-width: 760px; margin: 20px auto; background: #ffffff; border-radius: 18px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+    .header-box { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 25px; }
+    .header-box h1 { color: #1e3a8a; font-size: 26px; font-weight: 800; }
+    .header-box p { font-size: 13.5px; color: #475569; }
+
+    /* Grid Layout */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group.full-width { grid-column: 1 / -1; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #334155; }
+    .form-input, .form-select { width: 100%; padding: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; color: #0f172a; font-size: 13.5px; outline: none; transition: border 0.2s; }
+    .form-input:focus, .form-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* Rules & Terms Box */
+    .terms-box { background: #fff5f5; border: 1px solid #fca5a5; border-radius: 12px; padding: 20px; margin: 20px 0; }
+    .terms-box h3 { color: #dc2626; font-size: 15px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .terms-box ul { font-size: 13px; color: #450a0a; padding-left: 20px; margin-bottom: 14px; }
+    .terms-box ul li { margin-bottom: 8px; }
+    .checkbox-label { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; color: #0f172a; cursor: pointer; }
+
+    /* Submit Button */
+    .submit-btn { width: 100%; padding: 15px; background: #22c55e; border: none; border-radius: 10px; color: #ffffff; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3); }
+    .submit-btn:hover { background: #16a34a; }
+
+    /* QR Display Box */
+    .qr-section { margin-top: 40px; padding-top: 25px; border-top: 2px dashed #cbd5e1; text-align: center; }
+    .qr-card { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 16px; padding: 20px; display: inline-block; }
+    #qrcode { display: flex; justify-content: center; margin: 15px 0; }
+    
+    @media print {
+      .container { box-shadow: none; border: none; }
+      .submit-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <div class="header-box">
+      <h1>ORBIT IT SOLUTIONS</h1>
+      <p>Safa Arcade, 3rd Floor, Mehdipatnam, Hyderabad | Contact: +91 9985153068 / +91 8142320923</p>
+      <div style="background: #e0f2fe; color: #0369a1; padding: 6px 16px; border-radius: 20px; display: inline-block; margin-top: 10px; font-size: 12.5px; font-weight: 700;">
+        📝 Official Student Admission Form
+      </div>
+    </div>
+
+    <!-- Form Sending Directly to Email via FormSubmit -->
+    <form action="https://formsubmit.co/orbitcomputersmehdipatnam@gmail.com" method="POST">
+      
+      <!-- Redirect & Subject Settings -->
+      <input type="hidden" name="_next" value="https://www.orbititsoultions.com/admission.html?status=success">
+      <input type="hidden" name="_subject" value="🚨 New Admission Registration Submitted!">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="grid">
+        <div class="form-group">
+          <label class="form-label">Student Full Name *</label>
+          <input type="text" name="Student_Name" class="form-input" placeholder="Enter full name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Father's / Guardian's Name *</label>
+          <input type="text" name="Father_Name" class="form-input" placeholder="Enter father's name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mobile Number *</label>
+          <input type="tel" name="Mobile_Number" class="form-input" placeholder="10-digit mobile number" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">WhatsApp Number *</label>
+          <input type="tel" name="WhatsApp_Number" class="form-input" placeholder="WhatsApp contact number" required>
+        </div>
+
+        <div class="form-group full-width">
+          <label class="form-label">Email Address *</label>
+          <input type="email" name="Email_Address" class="form-input" placeholder="student@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Course Enrolled In *</label>
+          <select name="Enrolled_Course" class="form-select" required>
+            <option value="">-- Select Course --</option>
+            <option value="Cybersecurity & Ethical Hacking">Cybersecurity & Ethical Hacking (2 Months - ₹18,000/-)</option>
+            <option value="AI, Machine Learning & Deep Learning">AI, Machine Learning & Deep Learning (4 Months - ₹28,000/-)</option>
+            <option value="Full Stack Python using AI">Full Stack Python using AI (6 Months - ₹35,000/-)</option>
+            <option value="Full Stack Java - AI Integrated">Full Stack Java - AI Integrated (6 Months - ₹35,000/-)</option>
+            <option value="Data Science Program">Data Science Program (4 Months - ₹35,000/-)</option>
+            <option value="Data Analysis & Power BI">Data Analysis & Power BI (6 Months - ₹35,000/-)</option>
+            <option value="Microsoft Azure & Amazon AWS Cloud">Microsoft Azure & Amazon AWS Cloud (2 Months - ₹35,000/-)</option>
+            <option value="Graphic Designing & UI/UX">Graphic Designing & UI/UX (2 Months - ₹18,000/-)</option>
+            <option value="App & Web Development">App & Web Development (6 Months - ₹35,000/-)</option>
+            <option value="MS Office & Advanced Excel MIS">MS Office & Advanced Excel MIS (2 Months - ₹8,000/-)</option>
+            <option value="SAP S4HANA & Tally Prime GST">SAP S4HANA & Tally Prime GST (5 Months - ₹35,000/-)</option>
+            <option value="Spoken English & Communication Skills">Spoken English & Communication Skills (3 Months - ₹12,000/-)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Batch Timing Preference *</label>
+          <select name="Batch_Timing" class="form-select" required>
+            <option value="">-- Select Batch Timing --</option>
+            <option value="Morning Batch">Morning Batch</option>
+            <option value="Afternoon Batch">Afternoon Batch</option>
+            <option value="Evening Batch">Evening Batch</option>
+            <option value="Weekend Batch">Weekend Batch</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Total Course Fee Agreed (₹) *</label>
+          <input type="text" name="Total_Fee_Agreed" class="form-input" placeholder="e.g. 18000" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Initial Fee Paid / Advance (₹) *</label>
+          <input type="text" name="Fee_Paid_Advance" class="form-input" placeholder="e.g. 5000" required>
+        </div>
+      </div>
+
+      <!-- Terms & Conditions Section -->
+      <div class="terms-box">
+        <h3>⚠️ Terms & Conditions Policy</h3>
+        <ul>
+          <li><strong>Absence & Break Fee:</strong> If a student remains absent for <strong>1 week (7 consecutive days) without prior written permission/information</strong>, a re-joining break fee of <strong>₹1,000/-</strong> must be paid before resuming classes.</li>
+          <li><strong>Non-Refundable Policy:</strong> Fees once paid (registration fee, tuition fee, or installments) are strictly <strong>non-refundable and non-transferable</strong> under any circumstances.</li>
+        </ul>
+
+        <label class="checkbox-label">
+          <input type="checkbox" name="Terms_Accepted" value="Yes" required style="margin-top: 3px;">
+          <span>I have read, understood, and accept all the terms, conditions, break fee rules, and refund policies of Orbit IT Solutions.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Admission Form</button>
+    </form>
+
+    <!-- Scan & Print QR Code Section for Front Desk Counter -->
+    <div class="qr-section">
+      <div class="qr-card">
+        <h3 style="color: #1e3a8a; font-size: 15px; font-weight: 700;">📱 Scan to Open Admission Form</h3>
+        <p style="font-size: 12px; color: #64748b;">Scan this QR code using your mobile camera or WhatsApp to open this form directly on your phone.</p>
+        
+        <!-- Generated QR Code Container -->
+        <div id="qrcode"></div>
+        
+        <p style="font-size: 11px; color: #2563eb; font-weight: 600;">www.orbititsoultions.com/admission.html</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Automatically generate QR code for this page URL
+    window.onload = function() {
+      new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 150,
+        height: 150,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+
+      // Show alert if returned after submitting form
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('status') === 'success') {
+        alert("✅ Admission form submitted successfully! Details sent to director email.");
+      }
+    };
+  </script>
+</body>
+</html>
