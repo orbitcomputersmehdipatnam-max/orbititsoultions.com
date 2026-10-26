@@ -3,551 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orbit IT Solutions | Premier IT & Accounts Training Institute Mehdipatnam</title>
+  <title>Orbit IT Solutions | Software & Accounts Training Institute Mehdipatnam</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-    body { background-color: #f1f5f9; color: #0f172a; line-height: 1.6; }
+    body { background-color: #f8fafc; color: #0f172a; line-height: 1.6; }
 
-    /* Top Announcement Bar */
-    .top-announcement { background: #dc2626; color: #ffffff; text-align: center; padding: 12px 15px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25); border-bottom: 2px solid #b91c1c; }
-    .top-announcement span { background: #ffffff; color: #dc2626; padding: 3px 10px; border-radius: 6px; font-weight: 800; margin-right: 8px; text-transform: uppercase; font-size: 12px; }
+    /* Header & Navigation */
+    header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+    .logo { font-size: 20px; font-weight: 800; color: #1e3a8a; text-decoration: none; }
+    nav { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    nav a { text-decoration: none; color: #334155; font-size: 13.5px; font-weight: 500; transition: color 0.2s; padding: 6px 10px; border-radius: 6px; }
+    nav a:hover { color: #2563eb; background: #f1f5f9; }
 
-    /* Header Navigation */
-    header { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 12px 24px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-    .top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 1240px; margin: 0 auto; flex-wrap: wrap; gap: 14px; }
-    
-    /* Logo Container */
-    .brand-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-img-wrapper { display: flex; align-items: center; justify-content: center; background: #000000; padding: 4px 8px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .logo-svg { width: 140px; height: 50px; }
+    /* Main Container */
+    .main-container { max-width: 1000px; margin: 30px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
+    .glass-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    .section-title { color: #1e3a8a; font-size: 24px; font-weight: 800; text-align: center; margin-bottom: 8px; }
 
-    /* Nav Links */
-    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-    nav a { color: #334155; text-decoration: none; padding: 8px 14px; font-size: 13px; font-weight: 600; border-radius: 8px; transition: all 0.2s ease; }
-    nav a:hover { background: #e0f2fe; color: #0284c7; }
-
-    /* Hero Section */
-    .hero { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #ffffff; padding: 60px 20px; text-align: center; border-bottom: 4px solid #1d4ed8; }
-    .hero h1 { font-size: 34px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .hero p { font-size: 15px; max-width: 820px; margin: 0 auto 20px auto; color: #e0e7ff; }
-    
-    .badge-bar { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
-    .hero-badge { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4); color: #ffffff; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; backdrop-filter: blur(4px); }
-    
-    .cta-btn { display: inline-block; background: #22c55e; color: #ffffff; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14.5px; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); transition: transform 0.2s, background 0.2s; }
-    .cta-btn:hover { background: #16a34a; transform: translateY(-2px); }
-
-    .container { max-width: 1240px; margin: 40px auto; padding: 0 20px; }
-    .section-title { font-size: 24px; color: #1e3a8a; margin-bottom: 20px; font-weight: 800; text-align: center; position: relative; }
-    .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #2563eb; margin: 8px auto 0 auto; border-radius: 2px; }
-
-    /* Cards & Grids */
-    .glass-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 20px; }
-    .course-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
-    .course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12); border-color: #93c5fd; }
-    .course-img { width: 100%; height: 160px; object-fit: cover; }
-    .course-content { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .course-content h3 { font-size: 17px; color: #1e3a8a; margin-bottom: 8px; font-weight: 700; }
-    .course-content p { font-size: 13px; color: #475569; margin-bottom: 12px; }
-    
-    /* Course Meta Badge Box */
-    .course-meta { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-    .meta-tag { background: #e0f2fe; color: #0369a1; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 6px; border: 1px solid #bae6fd; }
-    .meta-tag.fee { background: #dcfce7; color: #15803d; border-color: #86efac; }
-
-    .download-btn { display: inline-block; background: #2563eb; color: #ffffff; padding: 9px 18px; border-radius: 6px; text-decoration: none; font-size: 12.5px; font-weight: 600; border: none; cursor: pointer; transition: background 0.2s; width: 100%; text-align: center; }
-    .download-btn:hover { background: #1d4ed8; }
-
-    /* Accreditations Box */
-    .accreditation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px; }
-    .accred-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; text-align: center; }
-    .accred-box h4 { color: #1e3a8a; font-size: 15px; margin-bottom: 6px; font-weight: 700; }
-    .accred-box p { font-size: 12.5px; color: #475569; }
-
-    .feature-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px; }
-    .feature-list li { background: #f8fafc; padding: 14px 18px; border-radius: 10px; border-left: 4px solid #2563eb; font-size: 13.5px; color: #334155; font-weight: 500; border: 1px solid #e2e8f0; }
-
-    /* Forms */
+    /* Forms & Inputs */
     .form-group { margin-bottom: 16px; }
     .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #334155; }
-    .form-input, .form-select, .form-textarea { width: 100%; padding: 12px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; color: #0f172a; font-size: 13.5px; }
-    .submit-btn { width: 100%; padding: 13px; background: #2563eb; border: none; border-radius: 8px; color: #ffffff; font-weight: 700; cursor: pointer; font-size: 14px; }
+    .form-input, .form-select { width: 100%; padding: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; color: #0f172a; font-size: 13.5px; outline: none; transition: border 0.2s; }
+    .form-input:focus, .form-select:focus { border-color: #2563eb; background: #ffffff; }
 
-    /* Modal Overlay */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; backdrop-filter: blur(4px); }
-    .modal-box { background: #ffffff; padding: 32px; border-radius: 16px; width: 100%; max-width: 420px; border: 1px solid #e2e8f0; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    /* Buttons */
+    .submit-btn, .cta-btn { width: 100%; padding: 14px; background: #2563eb; border: none; border-radius: 10px; color: #ffffff; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); }
+    .submit-btn:hover, .cta-btn:hover { background: #1d4ed8; }
 
-    /* Floating WhatsApp Button */
-    .float-wa { position: fixed; bottom: 24px; right: 24px; background: #25d366; color: #ffffff; border-radius: 50px; padding: 12px 20px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 1500; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 13.5px; }
-
-    /* AI Chatbot Widget Floating */
-    .chatbot-toggle-btn { position: fixed; bottom: 80px; right: 24px; background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #ffffff; border: none; border-radius: 50px; padding: 12px 20px; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4); z-index: 1500; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; }
-    .chatbot-window { position: fixed; bottom: 140px; right: 24px; width: 340px; height: 420px; background: #ffffff; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1600; display: none; flex-direction: column; overflow: hidden; }
-    .chat-header { background: #1e3a8a; color: #ffffff; padding: 12px 16px; font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-    .chat-body { flex: 1; padding: 14px; overflow-y: auto; font-size: 13px; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
-    .chat-msg { max-width: 80%; padding: 8px 12px; border-radius: 10px; line-height: 1.4; }
-    .chat-msg.bot { background: #e0f2fe; color: #0369a1; align-self: flex-start; }
-    .chat-msg.user { background: #2563eb; color: #ffffff; align-self: flex-end; }
-    .chat-footer { display: flex; border-top: 1px solid #e2e8f0; padding: 8px; background: #ffffff; }
-    .chat-input { flex: 1; border: 1px solid #cbd5e1; padding: 8px; border-radius: 6px; font-size: 12.5px; outline: none; }
-    .chat-send-btn { background: #2563eb; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; margin-left: 6px; cursor: pointer; font-weight: 600; font-size: 12px; }
-
-    footer { text-align: center; padding: 25px; color: #64748b; font-size: 13px; border-top: 1px solid #e2e8f0; background: #ffffff; }
+    /* Footer */
+    footer { text-align: center; padding: 30px; background: #1e3a8a; color: #ffffff; margin-top: 50px; font-size: 13.5px; }
   </style>
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-announcement">
-    <span>NEW BATCH ADMISSION</span> New Batches Starting From <strong>26th Oct 2026</strong>! Call/WhatsApp: <strong>+91 9985153068</strong> / <strong>+91 8142320923</strong>
-  </div>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919985153068?text=Hi,%20I%20want%20to%20know%20more%20about%20Orbit%20IT%20Solutions%20courses." class="float-wa" target="_blank">
-    💬 Chat on WhatsApp
-  </a>
-
-  <!-- Floating AI Chatbot Toggle Button -->
-  <button class="chatbot-toggle-btn" onclick="toggleChatbot()">
-    🤖 Orbit AI Assistant
-  </button>
-
-  <!-- AI Chatbot Window Widget -->
-  <div class="chatbot-window" id="chatbotWindow">
-    <div class="chat-header">
-      <span>🤖 Orbit AI Counselor</span>
-      <span style="cursor:pointer;" onclick="toggleChatbot()">✕</span>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="chat-msg bot">Hi! 👋 I am the Orbit IT AI Assistant. Ask me about our courses, fees, batch timings, placements, or location!</div>
-    </div>
-    <div class="chat-footer">
-      <input type="text" id="chatInput" class="chat-input" placeholder="Type message (e.g. Fees, Courses, SAP)..." onkeypress="handleChatKeyPress(event)">
-      <button class="chat-send-btn" onclick="sendChatMessage()">Send</button>
-    </div>
-  </div>
-
-  <!-- Header Navigation -->
+  <!-- Header & Top Navigation -->
   <header>
-    <div class="top-bar">
-      <a href="#home" class="brand-container">
-        <!-- Logo SVG -->
-        <div class="logo-img-wrapper">
-          <svg class="logo-svg" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="blueGlobe" cx="40%" cy="40%" r="60%">
-                <stop offset="0%" stop-color="#38bdf8"/>
-                <stop offset="60%" stop-color="#1d4ed8"/>
-                <stop offset="100%" stop-color="#0f172a"/>
-              </radialGradient>
-            </defs>
-            <circle cx="90" cy="80" r="75" fill="url(#blueGlobe)"/>
-            <path d="M 25 80 C 25 40, 155 40, 155 80 C 155 120, 25 120, 25 80 Z" stroke="#ffffff" stroke-width="4" stroke-dasharray="8 6" fill="none" opacity="0.8"/>
-            <path d="M 45 80 C 45 25, 135 25, 135 80 C 135 135, 45 135, 45 80 Z" stroke="#ffffff" stroke-width="3" stroke-dasharray="6 4" fill="none" opacity="0.6"/>
-            <circle cx="125" cy="85" r="42" stroke="#1e4ed8" stroke-width="18" fill="none"/>
-            <line x1="155" y1="115" x2="225" y2="150" stroke="#1e4ed8" stroke-width="24" stroke-linecap="round"/>
-            <text x="210" y="115" font-family="'Poppins', sans-serif" font-weight="900" font-size="62" fill="#ffffff" letter-spacing="2">ORBIT</text>
-            <text x="215" y="145" font-family="'Poppins', sans-serif" font-weight="700" font-size="16" fill="#38bdf8" letter-spacing="3">TRAINING & DEVELOPMENT</text>
-          </svg>
-        </div>
-      </a>
-      
+    <div class="nav-container">
+      <a href="#home" class="logo">ORBIT IT SOLUTIONS</a>
       <nav>
         <a href="#home">Home</a>
         <a href="#courses">Courses</a>
-        <a href="admission.html" style="background: #22c55e; color: #ffffff !important; font-weight: 700; border-radius: 6px; padding: 6px 12px;">📝 Online Admission</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#about">About Us</a>
-        <a href="#accreditations">Accreditations</a>
-        <a href="#placements">Placements</a>
-        <a href="#modes">Class Modes</a>
+        <a href="admission.html" style="background: #22c55e; color: #ffffff !important; font-weight: 700;">📝 Online Admission</a>
         <a href="#portal">Student Portal</a>
-        <a href="#contact">Contact & Map</a>
-        <a href="#feedback">Feedback</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Section 1: Home -->
-  <section class="hero" id="home">
-    <div class="badge-bar">
-      <span class="hero-badge">🎓 IIT Universities Affiliated</span>
-      <span class="hero-badge">🌐 ISO 9001:2015 Globally Certified</span>
-      <span class="hero-badge">📜 GAD & MEA Attestation Authentic</span>
-    </div>
-    <h1>Master Tech, Accounts & Communication with Industry Experts</h1>
-    <p>Orbit IT Solutions (Established 1997, Safa Arcade, Mehdipatnam) provides 100% practical lab-oriented training backed by guaranteed internships and a 95% MNC placement track record.</p>
-    
-    <div style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255,255,255,0.4); display: inline-block; padding: 8px 20px; border-radius: 30px; margin-bottom: 20px;">
-      <p style="color: #ffffff; font-weight: 700; font-size: 14.5px; margin: 0;">🔥 New Batches Starting From 26th Oct 2026 — Reserve Your Seat Today!</p>
-    </div>
-    <br>
-    <a href="https://wa.me/919985153068" class="cta-btn">Book Free Counseling on WhatsApp</a>
-  </section>
+  <div class="main-container">
 
-  <div class="container">
-
-    <!-- Section 2: Courses -->
-    <section id="courses" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">Explore Our Professional Courses</h2>
-      <div class="grid">
-        
-        <!-- Course 1 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Cybersecurity">
-          <div class="course-content">
-            <div>
-              <h3>Cybersecurity & Ethical Hacking</h3>
-              <p>Network security, penetration testing, ethical hacking tools, and threat analysis.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 2 Months</span>
-                <span class="meta-tag fee">💰 ₹18,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Cybersecurity')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 2 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" class="course-img" alt="AI ML DL">
-          <div class="course-content">
-            <div>
-              <h3>AI, Machine Learning & Deep Learning</h3>
-              <p>Python AI libraries, neural networks, PyTorch, TensorFlow, and computer vision models.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 4 Months</span>
-                <span class="meta-tag fee">💰 ₹28,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('AI ML DL')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 3 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Full Stack Python">
-          <div class="course-content">
-            <div>
-              <h3>Full Stack Python using AI</h3>
-              <p>Python, Django framework, REST APIs, React, MySQL, and OpenAI API integration.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 6 Months</span>
-                <span class="meta-tag fee">💰 ₹35,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Full Stack Python using AI')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 4 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Full Stack Java AI">
-          <div class="course-content">
-            <div>
-              <h3>Full Stack Java - AI Integrated</h3>
-              <p>Core Java, Spring Boot, Microservices, Angular/React, and AI code generation tools.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 6 Months</span>
-                <span class="meta-tag fee">💰 ₹35,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Full Stack Java AI')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 5 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Data Science">
-          <div class="course-content">
-            <div>
-              <h3>Data Science Program</h3>
-              <p>Pandas, NumPy, Predictive Analytics, Statistics, and AI-driven predictive modeling.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 4 Months</span>
-                <span class="meta-tag fee">💰 ₹35,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Data Science')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 6 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Data Analysis">
-          <div class="course-content">
-            <div>
-              <h3>Data Analysis & Power BI</h3>
-              <p>Advanced Excel, SQL Server, Power BI Dashboards, DAX queries, and business intelligence.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 6 Months</span>
-                <span class="meta-tag fee">💰 ₹35,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Data Analysis')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 7 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Cloud Azure & AWS">
-          <div class="course-content">
-            <div>
-              <h3>Microsoft Azure & Amazon AWS Cloud</h3>
-              <p>Cloud infrastructure, EC2, Virtual Networks, DevOps pipelines, and cloud administration.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 2 Months</span>
-                <span class="meta-tag fee">💰 ₹35,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Azure & AWS Cloud')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 8 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Graphic Designing">
-          <div class="course-content">
-            <div>
-              <h3>Graphic Designing & UI/UX</h3>
-              <p>Adobe Photoshop, Illustrator, Canva Pro, Figma prototyping, and brand poster design.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 2 Months</span>
-                <span class="meta-tag fee">💰 ₹18,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Graphic Designing')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 9 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=600&auto=format&fit=crop" class="course-img" alt="App & Web Development">
-          <div class="course-content">
-            <div>
-              <h3>App & Web Development</h3>
-              <p>Flutter Mobile Apps, HTML5, CSS3, JavaScript, React Native, and cross-platform apps.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 6 Months</span>
-                <span class="meta-tag fee">💰 ₹35,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('App & Web Development')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 10 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=600&auto=format&fit=crop" class="course-img" alt="MS Office & Advanced Excel">
-          <div class="course-content">
-            <div>
-              <h3>MS Office & Advanced Excel MIS</h3>
-              <p>MS Word, PowerPoint, Advanced Excel VLOOKUP/XLOOKUP, Pivot Tables, Macros, and MIS reports.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 2 Months</span>
-                <span class="meta-tag fee">💰 ₹6,500/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('MS Office & Advanced Excel')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 11 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop" class="course-img" alt="SAP S4HANA & Tally GST">
-          <div class="course-content">
-            <div>
-              <h3>SAP S4HANA & Tally Prime GST</h3>
-              <p>SAP FICO, Tally Prime with GST filing, e-Way billing, Manual Accounts, and corporate balance sheets.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 5 Months</span>
-                <span class="meta-tag fee">💰 ₹35,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('SAP S4HANA & Tally GST')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course 12 -->
-        <div class="course-card">
-          <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop" class="course-img" alt="Spoken English & Communication Skills">
-          <div class="course-content">
-            <div>
-              <h3>Spoken English & Communication Skills</h3>
-              <p>Grammar fundamentals, vocabulary, professional business etiquette, public speaking, and HR mock interviews.</p>
-            </div>
-            <div>
-              <div class="course-meta">
-                <span class="meta-tag">⏱️ 3 Months</span>
-                <span class="meta-tag fee">💰 ₹12,200/-</span>
-              </div>
-              <button class="download-btn" onclick="openLeadModal('Spoken English & Communication Skills')">Download Syllabus (PDF)</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Section: Institute Gallery & Campus -->
-    <section id="gallery" class="glass-card" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">Institute Gallery & Campus</h2>
-      <p style="color: #475569; font-size: 14px; text-align: center; max-width: 850px; margin: 0 auto 25px auto;">
-        Explore our state-of-the-art facilities at Safa Arcade (2nd & 3rd Floor, Mehdipatnam), designed to provide an optimal learning and professional growth environment.
+    <!-- Section: Home / Hero -->
+    <section id="home" class="glass-card" style="text-align: center; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);">
+      <h1 style="color: #1e3a8a; font-size: 32px; font-weight: 800; margin-bottom: 12px;">Orbit IT Solutions, Mehdipatnam</h1>
+      <p style="color: #475569; font-size: 15px; max-width: 650px; margin: 0 auto 20px;">
+        Premier Software & Accounts Training Institute established in 1997. Master high-demand tech and accounting skills with expert guidance.
       </p>
+      <div style="font-weight: 700; color: #0369a1; font-size: 14px; background: #e0f2fe; padding: 8px 16px; border-radius: 20px; display: inline-block;">
+        🚀 New Batches Starting: 26th October 2026
+      </div>
+    </section>
 
-      <!-- Category: Institute Videos (Exact uppercase match video1.MOV) -->
-      <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🎥 Institute Videos</h3>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 30px;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;">
-          <video controls playsinline style="width: 100%; height: 220px; object-fit: cover; background: #000;">
-            <source src="video1.MOV" type="video/mp4">
-            <source src="video1.MOV" type="video/quicktime">
-            <source src="video1.mov" type="video/quicktime">
-            Your browser does not support the video tag.
-          </video>
-          <div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Video 1</div>
+    <!-- Section: Courses Overview -->
+    <section id="courses" class="glass-card">
+      <h2 class="section-title">Our Professional Training Programs</h2>
+      <p style="text-align: center; color: #64748b; font-size: 13.5px; margin-bottom: 20px;">Industry-aligned courses with hands-on practical training.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+          <h4 style="color: #1e3a8a; margin-bottom: 6px;">Full Stack Python using AI</h4>
+          <p style="font-size: 12.5px; color: #64748b;">Complete python development integrated with modern AI tooling.</p>
         </div>
-      </div>
-
-      <!-- Category 1: Classrooms -->
-      <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🏫 Classrooms</h3>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 1</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom2.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 2"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 2</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom3.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 3"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 3</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom4.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 4"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 4</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom5.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 5"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 5</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom6.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 6"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 6</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom7.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 7"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 7</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="classroom8.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Classroom 8"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Classroom 8</div></div>
-      </div>
-
-      <!-- Category 2: Computer Labs -->
-      <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">💻 Computer Labs</h3>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="lab1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Lab 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Lab 1</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="lab2.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Lab 2"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Lab 2</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="lab3.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Lab 3"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Lab 3</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="lab4.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Lab 4"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Lab 4</div></div>
-      </div>
-
-      <!-- Category 3: Front Office, Waiting Area & Corridor -->
-      <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🏢 Reception & Facilities</h3>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="frontoffice1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Front Office 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Front Office 1</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="frontoffice2.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Front Office 2"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Front Office 2</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="waitingarea1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Waiting Area 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Waiting Area 1</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="coridor1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Corridor 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Corridor 1</div></div>
-      </div>
-
-      <!-- Category 4: Outside Area -->
-      <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🌿 Outside View & Building</h3>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea1.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 1"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 1</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea2.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 2"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 2</div></div>
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;"><img src="outsidearea3.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Outside Area 3"><div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Outside Area 3</div></div>
-      </div>
-
-      <!-- Category 5: Stress Free Environment -->
-      <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px; font-weight: 700;">🌱 Stress Free Environment</h3>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;">
-          <img src="stressfreeenvironment.jpeg" style="width: 100%; height: 180px; object-fit: cover;" alt="Stress Free Environment">
-          <div style="padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: #1e3a8a;">Stress Free Environment</div>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+          <h4 style="color: #1e3a8a; margin-bottom: 6px;">Data Science & Power BI</h4>
+          <p style="font-size: 12.5px; color: #64748b;">Master analytics, visualization, and decision intelligence.</p>
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+          <h4 style="color: #1e3a8a; margin-bottom: 6px;">SAP S/4HANA & Tally Prime GST</h4>
+          <p style="font-size: 12.5px; color: #64748b;">Industry-grade accounting and corporate enterprise software training.</p>
         </div>
       </div>
     </section>
 
-    <!-- Accreditations & Certifications Section -->
-    <section id="accreditations" class="glass-card" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">Government Affiliations & Global Certifications</h2>
-      <p style="color: #475569; font-size: 14px; text-align: center; max-width: 850px; margin: 0 auto 20px auto;">
-        Orbit IT Solutions issues certificates recognized globally across domestic companies, MNCs, and government sectors.
-      </p>
-      <div class="accreditation-grid">
-        <div class="accred-box">
-          <h4>🎓 IIT Universities Affiliated</h4>
-          <p>Curriculum structured aligned with premier academic and industrial standards.</p>
-        </div>
-        <div class="accred-box">
-          <h4>🌍 ISO 9001:2015 Certified</h4>
-          <p>Internationally recognized Quality Management System (QMS) validation.</p>
-        </div>
-        <div class="accred-box">
-          <h4>📜 GAD & MEA Attestation</h4>
-          <p>Authentic certification eligible for General Administration Dept (GAD) & Ministry of External Affairs (MEA) Gulf & international embassy attestation.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: About Us -->
-    <section id="about" class="glass-card" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">About Orbit IT Solutions</h2>
-      <p style="color: #475569; font-size: 14px; text-align: center; max-width: 850px; margin: 0 auto 20px auto;">
-        Since 1997, Orbit IT Solutions in Mehdipatnam, Hyderabad, has been a leading training pioneer. Our students get trained here with 100% practical lab exposure and get placed easily in top MNCs because our trainers are well-experienced industry working professionals with over 15+ years of real-world domain expertise.
-      </p>
-      <ul class="feature-list">
-        <li>👨‍🏫 Well-Experienced Industry Expert Trainers</li>
-        <li>💻 Hands-On Real-Time Practical Projects</li>
-        <li>🏢 Located at Safa Arcade, 2nd & 3rd Floor, Mehdipatnam Center</li>
-        <li>⚡ Dedicated Lab Support & Resume Preparation</li>
-      </ul>
-    </section>
-
-    <!-- Section: Placements -->
-    <section id="placements" class="glass-card" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">Placements & Internship Assurance</h2>
-      <p style="color: #475569; font-size: 14px; text-align: center; max-width: 850px; margin: 0 auto 20px auto;">
-        Internships are guaranteed for students who are currently pursuing their education (B.Tech, Degree, MBA) to gain industry exposure. Students who have completed their education are directly placed with our hiring partners. We proudly maintain a <strong>95% placement record</strong> across major multinational companies (MNCs) backed by corporate MoUs.
-      </p>
-      <ul class="feature-list">
-        <li>🎓 Guaranteed Internships for Pursuing Students</li>
-        <li>💼 100% Direct Placement Assistance for Graduates</li>
-        <li>🏆 Proven 95% Placement Track Record</li>
-        <li>🤝 Official MoUs with Multinational Companies (MNCs)</li>
-      </ul>
-    </section>
-
-    <!-- Section: Class Modes -->
-    <section id="modes" class="glass-card" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">Flexible Learning Class Modes</h2>
-      <p style="color: #475569; font-size: 14px; text-align: center; max-width: 850px; margin: 0 auto 20px auto;">
-        We offer both Classroom (Offline) training at Mehdipatnam and Online Live interactive batches. Recorded classes and comprehensive study notes are provided to all students, which they can securely download through their dedicated student portal access.
-      </p>
-      <ul class="feature-list">
-        <li>🏫 Offline Classroom Training at Mehdipatnam</li>
-        <li>🌐 Interactive Live Online Classes</li>
-        <li>📹 High-Quality Recorded Video Access</li>
-        <li>📥 Comprehensive Downloadable Notes & Practice Files</li>
-      </ul>
-    </section>
-
-    <!-- Section: Student Portal -->
     <!-- Section: Student Portal -->
     <section id="portal" class="glass-card" style="scroll-margin-top: 90px;">
       <h2 class="section-title">Student Portal Login</h2>
@@ -576,157 +113,50 @@
       </div>
     </section>
 
-    <!-- Section: Contact Details & Google Map -->
-    <section id="contact" class="glass-card" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">Contact & Institute Location</h2>
-      <p style="text-align: center; font-size: 14px; color: #334155; margin-bottom: 8px;"><strong>Address:</strong> Orbit IT Solutions, Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad, Telangana - 500028</p>
-      <p style="text-align: center; font-size: 14px; color: #334155; margin-bottom: 22px;"><strong>Contact Numbers:</strong> +91 9985153068 / +91 8142320923</p>
-
-      <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;">
-        <a href="https://wa.me/919985153068" target="_blank" style="background: #25d366; color: #fff; padding: 11px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13.5px;">💬 Open WhatsApp Link</a>
-        <a href="tel:9985153068" style="background: #2563eb; color: #fff; padding: 11px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13.5px;">📞 Call Counselor</a>
-      </div>
-
-      <div style="width: 100%; height: 320px; border-radius: 12px; overflow: hidden; border: 1px solid #cbd5e1;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.135222629731!2d78.4385!3d17.3945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9746e5555555%3A0x123456789abcdef!2sMehdipatnam%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
+    <!-- Section: Contact Details -->
+    <section id="contact" class="glass-card">
+      <h2 class="section-title">Contact Us</h2>
+      <p style="text-align: center; color: #475569; font-size: 14px; margin-bottom: 15px;">
+        <strong>Location:</strong> Safa Arcade, 3rd Floor, Opp. Pillar No. 4, Mehdipatnam, Hyderabad<br>
+        <strong>Phone:</strong> +91 9985153068 / +91 8142320923<br>
+        <strong>Email:</strong> orbitcomputersmehdipatnam@gmail.com
+      </p>
     </section>
 
-    <!-- Section: Secured Feedback Form -->
-    <section id="feedback" class="glass-card" style="scroll-margin-top: 90px;">
-      <h2 class="section-title">Secured Student Feedback Form</h2>
-      <p style="text-align: center; font-size: 13px; color: #64748b; margin-bottom: 22px;">🔒 Private Form: Your feedback and joined course details are encrypted and hidden from public website visitors.</p>
-
-      <form style="max-width: 600px; margin: 0 auto;" onsubmit="handlePrivateFeedback(event)">
-        <div class="form-group">
-          <label class="form-label">Full Name</label>
-          <input type="text" id="fbName" class="form-input" placeholder="Your name" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Joined Course</label>
-          <select id="fbCourse" class="form-select" required>
-            <option value="">-- Select Joined Course --</option>
-            <option value="Cybersecurity">Cybersecurity</option>
-            <option value="AI ML DL">AI ML DL</option>
-            <option value="Full Stack Python using AI">Full Stack Python using AI</option>
-            <option value="Full Stack Java AI">Full Stack Java AI</option>
-            <option value="Data Science">Data Science</option>
-            <option value="Data Analysis">Data Analysis</option>
-            <option value="Azure & AWS Cloud">Azure & AWS Cloud</option>
-            <option value="Graphic Designing">Graphic Designing</option>
-            <option value="App & Web Development">App & Web Development</option>
-            <option value="MS Office & Advanced Excel">MS Office & Advanced Excel</option>
-            <option value="SAP S4HANA & Tally GST">SAP S4HANA & Tally GST</option>
-            <option value="Spoken English & Communication Skills">Spoken English & Communication Skills</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Training Feedback & Comments</label>
-          <textarea id="fbComments" class="form-textarea" rows="4" placeholder="Write your feedback..." required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Submit Private Feedback</button>
-      </form>
-    </section>
-
-  </div>
-
-  <!-- Lead Capture Modal -->
-  <div class="modal-overlay" id="leadModal">
-    <div class="modal-box">
-      <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 8px; font-weight: 700;">Enter Details to Download Syllabus</h3>
-      <p style="font-size: 12.5px; color: #475569; margin-bottom: 16px;">Please provide your mobile number to unlock instant PDF download access for <strong id="modalCourseTitle">Course</strong>.</p>
-      
-      <form onsubmit="handleModalDownload(event)">
-        <div class="form-group">
-          <label class="form-label">Your Mobile / Contact Number</label>
-          <input type="tel" id="modalPhone" class="form-input" placeholder="Enter 10-digit mobile number" required>
-        </div>
-        <button type="submit" class="submit-btn">Unlock & Download Syllabus PDF</button>
-      </form>
-    </div>
   </div>
 
   <footer>
-    &copy; 2026 Orbit IT Solutions, Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad. All Rights Reserved.
+    <p>&copy; 2026 Orbit IT Solutions, Mehdipatnam. All rights reserved.</p>
   </footer>
 
   <script>
-    var currentSelectedCourse = "";
-
-    function toggleChatbot() {
-      var win = document.getElementById('chatbotWindow');
-      win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    function handleChatKeyPress(e) {
-      if(e.key === 'Enter') sendChatMessage();
-    }
-
-    function sendChatMessage() {
-      var input = document.getElementById('chatInput');
-      var txt = input.value.trim().toLowerCase();
-      if(!txt) return;
-
-      var body = document.getElementById('chatBody');
-      body.innerHTML += `<div class="chat-msg user">${input.value}</div>`;
-      input.value = "";
-
-      var reply = "Thank you for asking! For course details and admissions, please contact +91 9985153068 or visit Safa Arcade, 2nd & 3rd Floor, Mehdipatnam.";
-      
-      if(txt.includes('fee') || txt.includes('cost') || txt.includes('price')) {
-        reply = "Our course fees are very affordable with flexible installments! Please call or WhatsApp +91 9985153068 for fee structures.";
-      } else if(txt.includes('sap') || txt.includes('tally') || txt.includes('account')) {
-        reply = "We offer SAP S4HANA / FICO, Tally Prime GST, and Manual Accounting with 100% practical lab practice!";
-      } else if(txt.includes('python') || txt.includes('ai') || txt.includes('java')) {
-        reply = "Full Stack Python with AI, Full Stack Java, Data Science, and Machine Learning new batches start from 26th Oct 2026!";
-      } else if(txt.includes('location') || txt.includes('address') || txt.includes('where')) {
-        reply = "We are located at: Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad - 500028.";
-      } else if(txt.includes('placement') || txt.includes('job') || txt.includes('intern')) {
-        reply = "We maintain a 95% placement record with guaranteed internships for students pursuing education!";
-      }
-
-      setTimeout(function() {
-        body.innerHTML += `<div class="chat-msg bot">${reply}</div>`;
-        body.scrollTop = body.scrollHeight;
-      }, 500);
-    }
-
-    function openLeadModal(courseName) {
-      currentSelectedCourse = courseName;
-      document.getElementById('modalCourseTitle').innerText = courseName;
-      document.getElementById('leadModal').style.display = 'flex';
-    }
-
-    function handleModalDownload(event) {
-      event.preventDefault();
-      var phone = document.getElementById('modalPhone').value.trim();
-      if(phone.length >= 10) {
-        alert("✅ Mobile number verified! Starting syllabus download for " + currentSelectedCourse);
-        document.getElementById('leadModal').style.display = 'none';
-        document.getElementById('modalPhone').value = "";
-      } else {
-        alert("Please enter a valid 10-digit mobile number.");
-      }
-    }
-
+    // Student Portal Access Codes Handler with all 11 course codes
     function handleStudentLogin(event) {
       event.preventDefault();
       var name = document.getElementById('studentName').value.trim();
-      var pass = document.getElementById('studentPass').value.trim();
+      var code = document.getElementById('courseAccessCode').value.trim();
 
-      if(name && pass) {
+      var courseMap = {
+        "36991": "MS Office Notes",
+        "36992": "Advanced Excel Notes",
+        "36993": "Tally Complete Notes",
+        "36994": "Power BI Notes",
+        "36995": "Full Stack Python Notes",
+        "36996": "Data Science Notes",
+        "36997": "Full Stack Java Notes",
+        "36998": "Graphic Designing Notes",
+        "36999": "Data Analysis Notes",
+        "36911": "Cyber Security Notes",
+        "36912": "AI, ML, DL Notes"
+      };
+
+      if (courseMap[code]) {
         document.getElementById('welcomeStudentHeading').innerText = "Welcome, " + name + "!";
+        document.getElementById('unlockedCourseName').innerText = "🔓 Unlocked: " + courseMap[code];
         document.getElementById('studentDashboardOutput').style.display = 'block';
+      } else {
+        alert("❌ Invalid Course Access Code! Please check your unique code and try again.");
       }
-    }
-
-    function handlePrivateFeedback(event) {
-      event.preventDefault();
-      var name = document.getElementById('fbName').value.trim();
-      var course = document.getElementById('fbCourse').value;
-      
-      alert("🔒 Thank you " + name + "! Your feedback for " + course + " has been submitted securely.");
-      event.target.reset();
     }
   </script>
 </body>
