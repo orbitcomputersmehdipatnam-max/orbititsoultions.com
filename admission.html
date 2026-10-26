@@ -93,10 +93,30 @@
           <input type="email" name="Email_Address" class="form-input" placeholder="student@example.com" required>
         </div>
 
-        <!-- Course Input Field (Blank Text Input) -->
+        <!-- Course Dropdown -->
         <div class="form-group full-width">
-          <label class="form-label">Course *</label>
-          <input type="text" name="Course_Name" class="form-input" placeholder="Enter course name" required>
+          <label class="form-label">Select Standard Course</label>
+          <select name="Selected_Course_Dropdown" class="form-select">
+            <option value="">-- Select Course (Optional if customizing below) --</option>
+            <option value="Cybersecurity & Ethical Hacking">Cybersecurity & Ethical Hacking</option>
+            <option value="AI, Machine Learning & Deep Learning">AI, Machine Learning & Deep Learning</option>
+            <option value="Full Stack Python using AI">Full Stack Python using AI</option>
+            <option value="Full Stack Java - AI Integrated">Full Stack Java - AI Integrated</option>
+            <option value="Data Science Program">Data Science Program</option>
+            <option value="Data Analysis & Power BI">Data Analysis & Power BI</option>
+            <option value="Microsoft Azure & Amazon AWS Cloud">Microsoft Azure & Amazon AWS Cloud</option>
+            <option value="Graphic Designing & UI/UX">Graphic Designing & UI/UX</option>
+            <option value="App & Web Development">App & Web Development</option>
+            <option value="MS Office & Advanced Excel MIS">MS Office & Advanced Excel MIS</option>
+            <option value="SAP S4HANA & Tally Prime GST">SAP S4HANA & Tally Prime GST</option>
+            <option value="Spoken English & Communication Skills">Spoken English & Communication Skills</option>
+          </select>
+        </div>
+
+        <!-- Customized / Additional Course Field -->
+        <div class="form-group full-width">
+          <label class="form-label">Custom Course / Specific Subjects (If Customizing)</label>
+          <input type="text" name="Custom_Course_Details" class="form-input" placeholder="Write custom course or combination of subjects">
         </div>
 
         <div class="form-group full-width">
@@ -110,7 +130,7 @@
           </select>
         </div>
 
-        <!-- Updated Fee Labels -->
+        <!-- Fee Labels -->
         <div class="form-group">
           <label class="form-label">Total Fee (₹) *</label>
           <input type="text" name="Total_Fee" class="form-input" placeholder="e.g. 18000" required>
@@ -148,4 +168,30 @@
         <!-- Generated QR Code Container -->
         <div id="qrcode"></div>
         
-        <p style="font-size: 1
+        <p style="font-size: 11px; color: #2563eb; font-weight: 600;">www.orbititsoultions.com/admission.html</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Automatically generate QR code for this page URL
+    window.onload = function() {
+      new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 150,
+        height: 150,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+
+      // Show alert if returned after submitting form
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('status') === 'success') {
+        alert("✅ Admission form submitted successfully! Details sent to director email.");
+      }
+    };
+  </script>
+</body>
+</html>
