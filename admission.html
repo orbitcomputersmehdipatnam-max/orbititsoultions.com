@@ -30,7 +30,7 @@
     .terms-box ul { font-size: 13px; color: #450a0a; padding-left: 20px; margin-bottom: 14px; }
     .terms-box ul li { margin-bottom: 8px; }
     .checkbox-label { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; color: #0f172a; cursor: pointer; }
-
+k
     /* Submit Button */
     .submit-btn { width: 100%; padding: 15px; background: #22c55e; border: none; border-radius: 10px; color: #ffffff; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3); }
     .submit-btn:hover { background: #16a34a; }
@@ -59,10 +59,10 @@
       </div>
     </div>
 
-    <!-- Form Sending Directly to Email via FormSubmit with dynamic subject naming -->
-    <form action="https://formsubmit.co/orbitcomputersmehdipatnam@gmail.com" method="POST" onsubmit="prepareEmailSubject(event)">
+    <!-- Form Sending Directly to Email via FormSubmit -->
+    <form action="https://formsubmit.co/orbitcomputersmehdipatnam@gmail.com" method="POST">
       
-      <!-- Redirect & Subject Settings -->
+      <!-- Redirect & Subject Settings (Subject updates live as name is typed) -->
       <input type="hidden" name="_next" value="https://www.orbititsoultions.com/admission.html?status=success">
       <input type="hidden" name="_subject" id="emailSubject" value="🚨 New Admission Registration Submitted!">
       <input type="hidden" name="_captcha" value="false">
@@ -70,7 +70,7 @@
       <div class="grid">
         <div class="form-group">
           <label class="form-label">Student Full Name *</label>
-          <input type="text" name="Student_Name" id="studentNameInput" class="form-input" placeholder="Enter full name" required>
+          <input type="text" name="Student_Name" class="form-input" placeholder="Enter full name" oninput="updateEmailSubject(this)" required>
         </div>
 
         <div class="form-group">
@@ -193,11 +193,14 @@
       }
     };
 
-    // Dynamically put student name first in email subject line before submitting
-    function prepareEmailSubject(event) {
-      var studentName = document.getElementById('studentNameInput').value.trim();
+    // Live update email subject as the student types their name
+    function updateEmailSubject(input) {
+      var studentName = input.value.trim();
+      var subjectField = document.getElementById('emailSubject');
       if (studentName) {
-        document.getElementById('emailSubject').value = "🚨 " + studentName + " - New Admission Form Submitted";
+        subjectField.value = "🚨 " + studentName + " - New Admission Form Submitted";
+      } else {
+        subjectField.value = "🚨 New Admission Registration Submitted!";
       }
     }
   </script>
