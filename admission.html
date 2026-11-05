@@ -164,14 +164,18 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="coursePreferred">Course Preferred *</label>
-          <select id="coursePreferred" name="Course Preferred" required>
-            <option value="">-- Select Course --</option>
-            <option value="DSA (45 Days - ₹15,000)">DSA (45 Days - ₹15,000)</option>
-            <option value="Digital Marketing (45 Days - ₹18,200)">Digital Marketing (45 Days - ₹18,200)</option>
-            <option value="Stock Market & Trading (30 Days - ₹22,200)">Stock Market & Trading (30 Days - ₹22,200)</option>
-            <option value="Software Testing (Manual & Playwright)">Software Testing (Manual & Playwright)</option>
-            <option value="Accounts Training">Accounts Training</option>
+          <label for="coursePreferred">Course Preferred (Optional)</label>
+          <select id="coursePreferred" name="Course Preferred">
+            <option value="">-- Select Course (Optional) --</option>
+            <option value="DSA (45 Days - ₹15,000)">DSA (Data Structures & Algorithms - 45 Days, ₹15,000)</option>
+            <option value="Digital Marketing (45 Days - ₹18,200)">Digital Marketing (45 Days, ₹18,200)</option>
+            <option value="Stock Market & Trading (30 Days - ₹22,200)">Stock Market & Trading (30 Days, ₹22,200)</option>
+            <option value="Software Testing (Manual & Playwright Automation)">Software Testing (Manual & Playwright Automation)</option>
+            <option value="Python Programming & Data Science">Python Programming & Data Science</option>
+            <option value="Java Full Stack Development">Java Full Stack Development</option>
+            <option value="C & C++ Programming">C & C++ Programming</option>
+            <option value="Web Development (HTML, CSS, JS, React)">Web Development (HTML, CSS, JS, React)</option>
+            <option value="Accounts Training (Tally Prime / GST / Accounting)">Accounts Training (Tally Prime / GST / Accounting)</option>
           </select>
         </div>
         <div class="form-group">
@@ -183,8 +187,8 @@
       <div class="form-group full-width">
         <label for="referenceSource">How did you come to know about Orbit IT Solutions?</label>
         <select id="referenceSource" name="Reference Source">
-          <option value="Google Search">Google Search / Website</option>
-          <option value="Social Media / Instagram / YouTube">Social Media (Instagram / YouTube)</option>
+          <option value="Google Search / Website">Google Search / Website</option>
+          <option value="Social Media (Instagram / YouTube)">Social Media (Instagram / YouTube)</option>
           <option value="Friend / Word of Mouth">Friend / Word of Mouth</option>
           <option value="Walk-in / Direct Visit">Walk-in / Direct Visit</option>
           <option value="Flyer / Pamphlet">Flyer / Pamphlet</option>
@@ -210,46 +214,3 @@
           <label style="font-size: 12px;">Installment 1 (₹ / Date)</label>
           <input type="text" name="Installment 1" placeholder="Amount & Date">
         </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label style="font-size: 12px;">Installment 2 (₹ / Date)</label>
-          <input type="text" name="Installment 2" placeholder="Amount & Date">
-        </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label style="font-size: 12px;">Installment 3 (₹ / Date)</label>
-          <input type="text" name="Installment 3" placeholder="Amount & Date">
-        </div>
-      </div>
-
-      <div class="section-title">4. Terms & Conditions</div>
-
-      <div class="terms-box">
-        <strong>Attendance & Placement Policy:</strong><br>
-        1. Regularity and punctuality are strictly mandatory for all training programs and placement assistance options.<br>
-        2. Students remaining absent without prior intimation for <strong>7 consecutive days</strong> will be marked inactive and are liable to pay a penalty of <strong>₹1,000/-</strong> to reactivate their enrollment and training sessions.
-      </div>
-
-      <div class="checkbox-group">
-        <input type="checkbox" id="termsAgreed" name="Terms Agreed" required>
-        <label for="termsAgreed" style="font-weight: normal; cursor: pointer;">
-          I have read, understood, and agree to the attendance rules, penalty policies, and fee terms of Orbit IT Solutions. *
-        </label>
-      </div>
-
-      <button type="submit" class="submit-btn">
-        Submit Registration Form 🚀
-      </button>
-
-    </form>
-  </div>
-
-  <script>
-    function prepareEmailSubject(event) {
-      // Pulls the student name dynamically so it reflects first when submitted via email client
-      const studentName = document.getElementById('studentName').value.trim() || 'Student';
-      const form = document.getElementById('orbitRegistrationForm');
-      form.action = `mailto:orbitcomputersmehdipatnam@gmail.com?subject=Admission Inquiry - ${encodeURIComponent(studentName)}`;
-    }
-  </script>
-
-</body>
-</html>
