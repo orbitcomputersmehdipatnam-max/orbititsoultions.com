@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Admission - Orbit IT Solutions</title>
+  <title>Student Admission & Registration - Orbit IT Solutions</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,35 +12,51 @@
       padding: 20px;
     }
     .admission-container {
-      max-width: 500px;
-      margin: 30px auto;
+      max-width: 650px;
+      margin: 20px auto;
       background: #ffffff;
-      padding: 25px;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     .admission-container h2 {
       text-align: center;
       color: #1a237e;
       margin-top: 0;
-      margin-bottom: 20px;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
     }
     .form-group {
+      flex: 1;
       margin-bottom: 15px;
+    }
+    .form-group.full-width {
+      width: 100%;
     }
     .form-group label {
       display: block;
       font-weight: 600;
       margin-bottom: 6px;
       color: #333;
+      font-size: 14px;
     }
     .form-group input, 
     .form-group select {
       width: 100%;
-      padding: 12px;
+      padding: 11px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      font-size: 15px;
+      font-size: 14px;
       box-sizing: border-box;
       outline: none;
     }
@@ -48,10 +64,52 @@
     .form-group select:focus {
       border-color: #1a237e;
     }
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1a237e;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 5px;
+      margin: 25px 0 15px 0;
+    }
+    .installments-grid {
+      display: flex;
+      gap: 10px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 15px;
+    }
+    .terms-box {
+      background: #fff8e1;
+      border: 1px solid #ffe0b2;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #5d4037;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+    .checkbox-group input {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
     .submit-btn {
       width: 100%;
       padding: 14px;
-      background: #25d366;
+      background: #1a237e;
       color: #ffffff;
       font-size: 16px;
       font-weight: bold;
@@ -61,53 +119,137 @@
       transition: background 0.3s ease;
     }
     .submit-btn:hover {
-      background: #1eb954;
+      background: #0d1b60;
     }
   </style>
 </head>
 <body>
 
   <div class="admission-container">
-    <h2>Online Admission Form</h2>
+    <h2>Orbit IT Solutions</h2>
+    <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
-    <form id="orbitAdmissionForm" onsubmit="submitAdmissionToWhatsApp(event)">
+    <form id="orbitRegistrationForm" action="mailto:orbitcomputersmehdipatnam@gmail.com" method="POST" enctype="text/plain" onsubmit="prepareEmailSubject(event)">
       
-      <div class="form-group">
-        <label for="admName">Student Full Name *</label>
-        <input type="text" id="admName" required placeholder="Enter your full name">
+      <div class="section-title">1. Personal Information</div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="studentName">Student Full Name *</label>
+          <input type="text" id="studentName" name="Student Name" required placeholder="Enter full name">
+        </div>
+        <div class="form-group">
+          <label for="fatherName">Father's Name *</label>
+          <input type="text" id="fatherName" name="Father Name" required placeholder="Enter father's name">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="admPhone">WhatsApp Mobile Number *</label>
-        <input type="tel" id="admPhone" pattern="[0-9]{10}" required placeholder="10-digit mobile number">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contactNumber">Contact Number *</label>
+          <input type="tel" id="contactNumber" name="Contact Number" pattern="[0-9]{10}" required placeholder="10-digit mobile number">
+        </div>
+        <div class="form-group">
+          <label for="whatsappNumber">WhatsApp Number *</label>
+          <input type="tel" id="whatsappNumber" name="WhatsApp Number" pattern="[0-9]{10}" required placeholder="10-digit WhatsApp number">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="admCourse">Select Course *</label>
-        <select id="admCourse" required>
-          <option value="">-- Choose Course --</option>
-          <option value="DSA (45 Days)">DSA (45 Days - ₹15,000)</option>
-          <option value="Digital Marketing (45 Days)">Digital Marketing (45 Days - ₹18,200)</option>
-          <option value="Stock Market & Trading (30 Days)">Stock Market & Trading (30 Days - ₹22,200)</option>
-          <option value="Software Testing (Manual & Playwright)">Software Testing (Manual & Playwright)</option>
-          <option value="Accounts Training">Accounts Training</option>
+      <div class="form-group full-width">
+        <label for="emailId">Email Address *</label>
+        <input type="email" id="emailId" name="Email ID" required placeholder="student@example.com">
+      </div>
+
+      <div class="section-title">2. Course Selection & Source</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="coursePreferred">Course Preferred *</label>
+          <select id="coursePreferred" name="Course Preferred" required>
+            <option value="">-- Select Course --</option>
+            <option value="DSA (45 Days - ₹15,000)">DSA (45 Days - ₹15,000)</option>
+            <option value="Digital Marketing (45 Days - ₹18,200)">Digital Marketing (45 Days - ₹18,200)</option>
+            <option value="Stock Market & Trading (30 Days - ₹22,200)">Stock Market & Trading (30 Days - ₹22,200)</option>
+            <option value="Software Testing (Manual & Playwright)">Software Testing (Manual & Playwright)</option>
+            <option value="Accounts Training">Accounts Training</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="customCourse">Customized Course (If Any)</label>
+          <input type="text" id="customCourse" name="Custom Course Module" placeholder="Enter custom subject requirements">
+        </div>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="referenceSource">How did you come to know about Orbit IT Solutions?</label>
+        <select id="referenceSource" name="Reference Source">
+          <option value="Google Search">Google Search / Website</option>
+          <option value="Social Media / Instagram / YouTube">Social Media (Instagram / YouTube)</option>
+          <option value="Friend / Word of Mouth">Friend / Word of Mouth</option>
+          <option value="Walk-in / Direct Visit">Walk-in / Direct Visit</option>
+          <option value="Flyer / Pamphlet">Flyer / Pamphlet</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="admMode">Preferred Training Mode</label>
-        <select id="admMode">
-          <option value="Offline Classroom (Mehdipatnam)">Offline Classroom (Mehdipatnam)</option>
-          <option value="Online Live Classes">Online Live Classes</option>
-        </select>
+      <div class="section-title">3. Fee Details & Installments (For 6 Months / Extended Courses)</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="totalFees">Total Fees (₹) *</label>
+          <input type="text" id="totalFees" name="Total Fees" required placeholder="e.g., 25000">
+        </div>
+        <div class="form-group">
+          <label for="feesPaid">Fees Paid (₹) *</label>
+          <input type="text" id="feesPaid" name="Fees Paid" required placeholder="e.g., 10000">
+        </div>
+      </div>
+
+      <label style="font-weight: 600; font-size: 14px; margin-bottom: 6px; display: block; color: #333;">Installments Breakdown (3 Blocks):</label>
+      <div class="installments-grid">
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-size: 12px;">Installment 1 (₹ / Date)</label>
+          <input type="text" name="Installment 1" placeholder="Amount & Date">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-size: 12px;">Installment 2 (₹ / Date)</label>
+          <input type="text" name="Installment 2" placeholder="Amount & Date">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-size: 12px;">Installment 3 (₹ / Date)</label>
+          <input type="text" name="Installment 3" placeholder="Amount & Date">
+        </div>
+      </div>
+
+      <div class="section-title">4. Terms & Conditions</div>
+
+      <div class="terms-box">
+        <strong>Attendance & Placement Policy:</strong><br>
+        1. Regularity and punctuality are strictly mandatory for all training programs and placement assistance options.<br>
+        2. Students remaining absent without prior intimation for <strong>7 consecutive days</strong> will be marked inactive and are liable to pay a penalty of <strong>₹1,000/-</strong> to reactivate their enrollment and training sessions.
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="termsAgreed" name="Terms Agreed" required>
+        <label for="termsAgreed" style="font-weight: normal; cursor: pointer;">
+          I have read, understood, and agree to the attendance rules, penalty policies, and fee terms of Orbit IT Solutions. *
+        </label>
       </div>
 
       <button type="submit" class="submit-btn">
-        Submit Admission via WhatsApp 📲
+        Submit Registration Form 🚀
       </button>
 
     </form>
   </div>
 
   <script>
-    function submitAdmissionTo
+    function prepareEmailSubject(event) {
+      // Pulls the student name dynamically so it reflects first when submitted via email client
+      const studentName = document.getElementById('studentName').value.trim() || 'Student';
+      const form = document.getElementById('orbitRegistrationForm');
+      form.action = `mailto:orbitcomputersmehdipatnam@gmail.com?subject=Admission Inquiry - ${encodeURIComponent(studentName)}`;
+    }
+  </script>
+
+</body>
+</html>
