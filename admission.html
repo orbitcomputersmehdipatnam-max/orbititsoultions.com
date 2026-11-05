@@ -121,14 +121,6 @@
     .submit-btn:hover {
       background: #0d1b60;
     }
-    #statusMessage {
-      display: none;
-      padding: 12px;
-      margin-top: 15px;
-      border-radius: 6px;
-      text-align: center;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
@@ -137,35 +129,41 @@
     <h2>Orbit IT Solutions</h2>
     <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
-    <form id="orbitRegistrationForm" onsubmit="submitFormAjax(event)">
+    <!-- Standard Form Submission directly routing to your email -->
+    <form action="https://formsubmit.co/orbitcomputersmehdipatnam@gmail.com" method="POST">
+      
+      <!-- Hidden Configuration Settings -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_subject" value="New Student Admission Inquiry - Orbit IT Solutions">
       
       <div class="section-title">1. Personal Information</div>
       
       <div class="form-row">
         <div class="form-group">
           <label for="studentName">Student Full Name</label>
-          <input type="text" id="studentName" placeholder="Enter full name">
+          <input type="text" id="studentName" name="Student Name" placeholder="Enter full name">
         </div>
         <div class="form-group">
           <label for="fatherName">Father's Name</label>
-          <input type="text" id="fatherName" placeholder="Enter father's name">
+          <input type="text" id="fatherName" name="Father Name" placeholder="Enter father's name">
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label for="contactNumber">Contact Number</label>
-          <input type="tel" id="contactNumber" placeholder="Mobile number">
+          <input type="tel" id="contactNumber" name="Contact Number" placeholder="Mobile number">
         </div>
         <div class="form-group">
           <label for="whatsappNumber">WhatsApp Number</label>
-          <input type="tel" id="whatsappNumber" placeholder="WhatsApp number">
+          <input type="tel" id="whatsappNumber" name="WhatsApp Number" placeholder="WhatsApp number">
         </div>
       </div>
 
       <div class="form-group full-width">
         <label for="emailId">Email Address</label>
-        <input type="email" id="emailId" placeholder="student@example.com">
+        <input type="email" id="emailId" name="Email ID" placeholder="student@example.com">
       </div>
 
       <div class="section-title">2. Course Selection & Reference</div>
@@ -173,7 +171,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="coursePreferred">Course Preferred</label>
-          <select id="coursePreferred">
+          <select id="coursePreferred" name="Course Preferred">
             <option value="Not Specified">-- Select Course --</option>
             <optgroup label="Featured / Special Batches">
               <option value="DSA (45 Days - ₹15,000)">DSA (Data Structures & Algorithms - 45 Days, ₹15,000)</option>
@@ -211,153 +209,15 @@
         </div>
         <div class="form-group">
           <label for="customCourse">Customized Course (If Any)</label>
-          <input type="text" id="customCourse" placeholder="Enter custom subject requirements">
+          <input type="text" id="customCourse" name="Custom Course Module" placeholder="Enter custom subject requirements">
         </div>
       </div>
 
       <div class="form-group full-width">
         <label for="referenceSource">How did you come to know about Orbit IT Solutions?</label>
-        <select id="referenceSource">
+        <select id="referenceSource" name="Reference Source">
           <option value="Not Specified">-- Select Source --</option>
           <option value="Google Search / Website">Google Search / Website</option>
           <option value="Social Media (Instagram / YouTube)">Social Media (Instagram / YouTube)</option>
           <option value="Friend / Word of Mouth">Friend / Word of Mouth</option>
-          <option value="Walk-in / Direct Visit">Walk-in / Direct Visit</option>
-          <option value="Flyer / Pamphlet">Flyer / Pamphlet</option>
-        </select>
-      </div>
-
-      <div class="section-title">3. Fee Details & Installments (For 6 Months / Extended Courses)</div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="totalFees">Total Fees (₹)</label>
-          <input type="text" id="totalFees" placeholder="e.g., 25000">
-        </div>
-        <div class="form-group">
-          <label for="feesPaid">Fees Paid (₹)</label>
-          <input type="text" id="feesPaid" placeholder="e.g., 10000">
-        </div>
-      </div>
-
-      <label style="font-weight: 600; font-size: 14px; margin-bottom: 6px; display: block; color: #333;">Installments Breakdown (3 Blocks):</label>
-      <div class="installments-grid">
-        <div class="form-group" style="margin-bottom:0;">
-          <label style="font-size: 12px;">Installment 1 (₹ / Date)</label>
-          <input type="text" id="inst1" placeholder="Amount & Date">
-        </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label style="font-size: 12px;">Installment 2 (₹ / Date)</label>
-          <input type="text" id="inst2" placeholder="Amount & Date">
-        </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label style="font-size: 12px;">Installment 3 (₹ / Date)</label>
-          <input type="text" id="inst3" placeholder="Amount & Date">
-        </div>
-      </div>
-
-      <div class="section-title">4. Terms & Conditions</div>
-
-      <div class="terms-box">
-        <strong>Attendance & Placement Policy:</strong><br>
-        1. Regularity and punctuality are strictly mandatory for all training programs and placement assistance options.<br>
-        2. Students remaining absent without prior intimation for <strong>7 consecutive days</strong> will be marked inactive and are liable to pay a penalty of <strong>₹1,000/-</strong> to reactivate their enrollment and training sessions.
-      </div>
-
-      <div class="checkbox-group">
-        <input type="checkbox" id="termsAgreed">
-        <label for="termsAgreed" style="font-weight: normal; cursor: pointer;">
-          I have read, understood, and agree to the attendance rules, penalty policies, and fee terms of Orbit IT Solutions.
-        </label>
-      </div>
-
-      <button type="submit" id="submitBtn" class="submit-btn">
-        Submit Registration Form 🚀
-      </button>
-
-      <div id="statusMessage"></div>
-
-    </form>
-  </div>
-
-  <script>
-    async function submitFormAjax(event) {
-      event.preventDefault();
-
-      const btn = document.getElementById('submitBtn');
-      const status = document.getElementById('statusMessage');
-
-      const studentName = document.getElementById('studentName').value.trim() || 'Student Registration';
-      const fatherName = document.getElementById('fatherName').value.trim() || 'N/A';
-      const contactNumber = document.getElementById('contactNumber').value.trim() || 'N/A';
-      const whatsappNumber = document.getElementById('whatsappNumber').value.trim() || 'N/A';
-      const emailId = document.getElementById('emailId').value.trim() || 'N/A';
-      const coursePreferred = document.getElementById('coursePreferred').value;
-      const customCourse = document.getElementById('customCourse').value.trim() || 'None';
-      const referenceSource = document.getElementById('referenceSource').value;
-      const totalFees = document.getElementById('totalFees').value.trim() || 'N/A';
-      const feesPaid = document.getElementById('feesPaid').value.trim() || 'N/A';
-      const inst1 = document.getElementById('inst1').value.trim() || 'N/A';
-      const inst2 = document.getElementById('inst2').value.trim() || 'N/A';
-      const inst3 = document.getElementById('inst3').value.trim() || 'N/A';
-      const termsAgreed = document.getElementById('termsAgreed').checked ? 'Yes, Agreed' : 'Not Agreed';
-
-      btn.innerText = "Sending...";
-      btn.disabled = true;
-      status.style.display = "none";
-
-      const formData = {
-        _subject: `${studentName} - Admission Form Submission`,
-        _template: "table",
-        _captcha: "false",
-        "Student Name": studentName,
-        "Father Name": fatherName,
-        "Contact Number": contactNumber,
-        "WhatsApp Number": whatsappNumber,
-        "Email Address": emailId,
-        "Course Preferred": coursePreferred,
-        "Customized Course": customCourse,
-        "Reference Source": referenceSource,
-        "Total Fees": `₹${totalFees}`,
-        "Fees Paid": `₹${feesPaid}`,
-        "Installment 1": inst1,
-        "Installment 2": inst2,
-        "Installment 3": inst3,
-        "Terms & Conditions Agreed": termsAgreed
-      };
-
-      try {
-        const response = await fetch("https://formsubmit.co/ajax/orbitcomputersmehdipatnam@gmail.com", {
-          method: "POST",
-          headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        if (result.success == "true" || response.ok) {
-          status.style.display = "block";
-          status.style.background = "#d4edda";
-          status.style.color = "#155724";
-          status.innerText = "✅ Form Submitted Successfully! Email sent to Orbit IT Solutions.";
-          document.getElementById('orbitRegistrationForm').reset();
-        } else {
-          throw new Error("Submission failed");
-        }
-      } catch (error) {
-        status.style.display = "block";
-        status.style.background = "#f8d7da";
-        status.style.color = "#721c24";
-        status.innerText = "❌ Submission error. Please make sure you check your email inbox to activate the form link if this is your first time.";
-      } finally {
-        btn.innerText = "Submit Registration Form 🚀";
-        btn.disabled = false;
-      }
-    }
-  </script>
-
-</body>
-</html>
+          <option value="Walk-in / Direct Visit">Walk
