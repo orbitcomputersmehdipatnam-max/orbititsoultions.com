@@ -129,40 +129,35 @@
     <h2>Orbit IT Solutions</h2>
     <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
-    <form id="orbitRegistrationForm" action="https://formsubmit.co/orbitcomputersmehdipatnam@gmail.com" method="POST">
-      
-      <!-- FormSubmit Configuration Settings -->
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" id="emailSubject" value="New Admission Form Submission">
-      <input type="hidden" name="_template" value="table">
+    <form id="orbitRegistrationForm" onsubmit="handleFormSubmission(event)">
       
       <div class="section-title">1. Personal Information</div>
       
       <div class="form-row">
         <div class="form-group">
           <label for="studentName">Student Full Name</label>
-          <input type="text" id="studentName" name="Student Name" placeholder="Enter full name" oninput="updateSubject(this.value)">
+          <input type="text" id="studentName" placeholder="Enter full name">
         </div>
         <div class="form-group">
           <label for="fatherName">Father's Name</label>
-          <input type="text" id="fatherName" name="Father Name" placeholder="Enter father's name">
+          <input type="text" id="fatherName" placeholder="Enter father's name">
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label for="contactNumber">Contact Number</label>
-          <input type="tel" id="contactNumber" name="Contact Number" placeholder="Mobile number">
+          <input type="tel" id="contactNumber" placeholder="Mobile number">
         </div>
         <div class="form-group">
           <label for="whatsappNumber">WhatsApp Number</label>
-          <input type="tel" id="whatsappNumber" name="WhatsApp Number" placeholder="WhatsApp number">
+          <input type="tel" id="whatsappNumber" placeholder="WhatsApp number">
         </div>
       </div>
 
       <div class="form-group full-width">
         <label for="emailId">Email Address</label>
-        <input type="email" id="emailId" name="Email ID" placeholder="student@example.com">
+        <input type="email" id="emailId" placeholder="student@example.com">
       </div>
 
       <div class="section-title">2. Course Selection & Reference</div>
@@ -170,8 +165,8 @@
       <div class="form-row">
         <div class="form-group">
           <label for="coursePreferred">Course Preferred</label>
-          <select id="coursePreferred" name="Course Preferred">
-            <option value="">-- Select Course --</option>
+          <select id="coursePreferred">
+            <option value="Not Specified">-- Select Course --</option>
             <optgroup label="Featured / Special Batches">
               <option value="DSA (45 Days - ₹15,000)">DSA (Data Structures & Algorithms - 45 Days, ₹15,000)</option>
               <option value="Digital Marketing (45 Days - ₹18,200)">Digital Marketing (45 Days, ₹18,200)</option>
@@ -208,14 +203,14 @@
         </div>
         <div class="form-group">
           <label for="customCourse">Customized Course (If Any)</label>
-          <input type="text" id="customCourse" name="Custom Course Module" placeholder="Enter custom subject requirements">
+          <input type="text" id="customCourse" placeholder="Enter custom subject requirements">
         </div>
       </div>
 
       <div class="form-group full-width">
         <label for="referenceSource">How did you come to know about Orbit IT Solutions?</label>
-        <select id="referenceSource" name="Reference Source">
-          <option value="">-- Select Source --</option>
+        <select id="referenceSource">
+          <option value="Not Specified">-- Select Source --</option>
           <option value="Google Search / Website">Google Search / Website</option>
           <option value="Social Media (Instagram / YouTube)">Social Media (Instagram / YouTube)</option>
           <option value="Friend / Word of Mouth">Friend / Word of Mouth</option>
@@ -229,11 +224,11 @@
       <div class="form-row">
         <div class="form-group">
           <label for="totalFees">Total Fees (₹)</label>
-          <input type="text" id="totalFees" name="Total Fees" placeholder="e.g., 25000">
+          <input type="text" id="totalFees" placeholder="e.g., 25000">
         </div>
         <div class="form-group">
           <label for="feesPaid">Fees Paid (₹)</label>
-          <input type="text" id="feesPaid" name="Fees Paid" placeholder="e.g., 10000">
+          <input type="text" id="feesPaid" placeholder="e.g., 10000">
         </div>
       </div>
 
@@ -241,15 +236,15 @@
       <div class="installments-grid">
         <div class="form-group" style="margin-bottom:0;">
           <label style="font-size: 12px;">Installment 1 (₹ / Date)</label>
-          <input type="text" name="Installment 1" placeholder="Amount & Date">
+          <input type="text" id="inst1" placeholder="Amount & Date">
         </div>
         <div class="form-group" style="margin-bottom:0;">
           <label style="font-size: 12px;">Installment 2 (₹ / Date)</label>
-          <input type="text" name="Installment 2" placeholder="Amount & Date">
+          <input type="text" id="inst2" placeholder="Amount & Date">
         </div>
         <div class="form-group" style="margin-bottom:0;">
           <label style="font-size: 12px;">Installment 3 (₹ / Date)</label>
-          <input type="text" name="Installment 3" placeholder="Amount & Date">
+          <input type="text" id="inst3" placeholder="Amount & Date">
         </div>
       </div>
 
@@ -262,7 +257,7 @@
       </div>
 
       <div class="checkbox-group">
-        <input type="checkbox" id="termsAgreed" name="Terms Agreed" value="Yes, Agreed">
+        <input type="checkbox" id="termsAgreed">
         <label for="termsAgreed" style="font-weight: normal; cursor: pointer;">
           I have read, understood, and agree to the attendance rules, penalty policies, and fee terms of Orbit IT Solutions.
         </label>
@@ -276,13 +271,46 @@
   </div>
 
   <script>
-    function updateSubject(val) {
-      const subjectInput = document.getElementById('emailSubject');
-      if (val.trim() !== '') {
-        subjectInput.value = val.trim() + ' - Orbit IT Admission Form';
-      } else {
-        subjectInput.value = 'New Admission Form Submission';
-      }
+    function handleFormSubmission(event) {
+      event.preventDefault();
+
+      const studentName = document.getElementById('studentName').value.trim() || 'Student Registration';
+      const fatherName = document.getElementById('fatherName').value.trim() || 'N/A';
+      const contactNumber = document.getElementById('contactNumber').value.trim() || 'N/A';
+      const whatsappNumber = document.getElementById('whatsappNumber').value.trim() || 'N/A';
+      const emailId = document.getElementById('emailId').value.trim() || 'N/A';
+      const coursePreferred = document.getElementById('coursePreferred').value;
+      const customCourse = document.getElementById('customCourse').value.trim() || 'None';
+      const referenceSource = document.getElementById('referenceSource').value;
+      const totalFees = document.getElementById('totalFees').value.trim() || 'N/A';
+      const feesPaid = document.getElementById('feesPaid').value.trim() || 'N/A';
+      const inst1 = document.getElementById('inst1').value.trim() || 'N/A';
+      const inst2 = document.getElementById('inst2').value.trim() || 'N/A';
+      const inst3 = document.getElementById('inst3').value.trim() || 'N/A';
+      const termsAgreed = document.getElementById('termsAgreed').checked ? 'Yes, Agreed' : 'Not Agreed';
+
+      const emailBody = `NEW ADMISSION INQUIRY\n` +
+                        `----------------------------------------\n` +
+                        `Student Name: ${studentName}\n` +
+                        `Father's Name: ${fatherName}\n` +
+                        `Contact Number: ${contactNumber}\n` +
+                        `WhatsApp Number: ${whatsappNumber}\n` +
+                        `Email Address: ${emailId}\n\n` +
+                        `Course Preferred: ${coursePreferred}\n` +
+                        `Custom Course: ${customCourse}\n` +
+                        `Reference Source: ${referenceSource}\n\n` +
+                        `Total Fees: Rs. ${totalFees}\n` +
+                        `Fees Paid: Rs. ${feesPaid}\n` +
+                        `Installment 1: ${inst1}\n` +
+                        `Installment 2: ${inst2}\n` +
+                        `Installment 3: ${inst3}\n\n` +
+                        `Terms Agreed: ${termsAgreed}`;
+
+      // Automatically places the student's name first in the email subject
+      const subjectLine = `${studentName} - Admission Inquiry`;
+      const mailtoUrl = `mailto:orbitcomputersmehdipatnam@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(emailBody)}`;
+      
+      window.location.href = mailtoUrl;
     }
   </script>
 
