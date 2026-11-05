@@ -129,8 +129,10 @@
     <h2>Orbit IT Solutions</h2>
     <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
-    <!-- Configured with your Formspree endpoint -->
-    <form action="https://formspree.io/f/xvkkllld" method="POST">
+    <form action="https://formspree.io/f/xvkkllld" method="POST" onsubmit="updateSubjectLine()">
+      
+      <!-- Hidden field for dynamic subject line -->
+      <input type="hidden" name="_subject" id="dynamicSubject" value="New Student Admission Inquiry - Orbit IT Solutions">
       
       <div class="section-title">1. Personal Information</div>
       
@@ -270,6 +272,17 @@
 
     </form>
   </div>
+
+  <script>
+    function updateSubjectLine() {
+      const studentName = document.getElementById('studentName').value.trim();
+      const subjectInput = document.getElementById('dynamicSubject');
+      
+      if (studentName) {
+        subjectInput.value = `${studentName} - Orbit IT Solutions Admission Form`;
+      }
+    }
+  </script>
 
 </body>
 </html>
