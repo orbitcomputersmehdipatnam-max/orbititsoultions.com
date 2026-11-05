@@ -135,47 +135,70 @@
       
       <div class="form-row">
         <div class="form-group">
-          <label for="studentName">Student Full Name *</label>
-          <input type="text" id="studentName" name="Student Name" required placeholder="Enter full name">
+          <label for="studentName">Student Full Name</label>
+          <input type="text" id="studentName" name="Student Name" placeholder="Enter full name">
         </div>
         <div class="form-group">
-          <label for="fatherName">Father's Name *</label>
-          <input type="text" id="fatherName" name="Father Name" required placeholder="Enter father's name">
+          <label for="fatherName">Father's Name</label>
+          <input type="text" id="fatherName" name="Father Name" placeholder="Enter father's name">
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label for="contactNumber">Contact Number *</label>
-          <input type="tel" id="contactNumber" name="Contact Number" pattern="[0-9]{10}" required placeholder="10-digit mobile number">
+          <label for="contactNumber">Contact Number</label>
+          <input type="tel" id="contactNumber" name="Contact Number" placeholder="Mobile number">
         </div>
         <div class="form-group">
-          <label for="whatsappNumber">WhatsApp Number *</label>
-          <input type="tel" id="whatsappNumber" name="WhatsApp Number" pattern="[0-9]{10}" required placeholder="10-digit WhatsApp number">
+          <label for="whatsappNumber">WhatsApp Number</label>
+          <input type="tel" id="whatsappNumber" name="WhatsApp Number" placeholder="WhatsApp number">
         </div>
       </div>
 
       <div class="form-group full-width">
-        <label for="emailId">Email Address *</label>
-        <input type="email" id="emailId" name="Email ID" required placeholder="student@example.com">
+        <label for="emailId">Email Address</label>
+        <input type="email" id="emailId" name="Email ID" placeholder="student@example.com">
       </div>
 
-      <div class="section-title">2. Course Selection & Source</div>
+      <div class="section-title">2. Course Selection & Reference</div>
 
       <div class="form-row">
         <div class="form-group">
-          <label for="coursePreferred">Course Preferred (Optional)</label>
+          <label for="coursePreferred">Course Preferred</label>
           <select id="coursePreferred" name="Course Preferred">
-            <option value="">-- Select Course (Optional) --</option>
-            <option value="DSA (45 Days - ₹15,000)">DSA (Data Structures & Algorithms - 45 Days, ₹15,000)</option>
-            <option value="Digital Marketing (45 Days - ₹18,200)">Digital Marketing (45 Days, ₹18,200)</option>
-            <option value="Stock Market & Trading (30 Days - ₹22,200)">Stock Market & Trading (30 Days, ₹22,200)</option>
-            <option value="Software Testing (Manual & Playwright Automation)">Software Testing (Manual & Playwright Automation)</option>
-            <option value="Python Programming & Data Science">Python Programming & Data Science</option>
-            <option value="Java Full Stack Development">Java Full Stack Development</option>
-            <option value="C & C++ Programming">C & C++ Programming</option>
-            <option value="Web Development (HTML, CSS, JS, React)">Web Development (HTML, CSS, JS, React)</option>
-            <option value="Accounts Training (Tally Prime / GST / Accounting)">Accounts Training (Tally Prime / GST / Accounting)</option>
+            <option value="">-- Select Course --</option>
+            <optgroup label="Featured / Special Batches">
+              <option value="DSA (45 Days - ₹15,000)">DSA (Data Structures & Algorithms - 45 Days, ₹15,000)</option>
+              <option value="Digital Marketing (45 Days - ₹18,200)">Digital Marketing (45 Days, ₹18,200)</option>
+              <option value="Stock Market & Trading (30 Days - ₹22,200)">Stock Market & Trading (30 Days, ₹22,200)</option>
+            </optgroup>
+            <optgroup label="Software Testing & QA">
+              <option value="Manual Testing">Manual Testing</option>
+              <option value="Automation Testing (Playwright / Selenium)">Automation Testing (Playwright / Selenium)</option>
+              <option value="Full Stack Testing Suite">Full Stack Testing Suite</option>
+            </optgroup>
+            <optgroup label="Programming & Development">
+              <option value="Python Programming">Python Programming</option>
+              <option value="Java Programming">Java Programming</option>
+              <option value="C & C++ Programming">C & C++ Programming</option>
+              <option value="Web Development (HTML, CSS, JS, React)">Web Development (HTML, CSS, JS, React)</option>
+              <option value="Java Full Stack Development">Java Full Stack Development</option>
+              <option value="Python Full Stack Development">Python Full Stack Development</option>
+            </optgroup>
+            <optgroup label="Data Science & Analytics">
+              <option value="Data Analytics (Excel, SQL, Power BI)">Data Analytics (Excel, SQL, Power BI)</option>
+              <option value="Data Science & Machine Learning">Data Science & Machine Learning</option>
+            </optgroup>
+            <optgroup label="Cloud & Systems">
+              <option value="AWS Cloud Computing">AWS Cloud Computing</option>
+              <option value="DevOps Engineering">DevOps Engineering</option>
+              <option value="Linux Administration">Linux Administration</option>
+            </optgroup>
+            <optgroup label="Accounts & Financial Courses">
+              <option value="Tally Prime with GST">Tally Prime with GST</option>
+              <option value="Advanced Excel & MIS Reporting">Advanced Excel & MIS Reporting</option>
+              <option value="Complete Accounting Suite">Complete Accounting Suite</option>
+            </optgroup>
           </select>
         </div>
         <div class="form-group">
@@ -187,6 +210,7 @@
       <div class="form-group full-width">
         <label for="referenceSource">How did you come to know about Orbit IT Solutions?</label>
         <select id="referenceSource" name="Reference Source">
+          <option value="">-- Select Source --</option>
           <option value="Google Search / Website">Google Search / Website</option>
           <option value="Social Media (Instagram / YouTube)">Social Media (Instagram / YouTube)</option>
           <option value="Friend / Word of Mouth">Friend / Word of Mouth</option>
@@ -199,12 +223,12 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="totalFees">Total Fees (₹) *</label>
-          <input type="text" id="totalFees" name="Total Fees" required placeholder="e.g., 25000">
+          <label for="totalFees">Total Fees (₹)</label>
+          <input type="text" id="totalFees" name="Total Fees" placeholder="e.g., 25000">
         </div>
         <div class="form-group">
-          <label for="feesPaid">Fees Paid (₹) *</label>
-          <input type="text" id="feesPaid" name="Fees Paid" required placeholder="e.g., 10000">
+          <label for="feesPaid">Fees Paid (₹)</label>
+          <input type="text" id="feesPaid" name="Fees Paid" placeholder="e.g., 10000">
         </div>
       </div>
 
@@ -214,3 +238,45 @@
           <label style="font-size: 12px;">Installment 1 (₹ / Date)</label>
           <input type="text" name="Installment 1" placeholder="Amount & Date">
         </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-size: 12px;">Installment 2 (₹ / Date)</label>
+          <input type="text" name="Installment 2" placeholder="Amount & Date">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-size: 12px;">Installment 3 (₹ / Date)</label>
+          <input type="text" name="Installment 3" placeholder="Amount & Date">
+        </div>
+      </div>
+
+      <div class="section-title">4. Terms & Conditions</div>
+
+      <div class="terms-box">
+        <strong>Attendance & Placement Policy:</strong><br>
+        1. Regularity and punctuality are strictly mandatory for all training programs and placement assistance options.<br>
+        2. Students remaining absent without prior intimation for <strong>7 consecutive days</strong> will be marked inactive and are liable to pay a penalty of <strong>₹1,000/-</strong> to reactivate their enrollment and training sessions.
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="termsAgreed" name="Terms Agreed">
+        <label for="termsAgreed" style="font-weight: normal; cursor: pointer;">
+          I have read, understood, and agree to the attendance rules, penalty policies, and fee terms of Orbit IT Solutions.
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Submit Registration Form 🚀
+      </button>
+
+    </form>
+  </div>
+
+  <script>
+    function prepareEmailSubject(event) {
+      const studentName = document.getElementById('studentName').value.trim() || 'Student Registration';
+      const form = document.getElementById('orbitRegistrationForm');
+      form.action = `mailto:orbitcomputersmehdipatnam@gmail.com?subject=Admission Inquiry - ${encodeURIComponent(studentName)}`;
+    }
+  </script>
+
+</body>
+</html>
