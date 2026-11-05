@@ -137,7 +137,7 @@
     <h2>Orbit IT Solutions</h2>
     <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
-    <form id="orbitRegistrationForm" onsubmit="submitFormDirectly(event)">
+    <form id="orbitRegistrationForm" onsubmit="submitFormAjax(event)">
       
       <div class="section-title">1. Personal Information</div>
       
@@ -281,7 +281,7 @@
   </div>
 
   <script>
-    async function submitFormDirectly(event) {
+    async function submitFormAjax(event) {
       event.preventDefault();
 
       const btn = document.getElementById('submitBtn');
@@ -302,53 +302,56 @@
       const inst3 = document.getElementById('inst3').value.trim() || 'N/A';
       const termsAgreed = document.getElementById('termsAgreed').checked ? 'Yes, Agreed' : 'Not Agreed';
 
-      // Lock button during submit
-      btn.innerText = "Submitting...";
+      btn.innerText = "Sending...";
       btn.disabled = true;
+      status.style.display = "none";
 
-      // Payload sent directly to backend mail router
-      const formData = new FormData();
-      formData.append("access_key", "c83002f2-f851-4d33-8a9d-52ef29eebe0c");
-      formData.append("subject", `${studentName} - Orbit IT Solutions Admission Form`);
-      formData.append("to", "orbitcomputersmehdipatnam@gmail.com");
-      
-      formData.append("Student Name", studentName);
-      formData.append("Father Name", fatherName);
-      formData.append("Contact Number", contactNumber);
-      formData.append("WhatsApp Number", whatsappNumber);
-      formData.append("Email Address", emailId);
-      formData.append("Course Preferred", coursePreferred);
-      formData.append("Customized Course", customCourse);
-      formData.append("Reference Source", referenceSource);
-      formData.append("Total Fees", `₹${totalFees}`);
-      formData.append("Fees Paid", `₹${feesPaid}`);
-      formData.append("Installment 1", inst1);
-      formData.append("Installment 2", inst2);
-      formData.append("Installment 3", inst3);
-      formData.append("Terms & Conditions Agreed", termsAgreed);
+      const formData = {
+        _subject: `${studentName} - Admission Form Submission`,
+        _template: "table",
+        _captcha: "false",
+        "Student Name": studentName,
+        "Father Name": fatherName,
+        "Contact Number": contactNumber,
+        "WhatsApp Number": whatsappNumber,
+        "Email Address": emailId,
+        "Course Preferred": coursePreferred,
+        "Customized Course": customCourse,
+        "Reference Source": referenceSource,
+        "Total Fees": `₹${totalFees}`,
+        "Fees Paid": `₹${feesPaid}`,
+        "Installment 1": inst1,
+        "Installment 2": inst2,
+        "Installment 3": inst3,
+        "Terms & Conditions Agreed": termsAgreed
+      };
 
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
+        const response = await fetch("https://formsubmit.co/ajax/orbitcomputersmehdipatnam@gmail.com", {
           method: "POST",
-          body: formData
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(formData)
         });
 
         const result = await response.json();
 
-        if (result.success) {
+        if (result.success == "true" || response.ok) {
           status.style.display = "block";
           status.style.background = "#d4edda";
           status.style.color = "#155724";
-          status.innerText = "✅ Registration Submitted Successfully! Email sent to Orbit IT Solutions.";
+          status.innerText = "✅ Form Submitted Successfully! Email sent to Orbit IT Solutions.";
           document.getElementById('orbitRegistrationForm').reset();
         } else {
-          throw new Error(result.message);
+          throw new Error("Submission failed");
         }
       } catch (error) {
         status.style.display = "block";
         status.style.background = "#f8d7da";
         status.style.color = "#721c24";
-        status.innerText = "❌ Submission failed. Please try again or contact support.";
+        status.innerText = "❌ Submission error. Please make sure you check your email inbox to activate the form link if this is your first time.";
       } finally {
         btn.innerText = "Submit Registration Form 🚀";
         btn.disabled = false;
