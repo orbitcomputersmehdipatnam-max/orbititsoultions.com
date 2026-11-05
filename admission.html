@@ -121,6 +121,14 @@
     .submit-btn:hover {
       background: #0d1b60;
     }
+    #statusMessage {
+      display: none;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -129,7 +137,7 @@
     <h2>Orbit IT Solutions</h2>
     <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
-    <form id="orbitRegistrationForm" onsubmit="handleFormSubmission(event)">
+    <form id="orbitRegistrationForm" onsubmit="submitFormDirectly(event)">
       
       <div class="section-title">1. Personal Information</div>
       
@@ -263,16 +271,21 @@
         </label>
       </div>
 
-      <button type="submit" class="submit-btn">
+      <button type="submit" id="submitBtn" class="submit-btn">
         Submit Registration Form 🚀
       </button>
+
+      <div id="statusMessage"></div>
 
     </form>
   </div>
 
   <script>
-    function handleFormSubmission(event) {
+    async function submitFormDirectly(event) {
       event.preventDefault();
+
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('statusMessage');
 
       const studentName = document.getElementById('studentName').value.trim() || 'Student Registration';
       const fatherName = document.getElementById('fatherName').value.trim() || 'N/A';
@@ -289,28 +302,57 @@
       const inst3 = document.getElementById('inst3').value.trim() || 'N/A';
       const termsAgreed = document.getElementById('termsAgreed').checked ? 'Yes, Agreed' : 'Not Agreed';
 
-      const emailBody = `NEW ADMISSION INQUIRY\n` +
-                        `----------------------------------------\n` +
-                        `Student Name: ${studentName}\n` +
-                        `Father's Name: ${fatherName}\n` +
-                        `Contact Number: ${contactNumber}\n` +
-                        `WhatsApp Number: ${whatsappNumber}\n` +
-                        `Email Address: ${emailId}\n\n` +
-                        `Course Preferred: ${coursePreferred}\n` +
-                        `Custom Course: ${customCourse}\n` +
-                        `Reference Source: ${referenceSource}\n\n` +
-                        `Total Fees: Rs. ${totalFees}\n` +
-                        `Fees Paid: Rs. ${feesPaid}\n` +
-                        `Installment 1: ${inst1}\n` +
-                        `Installment 2: ${inst2}\n` +
-                        `Installment 3: ${inst3}\n\n` +
-                        `Terms Agreed: ${termsAgreed}`;
+      // Lock button during submit
+      btn.innerText = "Submitting...";
+      btn.disabled = true;
 
-      // Automatically places the student's name first in the email subject
-      const subjectLine = `${studentName} - Admission Inquiry`;
-      const mailtoUrl = `mailto:orbitcomputersmehdipatnam@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(emailBody)}`;
+      // Payload sent directly to backend mail router
+      const formData = new FormData();
+      formData.append("access_key", "c83002f2-f851-4d33-8a9d-52ef29eebe0c");
+      formData.append("subject", `${studentName} - Orbit IT Solutions Admission Form`);
+      formData.append("to", "orbitcomputersmehdipatnam@gmail.com");
       
-      window.location.href = mailtoUrl;
+      formData.append("Student Name", studentName);
+      formData.append("Father Name", fatherName);
+      formData.append("Contact Number", contactNumber);
+      formData.append("WhatsApp Number", whatsappNumber);
+      formData.append("Email Address", emailId);
+      formData.append("Course Preferred", coursePreferred);
+      formData.append("Customized Course", customCourse);
+      formData.append("Reference Source", referenceSource);
+      formData.append("Total Fees", `₹${totalFees}`);
+      formData.append("Fees Paid", `₹${feesPaid}`);
+      formData.append("Installment 1", inst1);
+      formData.append("Installment 2", inst2);
+      formData.append("Installment 3", inst3);
+      formData.append("Terms & Conditions Agreed", termsAgreed);
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          status.style.display = "block";
+          status.style.background = "#d4edda";
+          status.style.color = "#155724";
+          status.innerText = "✅ Registration Submitted Successfully! Email sent to Orbit IT Solutions.";
+          document.getElementById('orbitRegistrationForm').reset();
+        } else {
+          throw new Error(result.message);
+        }
+      } catch (error) {
+        status.style.display = "block";
+        status.style.background = "#f8d7da";
+        status.style.color = "#721c24";
+        status.innerText = "❌ Submission failed. Please try again or contact support.";
+      } finally {
+        btn.innerText = "Submit Registration Form 🚀";
+        btn.disabled = false;
+      }
     }
   </script>
 
