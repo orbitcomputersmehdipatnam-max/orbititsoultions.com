@@ -129,14 +129,19 @@
     <h2>Orbit IT Solutions</h2>
     <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
-    <form id="orbitRegistrationForm" action="mailto:orbitcomputersmehdipatnam@gmail.com" method="POST" enctype="text/plain" onsubmit="prepareEmailSubject(event)">
+    <form id="orbitRegistrationForm" action="https://formsubmit.co/orbitcomputersmehdipatnam@gmail.com" method="POST">
+      
+      <!-- FormSubmit Configuration Settings -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" id="emailSubject" value="New Admission Form Submission">
+      <input type="hidden" name="_template" value="table">
       
       <div class="section-title">1. Personal Information</div>
       
       <div class="form-row">
         <div class="form-group">
           <label for="studentName">Student Full Name</label>
-          <input type="text" id="studentName" name="Student Name" placeholder="Enter full name">
+          <input type="text" id="studentName" name="Student Name" placeholder="Enter full name" oninput="updateSubject(this.value)">
         </div>
         <div class="form-group">
           <label for="fatherName">Father's Name</label>
@@ -257,7 +262,7 @@
       </div>
 
       <div class="checkbox-group">
-        <input type="checkbox" id="termsAgreed" name="Terms Agreed">
+        <input type="checkbox" id="termsAgreed" name="Terms Agreed" value="Yes, Agreed">
         <label for="termsAgreed" style="font-weight: normal; cursor: pointer;">
           I have read, understood, and agree to the attendance rules, penalty policies, and fee terms of Orbit IT Solutions.
         </label>
@@ -271,10 +276,13 @@
   </div>
 
   <script>
-    function prepareEmailSubject(event) {
-      const studentName = document.getElementById('studentName').value.trim() || 'Student Registration';
-      const form = document.getElementById('orbitRegistrationForm');
-      form.action = `mailto:orbitcomputersmehdipatnam@gmail.com?subject=Admission Inquiry - ${encodeURIComponent(studentName)}`;
+    function updateSubject(val) {
+      const subjectInput = document.getElementById('emailSubject');
+      if (val.trim() !== '') {
+        subjectInput.value = val.trim() + ' - Orbit IT Admission Form';
+      } else {
+        subjectInput.value = 'New Admission Form Submission';
+      }
     }
   </script>
 
