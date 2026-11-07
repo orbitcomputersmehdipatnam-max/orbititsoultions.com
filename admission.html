@@ -18,7 +18,48 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
+    
+    /* 🪔 Diwali Offer Banner Styling 🪔 */
+    .banner-container {
+      width: 100%;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+    .banner-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* 📱 WhatsApp Counseling Section Styling 📱 */
+    .whatsapp-counseling {
+      background: #25d366;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+    .whatsapp-counseling:hover {
+      background: #1eb954;
+    }
+    .whatsapp-counseling span {
+      font-size: 24px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
     .admission-container h2 {
       text-align: center;
       color: #1a237e;
@@ -126,6 +167,18 @@
 <body>
 
   <div class="admission-container">
+    
+    <!-- 🪔 DIWALI OFFER BANNER - PLACED ABOVE COUNSELING 🪔 -->
+    <div class="banner-container">
+      <!-- Replace 'diwali-offer.jpg' with the actual file name or image URL of your Diwali flyer -->
+      <img src="diwali-offer.jpg" alt="Diwali Special Offer & Huge Discounts - Orbit IT Solutions">
+    </div>
+
+    <!-- 📱 BOOK FREE COUNSELING ON WHATSAPP 📱 -->
+    <a href="https://wa.me/919985153068?text=Hello Orbit IT Solutions, I would like to book a Free Counseling Session." target="_blank" class="whatsapp-counseling">
+      <span>📲</span> Book Free Counseling Session on WhatsApp
+    </a>
+
     <h2>Orbit IT Solutions</h2>
     <div class="subtitle">Mehdipatnam, Hyderabad | Official Student Registration Form</div>
     
