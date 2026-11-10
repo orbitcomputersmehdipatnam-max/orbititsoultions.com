@@ -919,6 +919,48 @@
       
       alert("🔒 Thank you " + name + "! Your feedback for " + course + " has been submitted securely.");
       event.target.reset();
+    }let currentTargetPdf = '';
+    let generatedOTP = null;
+
+    function openSyllabusModal(pdfUrl) {
+      currentTargetPdf = pdfUrl;
+      document.getElementById('studentPhone').value = '';
+      document.getElementById('otpInput').value = '';
+      document.getElementById('phoneStep').style.display = 'block';
+      document.getElementById('otpStep').style.display = 'none';
+      document.getElementById('syllabusModal').style.display = 'flex';
+    }
+
+    function closeSyllabusModal() {
+      document.getElementById('syllabusModal').style.display = 'none';
+    }
+
+    function sendOTP() {
+      const phone = document.getElementById('studentPhone').value.trim();
+      if (phone.length !== 10 || isNaN(phone)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+      generatedOTP = Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('phoneStep').style.display = 'none';
+      document.getElementById('otpStep').style.display = 'block';
+      document.getElementById('otpNotice').innerText = `Verification code sent to ${phone}. (Demo OTP: ${generatedOTP})`;
+    }
+
+    function verifyAndDownload() {
+      const enteredOTP = document.getElementById('otpInput').value.trim();
+      if (enteredOTP === String(generatedOTP)) {
+        alert("Phone number verified! Downloading syllabus now...");
+        const link = document.createElement('a');
+        link.href = currentTargetPdf;
+        link.download = '';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        closeSyllabusModal();
+      } else {
+        alert("Invalid OTP code. Please enter the code shown on screen.");
+      }
     }
   </script>
 </body>
