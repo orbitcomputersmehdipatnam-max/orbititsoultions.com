@@ -118,6 +118,98 @@
     .chat-send-btn { background: #2563eb; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; margin-left: 6px; cursor: pointer; font-weight: 600; font-size: 12px; }
 
     footer { text-align: center; padding: 25px; color: #64748b; font-size: 13px; border-top: 1px solid #e2e8f0; background: #ffffff; }
+  /* Unified Straight Course Grid & Card Alignment */
+#courses .courses-grid,
+#courses [class*="grid"],
+.courses-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  align-items: stretch !important;
+}
+
+@media (max-width: 1024px) {
+  #courses .courses-grid,
+  #courses [class*="grid"],
+  .courses-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #courses .courses-grid,
+  #courses [class*="grid"],
+  .courses-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+#courses .courses-grid > div,
+#courses [class*="grid"] > div,
+.courses-grid > div,
+.course-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  margin: 0 !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+}
+
+#courses img,
+.courses-grid img,
+.course-card img,
+.course-img {
+  width: 100% !important;
+  height: 155px !important;
+  object-fit: cover !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+#courses .courses-grid > div > div:last-child,
+.courses-grid > div > div:last-child,
+.course-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  padding: 16px !important;
+}
+
+#courses .courses-grid p:last-of-type,
+.courses-grid p:last-of-type {
+  margin-top: auto !important;
+}
+
+.syllabus-btn,
+#courses button[onclick*="Syllabus"],
+.courses-grid button[onclick*="Syllabus"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: flex-start !important;
+  width: auto !important;
+  background: #e8f1fb !important;
+  color: #2563eb !important;
+  border: 1px solid #bfdbfe !important;
+  padding: 7px 14px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  margin-top: 10px !important;
+  text-decoration: none !important;
+}
+
+.syllabus-btn:hover,
+#courses button[onclick*="Syllabus"]:hover,
+.courses-grid button[onclick*="Syllabus"]:hover {
+  background: #dbeafe !important;
+}
   </style>
 </head>
 <body>
