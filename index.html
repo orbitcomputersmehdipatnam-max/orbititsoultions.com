@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">h
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1021,8 +1021,7 @@
     </section>
 
   </div>
-
-  <!-- Lead Capture Modal -->
+<!-- Lead Capture Modal -->
   <div class="modal-overlay" id="leadModal">
     <div class="modal-box">
       <h3 style="color: #1e3a8a; font-size: 18px; margin-bottom: 8px; font-weight: 700;">Enter Details to Download Syllabus</h3>
@@ -1038,12 +1037,37 @@
     </div>
   </div>
 
+  <!-- Unified Syllabus OTP Modal -->
+  <div id="orbitSyllabusModal" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.65); z-index:9999; align-items:center; justify-content:center; padding:16px;">
+    <div style="background:#ffffff; width:100%; max-width:400px; border-radius:14px; padding:24px; box-shadow:0 20px 40px rgba(0,0,0,0.25); position:relative;">
+      <button type="button" onclick="closeSyllabusModal()" style="position:absolute; top:12px; right:14px; background:none; border:none; font-size:20px; cursor:pointer; color:#64748b;">&times;</button>
+      <h3 style="margin:0 0 6px 0; color:#1e3a8a; font-size:18px;">Download Course Syllabus</h3>
+      <p id="syllabusModalCourseName" style="margin:0 0 14px 0; font-size:13px; font-weight:600; color:#2563eb;"></p>
+
+      <div id="syllabusPhoneStep">
+        <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:6px;">Enter Mobile Number</label>
+        <input type="tel" id="syllabusPhoneInput" placeholder="e.g. 9876543210" maxlength="15" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:14px; margin-bottom:12px;">
+        <button type="button" onclick="sendSyllabusOtp()" style="width:100%; padding:10px; background:#2563eb; color:#ffffff; border:none; border-radius:8px; font-weight:600; cursor:pointer;">Send OTP</button>
+      </div>
+
+      <div id="syllabusOtpStep" style="display:none; margin-top:10px;">
+        <p id="syllabusOtpHint" style="font-size:12px; color:#15803d; margin-bottom:8px; font-weight:600;"></p>
+        <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:6px;">Enter 4-Digit OTP</label>
+        <input type="text" id="syllabusOtpInput" placeholder="4-digit OTP" maxlength="6" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:14px; margin-bottom:12px;">
+        <button type="button" onclick="verifyOtpAndDownload()" style="width:100%; padding:10px; background:#16a34a; color:#ffffff; border:none; border-radius:8px; font-weight:600; cursor:pointer;">Verify & Download PDF</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     &copy; 2026 Orbit IT Solutions, Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad. All Rights Reserved.
   </footer>
 
   <script>
     var currentSelectedCourse = "";
+    let selectedSyllabusCourse = "";
+    let selectedSyllabusPdf = "";
+    let generatedSyllabusOtp = "";
 
     function toggleChatbot() {
       var win = document.getElementById('chatbotWindow');
@@ -1051,47 +1075,28 @@
     }
 
     function handleChatKeyPress(e) {
-      if(e.key === 'Enter') sendChatMessage();
+      if (e.key === 'Enter') sendChatMessage();
     }
 
     function sendChatMessage() {
       var input = document.getElementById('chatInput');
       var txt = input.value.trim().toLowerCase();
-      if(!txt) return;
+      if (!txt) return;
 
       var body = document.getElementById('chatBody');
       body.innerHTML += `<div class="chat-msg user">${input.value}</div>`;
       input.value = "";
 
       var reply = "Thank you for asking! For course details and admissions, please contact +91 9985153068 or visit Safa Arcade, 2nd & 3rd Floor, Mehdipatnam.";
-      <div id="syllabusModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center;">
-  <div style="background: #fff; border-radius: 12px; padding: 25px; max-width: 400px; width: 90%; margin: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.2); position: relative;">
-    <button onclick="closeSyllabusModal()" style="position: absolute; top: 10px; right: 15px; border: none; background: none; font-size: 20px; cursor: pointer; color: #666;">&times;</button>
-
-    <h3 style="margin-top: 0; color: #1e3a8a; font-size: 18px;">Download Course Syllabus</h3>
-    <p style="font-size: 13px; color: #666; margin-bottom: 15px;">Enter your 10-digit mobile number to verify and get instant access.</p>
-
-    <div id="phoneStep">
-      <input type="tel" id="studentPhone" placeholder="Enter 10-digit Mobile Number" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box; margin-bottom: 12px;" maxlength="10">
-      <button onclick="sendOTP()" style="width: 100%; background: #1e3a8a; color: #fff; border: none; padding: 11px; border-radius: 6px; font-weight: 600; cursor: pointer;">Send OTP</button>
-    </div>
-
-    <div id="otpStep" style="display: none;">
-      <p id="otpNotice" style="font-size: 12px; color: #2563eb; font-weight: 600; margin-bottom: 8px;"></p>
-      <input type="text" id="otpInput" placeholder="Enter 4-Digit OTP" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; box-sizing: border-box; margin-bottom: 12px;" maxlength="4">
-      <button onclick="verifyAndDownload()" style="width: 100%; background: #16a34a; color: #fff; border: none; padding: 11px; border-radius: 6px; font-weight: 600; cursor: pointer;">Verify & Download</button>
-    </div>
-  </div>
-</div>
-      if(txt.includes('fee') || txt.includes('cost') || txt.includes('price')) {
+      if (txt.includes('fee') || txt.includes('cost') || txt.includes('price')) {
         reply = "Our course fees are very affordable with flexible installments! Please call or WhatsApp +91 9985153068 for fee structures.";
-      } else if(txt.includes('sap') || txt.includes('tally') || txt.includes('account')) {
+      } else if (txt.includes('sap') || txt.includes('tally') || txt.includes('account')) {
         reply = "We offer SAP S4HANA / FICO, Tally Prime GST, and Manual Accounting with 100% practical lab practice!";
-      } else if(txt.includes('python') || txt.includes('ai') || txt.includes('java')) {
-        reply = "Full Stack Python with AI, Full Stack Java, Data Science, and Machine Learning new batches start from 16th Nov 2026!";
-      } else if(txt.includes('location') || txt.includes('address') || txt.includes('where')) {
+      } else if (txt.includes('python') || txt.includes('ai') || txt.includes('java')) {
+        reply = "Full Stack Python with AI, Full Stack Java, Data Science, and Machine Learning new batches start from 01st Dec 2026!";
+      } else if (txt.includes('location') || txt.includes('address') || txt.includes('where')) {
         reply = "We are located at: Safa Arcade, 2nd & 3rd Floor, Mehdipatnam, Hyderabad - 500028.";
-      } else if(txt.includes('placement') || txt.includes('job') || txt.includes('intern')) {
+      } else if (txt.includes('placement') || txt.includes('job') || txt.includes('intern')) {
         reply = "We maintain a 95% placement record with guaranteed internships for students pursuing education!";
       }
 
@@ -1110,7 +1115,7 @@
     function handleModalDownload(event) {
       event.preventDefault();
       var phone = document.getElementById('modalPhone').value.trim();
-      if(phone.length >= 10) {
+      if (phone.length >= 10) {
         alert("✅ Mobile number verified! Starting syllabus download for " + currentSelectedCourse);
         document.getElementById('leadModal').style.display = 'none';
         document.getElementById('modalPhone').value = "";
@@ -1124,7 +1129,7 @@
       var name = document.getElementById('studentName').value.trim();
       var pass = document.getElementById('studentPass').value.trim();
 
-      if(name && pass) {
+      if (name && pass) {
         document.getElementById('welcomeStudentHeading').innerText = "Welcome, " + name + "!";
         document.getElementById('studentDashboardOutput').style.display = 'block';
       }
@@ -1134,52 +1139,74 @@
       event.preventDefault();
       var name = document.getElementById('fbName').value.trim();
       var course = document.getElementById('fbCourse').value;
-      
+
       alert("🔒 Thank you " + name + "! Your feedback for " + course + " has been submitted securely.");
       event.target.reset();
-    }let currentTargetPdf = '';
-    let generatedOTP = null;
+    }
 
-    function openSyllabusModal(pdfUrl) {
-      currentTargetPdf = pdfUrl;
-      document.getElementById('studentPhone').value = '';
-      document.getElementById('otpInput').value = '';
-      document.getElementById('phoneStep').style.display = 'block';
-      document.getElementById('otpStep').style.display = 'none';
-      document.getElementById('syllabusModal').style.display = 'flex';
+    function triggerSyllabusDownload(btn) {
+      const course = btn.getAttribute("data-course") || "Course";
+      const pdf = btn.getAttribute("data-pdf") || "";
+      openSyllabusModal(course, pdf);
+    }
+
+    function openSyllabusModal(courseName, pdfFile) {
+      selectedSyllabusCourse = courseName;
+      selectedSyllabusPdf = pdfFile;
+      generatedSyllabusOtp = "";
+
+      document.getElementById("syllabusModalCourseName").textContent = "Course: " + courseName;
+      document.getElementById("syllabusPhoneInput").value = "";
+      document.getElementById("syllabusOtpInput").value = "";
+      document.getElementById("syllabusOtpHint").textContent = "";
+      document.getElementById("syllabusPhoneStep").style.display = "block";
+      document.getElementById("syllabusOtpStep").style.display = "none";
+      document.getElementById("orbitSyllabusModal").style.display = "flex";
     }
 
     function closeSyllabusModal() {
-      document.getElementById('syllabusModal').style.display = 'none';
+      document.getElementById("orbitSyllabusModal").style.display = "none";
     }
 
-    function sendOTP() {
-      const phone = document.getElementById('studentPhone').value.trim();
-      if (phone.length !== 10 || isNaN(phone)) {
+    function sendSyllabusOtp() {
+      const phone = document.getElementById("syllabusPhoneInput").value.trim();
+      const digitsOnly = phone.replace(/\D/g, "");
+      if (digitsOnly.length < 10) {
         alert("Please enter a valid 10-digit mobile number.");
         return;
       }
-      generatedOTP = Math.floor(1000 + Math.random() * 9000);
-      document.getElementById('phoneStep').style.display = 'none';
-      document.getElementById('otpStep').style.display = 'block';
-      document.getElementById('otpNotice').innerText = `Verification code sent to ${phone}. (Demo OTP: ${generatedOTP})`;
+      generatedSyllabusOtp = String(Math.floor(1000 + Math.random() * 9000));
+      document.getElementById("syllabusOtpHint").textContent = "Demo OTP: " + generatedSyllabusOtp;
+      document.getElementById("syllabusPhoneStep").style.display = "none";
+      document.getElementById("syllabusOtpStep").style.display = "block";
     }
 
-    function verifyAndDownload() {
-      const enteredOTP = document.getElementById('otpInput').value.trim();
-      if (enteredOTP === String(generatedOTP)) {
-        alert("Phone number verified! Downloading syllabus now...");
-        const link = document.createElement('a');
-        link.href = currentTargetPdf;
-        link.download = '';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        closeSyllabusModal();
-      } else {
-        alert("Invalid OTP code. Please enter the code shown on screen.");
+    function verifyOtpAndDownload() {
+      const entered = document.getElementById("syllabusOtpInput").value.trim();
+      if (!generatedSyllabusOtp || entered !== generatedSyllabusOtp) {
+        alert("Invalid OTP. Please check and try again.");
+        return;
       }
+      downloadSyllabusPdf(selectedSyllabusPdf);
+      closeSyllabusModal();
+    }
+
+    function downloadSyllabusPdf(pdfPath) {
+      if (!pdfPath) {
+        alert("Syllabus PDF is not configured for this course yet.");
+        return;
+      }
+      const encodedPath = encodeURI(pdfPath);
+      const a = document.createElement("a");
+      a.href = encodedPath;
+      a.download = pdfPath.split("/").pop();
+      a.target = "_blank";
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   </script>
 </body>
 </html>
+  
